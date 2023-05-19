@@ -6,3 +6,11 @@
  * {
     font-family: BebasNeue;
  }
+
+ p { 
+    font-family: Arial;
+    line-height: 8px;   /* within paragraph */
+    } 
+h2 {
+    letter-spacing: 2px;
+}

@@ -1,0 +1,25 @@
+body{
+    background: #151923;
+    color: #f4f8f2;
+}
+
+
+@font-face {
+    font-family: BebasNeue;
+    src: url(/font/BebasNeue-Regular.ttf);
+ }
+ 
+ * {
+    font-family: BebasNeue;
+ }
+
+ p { 
+    font-family: Arial;
+    line-height: 8px;   /* within paragraph */
+    } 
+h2 {
+    letter-spacing: 2px;
+}
+h1 {
+    letter-spacing: 2px;
+}

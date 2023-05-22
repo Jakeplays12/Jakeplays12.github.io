@@ -1,0 +1,96 @@
+a{
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+    transition-duration: 0s;
+    cursor: pointer;
+    width: 200px;
+}
+
+.a1 {
+    background-color: rgba(255, 0, 0, 0); 
+    border: 2px solid rgba(90, 77, 219, 50);
+    color: white;
+    box-shadow: 0 0 0 0 rgba(0, 123, 123, 0.24), 0 17px 50px 0 rgba(0, 123, 123, 0.19);
+    border-radius: 8px;
+    }
+
+
+.a1:hover {
+transition-duration: 0.4s;
+background-color: rgba(255, 0, 100, 50); 
+border: 2px solid rgba(255, 77, 219, 50);
+color: white;
+box-shadow: 0 0 0 0 rgba(0, 123, 123, 0.24), 0 17px 50px 0 rgba(0, 123, 123, 0.19);
+}
+
+.a2 {
+    background-color: rgba(255, 0, 0, 0); 
+    color: rgb(255, 255, 255); 
+    border: 2px solid #ff000000;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+    }
+    
+    
+    .a2:hover {
+    background-color: rgb(255, 0, 136); 
+    border: 2px solid rgb(175, 0, 94);
+    color: white;
+    box-shadow: 0 0 0 0 rgba(123, 0, 80, 0.24), 0 17px 50px 0 rgba(123, 0, 37, 0.19);
+    }
+
+    .invisible {
+        background-color: rgba(255, 0, 0, 0); 
+        color: rgb(255, 255, 255); 
+        border: 2px solid #ff000000;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+        }
+        
+        
+        .invisible:hover {
+        background-color: rgba(255, 0, 136, 0); 
+        border: 2px solid rgba(175, 0, 93, 0);
+        color: white;
+        box-shadow: 0 0 0 0 rgba(123, 0, 80, 0), 0 17px 50px 0 rgba(123, 0, 37, 0);
+        }
+
+        mp{
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 32px;
+            margin: 4px 2px;
+            transition-duration: 0s;
+            cursor: pointer;
+            width: 200px;
+            height: 200px;
+        }
+
+        .mp1 {
+            transition-duration: 1s;
+            background-color: rgba(0, 0, 0, 0.2); 
+            border: 2px solid rgba(0, 0, 0, 50);
+            color: white;
+            box-shadow: 0 0 0 0 rgba(0, 123, 123, 0.24), 0 17px 50px 0 rgba(0, 123, 123, 0.19);
+            border-radius: 8px;
+            width: 200px;
+            height: 50px;
+
+            line-height: 50px;
+        }
+        
+        
+        .mp1:hover {
+        transition-duration: 1s;
+        background-color: rgba(255, 0, 100, 50); 
+        border: 2px solid rgba(255, 77, 219, 50);
+        color: white;
+        box-shadow: 0 0 0 0 rgba(0, 123, 123, 0.24), 0 17px 50px 0 rgba(0, 123, 123, 0.19);
+        }

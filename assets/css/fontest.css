@@ -1,0 +1,8 @@
+@font-face {
+    font-family: BebasNeue;
+    src: url(/font/fontawesome-webfont.woff);
+ }
+ 
+ * {
+    font-family: fontawesome;
+ }

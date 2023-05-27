@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/jake-pfp.png">
+    <title>Jakeplays12</title>
+
+    <!-- Discord Embed Code -->
+    <meta content="Jakeplays12 &bull; Portfolio" property="og:title" />
+    <meta content="Jakeplays12" property="og:description" />
+    <meta content="#794aa2" data-react-helmet="true" name="theme-color" />
+    <!-- Discord Embed Code -->
+
+    <style>
+
+    </style>
+<link rel="stylesheet" href="style.css" />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.querySelector('.toggle-button');
+            const menu = document.querySelector('.menu');
+
+            toggleButton.addEventListener('click', function() {
+                menu.style.display = (menu.style.display === 'none') ? 'block' : 'none';
+            });
+
+            document.addEventListener('click', function(event) {
+                const isMenuClicked = menu.contains(event.target);
+                const isToggleButtonClicked = toggleButton.contains(event.target);
+
+                if (!isMenuClicked && !isToggleButtonClicked) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="left-half">
+        <div class="content">
+            <h1>Hi, I'm Jake.</h1>
+            <p>UK Based. Content Creator.</p>
+            <p>SkadeGaming Media Team Lead.</p>
+        </div>
+        <div class="button-container">
+            <a class="button" href="portfolio.html">Portfolio</a>
+            <a class="button" href="contact.html">Contact Me</a>
+            <a class="button" href="#"></a>
+            <a class="button" href="#"></a>
+        </div>
+        <div class="social-icons">
+            <a href="https://twitter.com/jplays_12"><img src="images/socials/twitter.svg" alt="Twitter"></a>
+            <a href="https://www.instagram.com/jplays_12"><img src="images/socials/instagram.svg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@jplays_12"><img src="images/socials/youtube.svg" alt="YouTube"></a>
+            <a href="https://www.tiktok.com/@jakeplays_12"><img src="images/socials/tiktok.svg" alt="TikTok"></a>
+            <a href="https://github.com/Jakeplays12"><img src="images/socials/github.svg" alt="GitHub"></a>
+            <a href="#"><img src="images/socials/discord.svg" alt="Discord"></a>
+        </div>
+    </div>
+    
+    <div class="right-half">
+        <div class="button-toggle">
+            <button class="toggle-button">
+                <img src="images/button-icon.png" alt="Toggle Button">
+            </button>
+            <div class="menu" style="display:none;">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact Me</a>
+                <a href="#">Blank</a>
+                <a href="#">Blank</a>
+            </div>
+        </div>
+        <div class="background-image"></div>
+        <div class="image"></div>
+
+        <footer style="background-color: darkmagenta; color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; left: 0; width: 100%;">
+            &copy; Jakeplays12 | All Rights Reserved
+        </footer>
+    </body>
+</html>

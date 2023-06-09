@@ -17,101 +17,42 @@
   <button onclick="stitchImages()">Stitch Images</button>
   <canvas id="resultCanvas" width="1200" height="300"></canvas>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
   <script>
-    let camera, scene, renderer;
-
-    function init() {
-      const canvas = document.getElementById('resultCanvas');
-      const width = canvas.width;
-      const height = canvas.height;
-
-      try {
-        const ctx = canvas.getContext('2d');
-        if (!ctx) {
-          throw new Error('Unable to get canvas context.');
-        }
-        
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-        renderer = new THREE.WebGLRenderer({ canvas: canvas });
-        renderer.setSize(width, height);
-
-        const geometry = new THREE.BoxGeometry(10, 10, 10);
-        const materials = [
-          new THREE.MeshBasicMaterial({ map: null, side: THREE.DoubleSide }), // Right
-          new THREE.MeshBasicMaterial({ map: null, side: THREE.DoubleSide }), // Left
-          new THREE.MeshBasicMaterial({ map: null, side: THREE.DoubleSide }), // Top
-          new THREE.MeshBasicMaterial({ map: null, side: THREE.DoubleSide }), // Bottom
-          new THREE.MeshBasicMaterial({ map: null, side: THREE.DoubleSide }), // Front
-          new THREE.MeshBasicMaterial({ map: null, side: THREE.DoubleSide })  // Back
-        ];
-        const cube = new THREE.Mesh(geometry, materials);
-        scene.add(cube);
-
-        camera.position.z = 5;
-      } catch (error) {
-        console.error(error);
-        alert('An error occurred while initializing the canvas.');
-      }
-    }
-
     function stitchImages() {
       const canvas = document.getElementById('resultCanvas');
       const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const imageInput = document.getElementById('imageInput');
+      const files = Array.from(imageInput.files);
 
-      if (!ctx) {
-        alert('Unable to get canvas context.');
+      if (files.length !== 6) {
+        alert('Please select exactly 6 images.');
         return;
       }
 
-      try {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        const imageInput = document.getElementById('imageInput');
-        const files = Array.from(imageInput.files);
-
-        if (files.length !== 6) {
-          alert('Please select exactly 6 images.');
-          return;
-        }
-
-        const imagePromises = files.map(file => {
-          return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.onload = () => resolve(img);
-            img.onerror = reject;
-            img.src = URL.createObjectURL(file);
-          });
+      const imagePromises = files.map(file => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = URL.createObjectURL(file);
         });
+      });
 
-        Promise.all(imagePromises)
-          .then(images => {
-            const imageWidth = canvas.width / 6;
-            const imageHeight = canvas.height;
-            images.forEach((image, index) => {
-              ctx.drawImage(image, index * imageWidth, 0, imageWidth, imageHeight);
-
-              // Assign the image as texture to the corresponding cube face
-              const texture = new THREE.Texture(image);
-              texture.needsUpdate = true;
-              cube.material[index].map = texture;
-            });
-
-            // Render the scene
-            renderer.render(scene, camera);
-          })
-          .catch(error => {
-            console.error(error);
-            alert('An error occurred while loading the images.');
+      Promise.all(imagePromises)
+        .then(images => {
+          const imageWidth = canvas.width / 6;
+          const imageHeight = canvas.height;
+          images.forEach((image, index) => {
+            ctx.drawImage(image, index * imageWidth, 0, imageWidth, imageHeight);
           });
-      } catch (error) {
-        console.error(error);
-        alert('An error occurred while stitching the images.');
-      }
+        })
+        .catch(error => {
+          console.error(error);
+          alert('An error occurred while loading the images.');
+        });
     }
-
-    window.addEventListener('load', init);
   </script>
 </body>
 </html>

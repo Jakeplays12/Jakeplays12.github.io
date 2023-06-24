@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Folder Scanner</title>
+  <style>
+    html{
+      zoom: 90%;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #0b0c04, #0b0c04);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .box {
+    background: linear-gradient(to bottom, #31551b, #1b5522);
+      color: #fff;
+      padding: 10px;
+      margin: 5px;
+      margin-bottom: 20px; /* Increase the margin bottom for more space */
+      border-radius: 10px; /* Add rounded corners */
+      display: inline-block;
+      font-size: 200%;
+    }
+    
+    .file {
+      font-weight: bold;
+    }
+    
+    .item {
+      font-weight: normal;
+    }
+    
+    .name {
+      font-style: normal;
+    }
+    
+    .model {
+      font-weight: normal;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script>
+    function processFolder() {
+      const inputElement = document.getElementById('folderInput');
+      const file = inputElement.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const zip = new JSZip();
+
+          zip.loadAsync(e.target.result).then(function(zip) {
+            zip.forEach(function(relativePath, zipEntry) {
+              if (zipEntry.name.endsWith('.properties')) {
+                zipEntry.async('string').then(function(fileData) {
+                  processPropertiesFile(fileData, relativePath);
+                });
+              }
+            });
+          });
+        };
+
+        reader.readAsArrayBuffer(file);
+      } else {
+        const folderPath = inputElement.value;
+
+        processFolderPath(folderPath);
+      }
+    }
+
+    function processPropertiesFile(fileData, relativePath) {
+      const lines = fileData.split('\n');
+
+      let currentItem = {};
+      for (const line of lines) {
+        if (line.includes('=')) {
+          const [key, value] = line.split('=');
+          currentItem[key] = value;
+        }
+      }
+
+      const itemName = currentItem['matchItems'] || currentItem['items'];
+      const itemNameOutput = itemName ? itemName.replace(/["']/g, '') : '';
+
+      const itemNameRegex = currentItem['nbt.display.Name'];
+      const itemNameRegexOutput = itemNameRegex ? itemNameRegex.replace(/["']/g, '') : '';
+
+      let output = '';
+
+      output += `<div class="box">
+        <div class="file">${relativePath}</div>
+        <div class="item">Item: ${itemNameOutput}</div>
+        <div class="name">Name: ${itemNameRegexOutput}</div>
+        <div class="model">Model: ${currentItem['model'] || currentItem['texture'] ? 'true' : 'false'}</div>
+      </div>`;
+
+      const outputElement = document.getElementById('output');
+      outputElement.innerHTML += output;
+    }
+
+    function processFolderPath(folderPath) {
+      console.log(`Folder path: ${folderPath}`);
+    }
+  </script>
+</head>
+<body>
+  <h1>Folder Scanner</h1>
+  <input type="file" id="folderInput" accept=".zip">
+  <button onclick="processFolder()">Scan Folder</button>
+  <div id="output"></div>
+</body>
+</html>

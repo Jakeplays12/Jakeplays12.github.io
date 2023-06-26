@@ -1,0 +1,80 @@
+html{
+    zoom: 90%;
+  }
+
+
+  body {
+    background: linear-gradient(to top, #09203f 0%, #537895 100%);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+  }
+  .box {
+    background: radial-gradient(343px at 46.3% 47.5%, rgb(242, 242, 242) 0%, rgb(241, 241, 241) 72.9%);
+    color: #000000;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom: 20px; /* Increase the margin bottom for more space */
+    border-radius: 10px; /* Add rounded corners */
+    display: inline-block;
+    font-size: 200%;
+    
+  }
+
+  .title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .title h1 {
+      font-size: 60px;
+    }
+    
+    .title input {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      background: radial-gradient(circle at 10% 20%, rgb(39, 199, 171) 0%, rgb(70, 143, 197) 90%);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .title input:hover {
+      background-color: #45a049;
+    }
+
+    .scan-folder-btn {
+      padding: 10px 20px;
+      margin-top: 10px; /* Add margin to move the button down */
+      background: linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .scan-folder-btn:hover {
+      background-color: #45a049;
+    }
+    
+    .scan-folder-btn:focus {
+      outline: none;
+    }
+    
+    .Error{
+color: red;
+font-weight: bold;
+position: absolute;
+}
+

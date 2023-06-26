@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Folder Scanner</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script src="/mcpackscanner/mcpackscanner.js"></script>
+  <link rel="stylesheet" href="/mcpackscanner/mcpackscanners.css" />
+  <style>
+    body {
+    background: linear-gradient(to top, #09203f 0%, #537895 100%);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+</style>
+
+</head>
+<body>
+
+  <nav>
+    <link rel="stylesheet" type="text/css" href="/navbar.css">
+    <div class="navimage">
+      <img src="/images/jake-pfp.png" alt="Logo">
+      <span class="logo-text">Jakeplays12</span>
+    </div>
+    <ul>
+      <li><a href="/index.html#Section1">Home</a></li>
+      <li><a href="/index.html#Section2">About Me</a></li>
+      <li><a href="/portfolio.html" class="Navredtext" >Portfolio</a></li>
+      <li><a href="/tools.html" class="NavSelected">Tools</a></li>
+      <li><a href="#">TEXT5</a></li>
+    </ul>
+  </nav>
+
+  <div class="title">
+
+  <h1>Minecraft CIT Pack Scanner</h1>
+<div class="file-upload">
+  <input type="file" id="folderInput" accept=".zip"></div>
+  <button class="scan-folder-btn" onclick="processFolder()">Scan Folder</button>
+</div>
+
+  <div id="error" class="Error"></div>
+  <div id="output"></div>
+</body>
+</html>

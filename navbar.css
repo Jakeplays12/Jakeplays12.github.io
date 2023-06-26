@@ -67,6 +67,13 @@ nav {
     font-weight: bold;
   }
 
+  .NavSelected {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    color: #3dfc47;
+    font-weight: bold;
+  }
+
   nav ul li a::after {
     content: '';
     position: absolute;

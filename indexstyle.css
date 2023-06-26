@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
-/* NAV BAR */
-
-
-
-/* NAV BAR */
+html {
+    scroll-behavior: smooth;
+  }
 
 body {
     margin: 0;
@@ -73,11 +71,53 @@ body {
 .Section2class {
     background-image: linear-gradient(to left bottom, #254654, #354A54);
     height: 100vh;
-    flex: 1;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
 }
 
+.profilesection2 {
+    width: 600px;
+    height: 600px;
+    background-image: url("images/jake-pfp-noborder.png");
+    background-size: cover;
+    margin: 20px;
+    margin-left: 0;
+    margin-right: auto;
+    margin-left: 60px;
+    user-select: none;
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
+}
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+
+.AboutMePanel {
+    font-family: 'Rakkas', cursive;
+    font-size: 23px;
+    margin-right: 200px;
+    margin-left: 200px;
+    position: static;
+    color: white;
+}
+
+.AboutMeTitle {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 70px;
+    /*left: 50%;*/
+    margin-left:58%;
     
+    position: absolute;
+    color: white;
+    transform: translateY(-280px);
+}
+
+.AboutMePanel a {
+    color: #00B6AD;
+    text-decoration: none;
+}
+
+
+

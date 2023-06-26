@@ -1,0 +1,86 @@
+nav {
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+  
+  nav .navimage {
+    display: flex;
+    align-items: center;
+    margin: 12px;
+    position: absolute;
+    left: 10px; /* Adjust the left position as needed */
+  }
+  
+  nav .navimage img {
+    height: 40px;
+    margin-right: 10px;
+
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+  nav .navimage .logo-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    color: white;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #ffffff00;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  
+  nav ul li {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  
+  nav ul li:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    position: relative;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+  }
+  
+  .Navredtext {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+  }
+
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 0%;
+    height: 2px;
+    background-color: #5A4DDB;
+    transition: transform 0.3s, width 0.3s;
+  }
+  
+  nav ul li a:hover::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+  }
+  

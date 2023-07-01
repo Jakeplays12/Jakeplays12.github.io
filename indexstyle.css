@@ -1,122 +1,183 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 html {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* Section 1 CSS */
 
 .Section1class {
-    background-image: linear-gradient(to left bottom, #078d70, #26ceaa, #efefff, #5049cb, #3e1a78);
-    height: 100vh;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
+  background-image: linear-gradient(to left bottom, #078d70, #26ceaa, #efefff, #5049cb, #3e1a78);
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .content {
-    text-align: left;
-    color: white;
-    margin-bottom: 0;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 40px;
-    line-height: 0.5;
-    margin-left: 5%;
+  text-align: left;
+  color: white;
+  margin-bottom: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 40px;
+  line-height: 0.5;
+  margin-left: 5%;
 }
 
 /* Socials */
 .social-icons {
-    display: flex;
-    flex-direction:row;
-    justify-content: left;
-    margin-left: 10%;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-left: 10%;
 }
 
+
 .social-icons a {
-    margin: 0 5px;
-    text-decoration: none;
-    display: flex;
+  margin: 0 5px;
+  text-decoration: none;
+  display: flex;
 }
 
 .social-icons img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
+  transition: width 0.3s, height 0.3s;
 }
+
+.social-icons img:hover {
+    width: 35px;
+    height: 35px;
+  }
 
 .profilesection1 {
-    width: 400px;
-    height: 400px;
-    background-image: url("images/jake-pfp.png");
-    background-size: cover;
-    margin: 20px;
-    position:absolute;
-    right: 150px;
-    
+  width: 400px;
+  height: 400px;
+  background-image: url("images/jake-pfp.png");
+  background-size: cover;
+  margin: 20px;
+  position: absolute;
+  right: 150px;
 }
-
-
-/*@media (max-width: 600px) { } */
 
 /* Section 2 */
 
 .Section2class {
-background: radial-gradient(circle at -4% -12.9%, rgb(74, 98, 110) 0.3%, rgb(30, 33, 48) 90.2%);
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  background: radial-gradient(circle at -4% -12.9%, rgb(74, 98, 110) 0.3%, rgb(30, 33, 48) 90.2%);
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .profilesection2 {
-    width: 600px;
-    height: 600px;
-    background-image: url("images/jake-pfp-noborder.png");
-    background-size: cover;
-    margin: 20px;
-    margin-left: 0;
-    margin-right: auto;
-    margin-left: 60px;
-    user-select: none;
-    -webkit-user-select: none; /* For Safari */
-    -moz-user-select: none; /* For Firefox */
-    -ms-user-select: none; /* For Internet Explorer/Edge */
+  width: 600px;
+  height: 600px;
+  background-image: url("images/jake-pfp-noborder.png");
+  background-size: cover;
+  margin: 20px;
+  margin-left: 0;
+  margin-right: 10%;
+  margin-left: 60px;
+  user-select: none;
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+.AboutMeContainer {
+  width: 50vw;
+  height: auto;
+  color: white;
+}
 
 .AboutMePanel {
-    font-family: 'Rakkas', cursive;
-    font-size: 23px;
-    margin-right: 200px;
-    margin-left: 200px;
-    position: static;
-    color: white;
+  font-family: 'Rakkas', cursive;
+  font-size: 23px;
 }
 
 .AboutMeTitle {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 70px;
-    /*left: 50%;*/
-    margin-left:58%;
-    
-    position: absolute;
-    color: white;
-    transform: translateY(-280px);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 70px;
+  text-align: center;
+  word-wrap: break-word; /* Allow the text to wrap within the container */
 }
 
 .AboutMePanel a {
-    color: #00B6AD;
-    text-decoration: none;
+  color: #00B6AD;
+  text-decoration: none;
 }
 
+/* Media Query for smaller devices */
+@media (max-width: 500px) {
+    *{
+        zoom: 90%;
+    }
 
+    .Section1class {
+        height: 120vh;
+    }
+}
+@media (max-width: 1000px) {
+
+  .Section2class {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profilesection2 {
+    width: 0;
+    height: 0;
+  }
+
+  .AboutMeContainer {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .AboutMeTitle {
+    font-size: 80px;
+  }
+
+  .AboutMePanel {
+    font-size: 20px;
+    margin: 10px;
+  }
+
+  .Section1class {
+    align-items: center;
+    text-align: center;
+    background-image: linear-gradient(to left bottom, #FEF32F, #efefff, #9B58D0, #000000);
+    transition: 1s;
+  }
+
+  .profilesection1 {
+    margin-right: 0;
+    margin-bottom: 20px;
+    position: relative;
+    right: auto;
+    align-self: center;
+  }
+
+  .content {
+    margin-left: 0;
+    color: #000000;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+}

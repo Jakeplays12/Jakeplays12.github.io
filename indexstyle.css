@@ -98,10 +98,13 @@ body {
   width: 50vw;
   height: auto;
   color: white;
+  max-height: 100vh;
+  max-width: 100vh;
+  margin-right: 10px;
 }
 
 .AboutMePanel {
-  font-family: 'Rakkas', cursive;
+  font-family: 'Ubuntu', sans-serif;
   font-size: 23px;
 }
 
@@ -109,7 +112,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 70px;
   text-align: center;
-  word-wrap: break-word; /* Allow the text to wrap within the container */
+  word-wrap: break-word;
 }
 
 .AboutMePanel a {
@@ -117,31 +120,27 @@ body {
   text-decoration: none;
 }
 
-/* Media Query for smaller devices */
-@media (max-width: 500px) {
-    *{
-        zoom: 90%;
-    }
 
-    .Section1class {
-        height: 120vh;
-    }
-}
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
 
   .Section2class {
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .profilesection2 {
-    width: 0;
-    height: 0;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+
   }
 
   .AboutMeContainer {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+
   }
 
   .AboutMeTitle {
@@ -152,6 +151,10 @@ body {
     font-size: 20px;
     margin: 10px;
   }
+
+}
+
+@media (max-width: 1000px) {
 
   .Section1class {
     align-items: center;
@@ -172,6 +175,8 @@ body {
     margin-left: 0;
     color: #000000;
     text-align: center;
+    text-align: center;
+    word-wrap: break-word;
   }
 
   .social-icons {
@@ -180,4 +185,17 @@ body {
     margin-top: 20px;
   }
 
+}
+
+@media (max-width: 600px)
+{  .content {
+  font-size: 30px;}}
+@media (max-width: 500px) {
+  *{
+      zoom: 90%;
+  }
+/* YES! I know zooming isnt a good idea, but it works... */
+  .Section1class {
+      height: 120vh;
+  }
 }

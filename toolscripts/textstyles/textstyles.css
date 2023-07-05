@@ -1,0 +1,19 @@
+.fancy {
+font-family: 'Times New Roman', cursive;
+  }
+  
+.fancy-bold {
+font-family: 'Arial Black', Gadget, sans-serif;
+  }
+  
+.double {
+font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  }
+  
+.smallcaps {
+font-family: 'Arial', sans-serif;
+font-variant: small-caps;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+

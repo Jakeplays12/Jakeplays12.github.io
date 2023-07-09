@@ -39,7 +39,7 @@ html {
 
 @media (max-width: 600px) {
 .Maincontainer{
-    width: 100%;
+    width: 100vw;
 }}
 .Seccontainer {
   display: flex;

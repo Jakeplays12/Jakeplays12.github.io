@@ -17,7 +17,6 @@ nav {
   nav .navimage img {
     height: 40px;
     margin-right: 10px;
-
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
@@ -91,3 +90,36 @@ nav {
     transform: translateX(-50%) scaleX(1);
   }
   
+  @media (max-width: 600px) {
+      
+  nav .navimage img {
+    height: 0px;
+    margin-right: 0px;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+  nav .navimage .logo-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0px;
+    color: white;
+  }
+
+  nav ul {
+    justify-content: center;
+    background-color: #171717;
+  }
+
+  nav ul li a {
+    padding: 20px;
+    font-weight: bold;
+  }
+
+  .Navredtext {
+    font-size: 0px;
+    display: none
+    /* We hide this text as its not important. */
+
+  }
+
+  }

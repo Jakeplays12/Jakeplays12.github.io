@@ -37,10 +37,11 @@ html {
   margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
-.Maincontainer{
-    width: 100vw;
-}}
+@media (max-width: 550px) {
+/* HEY! DO THIS PLEASE!!! */
+.Maincontainer{background-color: #00000000;}
+}
+
 .Seccontainer {
   display: flex;
   flex-wrap: wrap;

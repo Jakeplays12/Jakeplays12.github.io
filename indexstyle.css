@@ -193,8 +193,10 @@ body {
 @media (max-width: 500px) {
   *{
       zoom: 90%;
+    
   }
 /* YES! I know zooming isnt a good idea, but it works... */
+/* funny i said this, yeah it breaks the mobile nav bar */
   .Section1class {
       height: 120vh;
   }

@@ -14,105 +14,12 @@
   <!-- Discord Embed Code -->
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-
-    html {
-      background-color: #000000;
-      color: #D3D3D3;
-      font-family: 'Ubuntu', sans-serif;
-    }
-
-    * {
-      outline: red 0px solid;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      background-color: #111111;
-      width: 60vw;
-      border-radius: 10px;
-      margin: 0 auto;
-      margin-top: 20px;
-      padding: 20px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .box {
-      display: flex;
-      align-items: center;
-      width: 300px;
-      margin: 10px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background-color: #222222;
-      text-decoration: none;
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .box img {
-      width: 100px;
-      height: 100px;
-      margin-right: 10px;
-      border-radius: 10px;
-    }
-
-    .box-title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .box-title img {
-      width: 20px;
-      height: 20px;
-      margin-right: 5px;
-      border: none;
-    }
-
-    .box-description {
-      font-size: 14px;
-    }
-
-    .box-link {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .box-link:hover {
-      text-decoration: none;
-    }
-
-    .title {
-      text-align: center;
-      font-size: 30px;
-      font-weight: bold;
-      margin-bottom: 20px;      
-    }
-
-    .profile {
-      text-align: center;
-      margin-bottom: 50px;
-      margin-top: 40px;
-    }
-
-    .profile img {
-      width: 200px;
-      height: 200px;
-      border-radius: 20%;
-    }
-
-    .profile p {
-      margin-top: 10px;
-      font-size: 20px;
-    }
 
   </style>
   <script src="/Animations/Fade/Fade.js" defer></script>
   <link rel="stylesheet" href="/Animations/Fade/Fade.css" />
+  <link rel="stylesheet" href="/links.css" />
+
 </head>
 <body>
 <!-- NAV BAR -->
@@ -125,11 +32,13 @@
   <img src="images/jake-pfp.png" alt="Logo Image" class="fade-item">
   <p class="fade-item" style="font-weight: bold">Jakeplays12</p>
   <p class="fade-item">Pronouns: They/He</p>
+  <p class="fade-item">Minecraft Texture pack developer, lead on Skade Gaming, and a content creator.</p>
 </div>
 
 <!-- SOCIAL MEDIA LINKS START-->
-<h1 class="title fade-item">Social media Links</h1>
-<div class="container fade-item">
+<div class="Maincontainer fade-item">
+<h1 class="title fade-item" id="SocialMediaLinks" >Social media Links</h1>
+<div class="Seccontainer fade-item">
   <!-- Youtube -->
   <a href="https://www.youtube.com/channel/UC2dh_DhAFeVl-3iNrnmZpew" class="box-link">
     <div class="box fade-item">
@@ -140,7 +49,7 @@
           <span>@jplays_12</span>
         </div>
         <div class="box-description">
-          Youtube Channel
+          My Youtube Channel!
         </div>
       </div>
     </div>
@@ -156,7 +65,7 @@
           <span>jplays_12</span>
         </div>
         <div class="box-description">
-          Instagram
+          My Instagram Account!
         </div>
       </div>
     </div>
@@ -172,7 +81,7 @@
           <span>@jplays_12</span>
         </div>
         <div class="box-description">
-          Instagram Threads
+          My Instagram Threads Account!
         </div>
       </div>
     </div>
@@ -188,30 +97,125 @@
           <span>@jakeplays_12</span>
         </div>
         <div class="box-description">
-          Tiktok
+          My Tiktok Account!
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <!-- Github -->
+  <a href="https://github.com/Jakeplays12" class="box-link">
+    <div class="box fade-item">
+        <img src="https://media.universeodon.com/accounts/avatars/109/366/588/458/385/263/original/7404c5cf8bd38281.png">
+        <div>
+        <div class="box-title">
+          <img src="/images/tabler-icons/link.png">
+          <span>Jakeplays12</span>
+        </div>
+        <div class="box-description">
+            My Github Account!
+        </div>
+      </div>
+    </div>
+  </a>
+
+</div></div>
+<!-- SOCIAL MEDIA LINKS END-->
+
+<!-- Other Websites START-->
+<div class="Maincontainer fade-item">
+<h1 class="title fade-item" id="OtherWebsites" >Other Websites</h1>
+<div class="Seccontainer fade-item">
+  <!-- SkadeGaming -->
+  <a href="https://linktr.ee/skadegaming" class="box-link">
+    <div class="box fade-item">
+      <img src="/images/skadegaminglogo.png">
+      <div>
+        <div class="box-title">
+          <img src="/images/tabler-icons/link.png">
+          <span>Skade Gaming</span>
+        </div>
+        <div class="box-description">
+          I'm the Media Team Lead of Skade Gaming!
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Modrinth -->
+  <a href="https://modrinth.com/user/Jakeplays12" class="box-link">
+    <div class="box fade-item">
+      <img src="https://docs.modrinth.com/img/logo.svg">
+      <div>
+        <div class="box-title">
+          <img src="/images/tabler-icons/link.png">
+          <span>Modrinth</span>
+        </div>
+        <div class="box-description">
+          Check out the things I Create!
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Planet Minecraft -->
+  <a href="https://www.planetminecraft.com/member/jakeplays12/" class="box-link">
+    <div class="box fade-item">
+      <img src="https://i.postimg.cc/9fmyrRkJ/Transparent-Planet-Minecraft-Logo.png">
+      <div>
+        <div class="box-title">
+          <img src="/images/tabler-icons/link.png">
+          <span>Planet Minecraft</span>
+        </div>
+        <div class="box-description">
+          Check out the things I Create!
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- The Queer Goose Family -->
+  <a href="https://discord.gg/AQyb5GzAf3" class="box-link">
+    <div class="box fade-item">
+      <img src="https://media.discordapp.net/attachments/1123356164520943709/1123356164944580620/e81d096fd006831b2e7dac604a597e1e.png?width=400&height=400">
+      <div>
+        <div class="box-title">
+          <img src="/images/tabler-icons/brand-discord.png">
+          <span>The Queer Goose Family</span>
+        </div>
+        <div class="box-description">
+          I help Moderate and Admin!
         </div>
       </div>
     </div>
   </a>
 
   <!-- Mastodon -->
-  <a href="https://universeodon.com/@jplays_12" class="box-link">
+  <a href="https://discord.gg/fvxUth9gTN" class="box-link">
     <div class="box fade-item">
-        <img src="https://media.universeodon.com/accounts/avatars/109/366/588/458/385/263/original/7404c5cf8bd38281.png">
+        <img src="https://cdn.discordapp.com/attachments/1101145499093975190/1101145718858723469/ThemeParkFansLogo-400x.png">
         <div>
         <div class="box-title">
-          <img src="/images/tabler-icons/link.png">
-          <span>@jplays_12</span>
+          <img src="/images/tabler-icons/brand-discord.png">
+          <span>ThemeParkFansUK</span>
         </div>
         <div class="box-description">
-            Mastodon
-            @jplays_12@universeodon.com
+          I help Moderate and Admin!
         </div>
       </div>
     </div>
   </a>
 
-  <!-- Tiktok -->
+
+</div></div>
+<!-- Other Websites END-->
+
+<!-- Inactive Socials START-->
+<div class="Maincontainer fade-item">
+  <h1 class="title fade-item" id="InactiveSocials" >Inactive Socials</h1>
+  <div class="Seccontainer fade-item">
+  
+  <!-- Twitter -->
   <a href="https://twitter.com/jplays_12" class="box-link">
     <div class="box fade-item">
       <img src="https://pbs.twimg.com/profile_images/1651580902181330945/AAgtmqdA_400x400.jpg">
@@ -221,18 +225,47 @@
           <span>@jplays_12</span>
         </div>
         <div class="box-description">
-          Twitter <br> (INACTIVE)
+          My Twitter Account
         </div>
       </div>
     </div>
   </a>
-</div>
-<!-- SOCIAL MEDIA LINKS END-->
+  
+    <!-- Youtube -->
+    <a href="https://www.youtube.com/@Jakeplaysgame12" class="box-link">
+      <div class="box fade-item">
+        <img src="https://yt3.googleusercontent.com/zpLpDM1IuCTn4zeRQvmCNHtmYLa-ACVvDEb_810aKsiXxHh6JFYWpBqBZB-lZ2t4iZuJlif3Bw=s176-c-k-c0x00ffffff-no-rj">
+        <div>
+          <div class="box-title">
+            <img src="/images/tabler-icons/brand-youtube.svg">
+            <span>@Jakeplaysgame12</span>
+          </div>
+          <div class="box-description">
+            My Alt Youtube Channel
+          </div>
+        </div>
+      </div>
+    </a>
 
-<!-- OTHER LINKS START-->
-<!-- Add other links here -->
-</div>
-<!-- OTHER LINKS END-->
+      <!-- Mastodon -->
+  <a href="https://universeodon.com/@jplays_12" class="box-link">
+    <div class="box fade-item">
+        <img src="https://media.universeodon.com/accounts/avatars/109/366/588/458/385/263/original/7404c5cf8bd38281.png">
+        <div>
+        <div class="box-title">
+          <img src="/images/tabler-icons/link.png">
+          <span>@jplays_12</span>
+        </div>
+        <div class="box-description">
+            My Mastodon Account
+            @jplays_12@universeodon.com
+        </div>
+      </div>
+    </div>
+  </a>
+
+  </div></div>
+  <!-- Inactive Socials END-->
 
 </body>
 </html>

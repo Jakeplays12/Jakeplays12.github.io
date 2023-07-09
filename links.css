@@ -37,9 +37,17 @@ html {
   margin-bottom: 20px;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
 /* HEY! DO THIS PLEASE!!! */
-.Maincontainer{background-color: #00000000;}
+.Maincontainer{
+background-color: #00000000;
+padding: 0px;
+flex-wrap: nowrap;
+}
+.profile {
+margin-top: 70px;
+padding-top: 30px;
+}
 }
 
 .Seccontainer {

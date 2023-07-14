@@ -3,11 +3,14 @@ function processFolder() {
   const file = inputElement.files[0];
   const outputElement = document.getElementById('output');
   const errorElement = document.getElementById('error');
-  
+  const counterElement = document.getElementById('counter'); // Add this line
+
   // Clear previous output and error message
   outputElement.innerHTML = '';
   errorElement.innerText = '';
+  let itemcounter = 0;
 
+  // Starts the scan
   if (file) {
     const reader = new FileReader();
 
@@ -27,10 +30,13 @@ function processFolder() {
             !relativePath.includes('optifine/cem/') &&
             !relativePath.includes('optifine/colormap/') &&
             !relativePath.includes('optifine/emissive.properties')
+            // All these are not included
           ) {
             const pathAfterOptifine = relativePath.substring(relativePath.indexOf('optifine') + 9);
             zipEntry.async('string').then(function (fileData) {
               processPropertiesFile(fileData, pathAfterOptifine);
+              itemcounter++;
+              counterElement.innerText = `Items:  ${itemcounter}`; // Add this line
             });
 
             relevantFilesFound = true;
@@ -84,3 +90,42 @@ function processPropertiesFile(fileData, pathAfterOptifine) {
 function processFolderPath(folderPath) {
   console.log(`Folder path: ${folderPath}`);
 }
+
+
+function exportData() {
+  const outputElement = document.getElementById('output');
+  const boxes = outputElement.getElementsByClassName('box');
+
+  // Prepare data for export
+  const exportData = [];
+  for (const box of boxes) {
+    const fileElement = box.getElementsByClassName('file')[0];
+    const itemElement = box.getElementsByClassName('item')[0];
+    const nameElement = box.getElementsByClassName('name')[0];
+    const modelElement = box.getElementsByClassName('model')[0];
+
+    const data = {
+      file: fileElement.textContent.trim(), // Remove leading/trailing spaces
+      item: itemElement.textContent.replace(/[\r\n]/g, ''), // Remove newline characters
+      name: nameElement.textContent.replace(/[\r\n]/g, ''), // Remove newline characters
+      model: modelElement.textContent.trim() // Remove leading/trailing spaces
+    };
+
+    exportData.push(data);
+  }
+
+  // Convert data to JSON string
+  const json = JSON.stringify(exportData, null, 2);
+
+  // Create a new Blob object with the JSON data
+  const blob = new Blob([json], { type: 'application/json' });
+
+  // Generate a temporary download link
+  const downloadLink = document.createElement('a');
+  downloadLink.href = URL.createObjectURL(blob);
+  downloadLink.download = 'data.json';
+
+  // Simulate a click on the download link
+  downloadLink.click();
+}
+

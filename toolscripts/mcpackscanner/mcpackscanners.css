@@ -2,7 +2,9 @@ html{
     zoom: 90%;
   }
 
-
+*{
+  outline: red 0px solid;
+}
   body {
     background: linear-gradient(to top, #09203f 0%, #537895 100%);
     color: #fff;
@@ -12,6 +14,9 @@ html{
     background-attachment: fixed;
     
   }
+
+
+
   .box {
     background: radial-gradient(343px at 46.3% 47.5%, rgb(242, 242, 242) 0%, rgb(241, 241, 241) 72.9%);
     color: #000000;

@@ -1,95 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Showcase</title>
-  <style>
-    /* Add your global styles here */
-    .container {
-      max-width: 100%;
-      max-height: 1000px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/jake-pfp.png">
+    <title>Jakeplays12 &bull; Portfolio</title>
 
-    button {
-      margin: 5px;
-      padding: 10px 20px;
-    }
-
-    .image-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .image {
-      padding: 10px;
-      border: 10px;
-      max-width: 100%;
-      max-height: 200px;
-      margin: 5px;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    /* Add any additional styles here */
-  </style>
+    <!-- Discord Embed Code -->
+    <meta content="Jakeplays12 &bull; Home" property="og:title" />
+    <meta content="Jakeplays12" property="og:description" />
+    <meta content="#794aa2" data-react-helmet="true" name="theme-color" />
+    <!-- Discord Embed Code -->
 </head>
+  
+<style>
+
+</style>
+<link rel="stylesheet" href="/portfolio/styles.css"> <!-- Link to the CSS file -->
+
+
 <body>
-  <div class="container">
-    <button onclick="showCategory('skade')">Skade</button>
-    <button onclick="showCategory('all')">All</button>
-    <button onclick="showCategory('personal')">Personal</button>
-    <div class="image-gallery" id="imageGallery"></div>
-  </div>
+<!-- NAV BAR -->
+  <div id="navbar-container"></div>
+  <script src="/NavAndFooter/script.js"></script> 
+<!-- NAV BAR -->
+<div class="Title">
+  <div id="slideshow"></div>
+  <h1 class="fade-item">Portfolio</h1>
+</div>
 
-  <script>
-    // Replace the following JSON data with your actual image URLs and tags
-    const imageData = {
-      "skade": [
-      "https://fastly.picsum.photos/id/16/2500/1667.jpg?hmac=uAkZwYc5phCRNFTrV_prJ_0rP0EdwJaZ4ctje2bY7aE",
-        // Add more URLs here
-      ],
-      "all": [],
-      "personal": [
-      "https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
-        // Add more URLs here
-      ],
-    };
-
-    // Merge skade and personal images into the all category
-    imageData.all = imageData.skade.concat(imageData.personal);
-
-    const imageGallery = document.getElementById("imageGallery");
-
-    function createImageElement(url) {
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = "Image";
-      img.className = "image";
-      return img;
+    <div class="container">
+      <button onclick="showCategory('all')"class="fade-item">All</button>
+      <button onclick="showCategory('skade')"class="fade-item">Skade Gaming</button>
+      <button onclick="showCategory('personal')"class="fade-item">Personal</button>
+      <div class="image-gallery" id="imageGallery"></div>
+    </div>
+  
+<button id="theme-toggle-btn">🌚</button>
+<script>
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const rootElement = document.documentElement;
+    const currentTheme = localStorage.getItem("theme");
+  
+    if (currentTheme) {
+      rootElement.setAttribute("data-theme", currentTheme);
+    } else {
+      rootElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
     }
+  
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = rootElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      rootElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    });
+</script>
 
-    function showCategory(category) {
-      imageGallery.innerHTML = ""; // Clear existing images
+<script src="/portfolio/script.js"></script> <!-- Link to the JS file -->
+<script src="/portfolio/slideshow.js"></script> <!-- Link to the JS file -->
 
-      // Display images based on the selected category
-      if (category === "all") {
-        imageData.all.forEach((imageUrl) => {
-          const imgElement = createImageElement(imageUrl);
-          imageGallery.appendChild(imgElement);
-        });
-      } else {
-        imageData[category].forEach((imageUrl) => {
-          const imgElement = createImageElement(imageUrl);
-          imageGallery.appendChild(imgElement);
-        });
-      }
-    }
-
-    // By default, show all images
-    showCategory("all");
-  </script>
 </body>
+<p style="text-align: center;" class="FooterTextMessage">Jakeplays12 | all rights reserved</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </html>
+

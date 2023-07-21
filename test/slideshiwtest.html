@@ -3,9 +3,7 @@
 <head>
   <style>
 
-*{
-    outline: red solid 1px
-}
+
 .slideshow-container {
       position: relative;
       width: 100%;
@@ -28,42 +26,7 @@
     }
   </style>
   <script>
-    // JavaScript to handle the slideshow
-    var images = [
-      "https://media.discordapp.net/attachments/869670353310462025/1129370561575915540/purple.png",
-      "https://cdn.discordapp.com/attachments/869670353310462025/1129370562020515882/green.png",
-      "https://cdn.discordapp.com/attachments/869670353310462025/1129370562272169984/red.png"
-    ];
 
-    var currentSlide = 0;
-    var slideInterval = setInterval(nextSlide, 3000);
-
-    function nextSlide() {
-      var slideshow = document.getElementById("slideshow");
-      var slides = slideshow.getElementsByClassName("slide");
-      
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
-    }
-
-    // Dynamically create the slides based on the images array
-    document.addEventListener("DOMContentLoaded", function() {
-      var slideshowContainer = document.querySelector(".slideshow-container");
-      var slideshow = document.getElementById("slideshow");
-
-      images.forEach(function(imageUrl) {
-        var slide = document.createElement("div");
-        slide.classList.add("slide");
-        var img = document.createElement("img");
-        img.src = imageUrl;
-        img.alt = "Slide";
-        slide.appendChild(img);
-        slideshow.appendChild(slide);
-      });
-
-      slideshow.getElementsByClassName("slide")[currentSlide].classList.add("active");
-    });
   </script>
 </head>
 <body>
@@ -72,4 +35,6 @@
     <div id="slideshow"></div>
   </div>
 </body>
+<script src="/portfolio/slideshow.js"></script> <!-- Link to the JS file -->
+
 </html>

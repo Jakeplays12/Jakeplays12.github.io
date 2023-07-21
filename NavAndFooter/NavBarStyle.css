@@ -58,13 +58,6 @@ nav {
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
   }
-  
-  .Navredtext {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 18px;
-    color: red;
-    font-weight: bold;
-  }
 
   .NavSelected {
     font-family: 'Ubuntu', sans-serif;
@@ -115,7 +108,7 @@ nav {
     font-weight: bold;
   }
 
-  .Navredtext {
+  .HideMobile {
     font-size: 0px;
     display: none
     /* We hide this text as its not important. */

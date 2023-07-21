@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,44 +7,62 @@
     <link rel="icon" href="images/jake-pfp.png">
     <title>Jakeplays12 &bull; Portfolio</title>
 
-        <!-- Discord Embed Code -->
-        <meta content="Jakeplays12 &bull; Portfolio" property="og:title" />
-        <meta content="Jakeplays12's Test Website!" property="og:description" />
-        <meta content="#794aa2" data-react-helmet="true" name="theme-color" />
-        <!-- Discord Embed Code -->
-
-<style>
-        body {
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            zoom: 110%;
-        }
-</style>
+    <!-- Discord Embed Code -->
+    <meta content="Jakeplays12 &bull; Home" property="og:title" />
+    <meta content="Jakeplays12" property="og:description" />
+    <meta content="#794aa2" data-react-helmet="true" name="theme-color" />
+    <!-- Discord Embed Code -->
 </head>
-<link rel="stylesheet" href="assets/css/font.css" />
-<link rel="stylesheet" href="assets/css/portfolio.css" />
+  
+<style>
+
+</style>
+<link rel="stylesheet" href="/portfolio/styles.css"> <!-- Link to the CSS file -->
+
 
 <body>
-    <body>  
-        </script>
-    
-        <div id="header"></div>
-              <!-- Include the header using JavaScript -->
+<!-- NAV BAR -->
+  <div id="navbar-container"></div>
+  <script src="/NavAndFooter/script.js"></script> 
+<!-- NAV BAR -->
+<div class="Title">
+<img src="https://media.discordapp.net/attachments/541356613039292456/1088681782032998461/image.png">
+<h1 class="fade-item">Portfolio</h1>
+</div>
+
+    <div class="container">
+      <button onclick="showCategory('all')"class="fade-item">All</button>
+      <button onclick="showCategory('skade')"class="fade-item">Skade Gaming</button>
+      <button onclick="showCategory('personal')"class="fade-item">Personal</button>
+      <div class="image-gallery" id="imageGallery"></div>
+    </div>
+
+<br><br><br><button id="theme-toggle-btn">Toggle Light/Dark Mode (WIP)</button>
+
+
+
+<script>
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const rootElement = document.documentElement;
+    const currentTheme = localStorage.getItem("theme");
   
-<div class="sidebar"></div>
-<img src="images/jake-pfp.png" alt="Avatar" class="portfolopavatar">
-<div class="jaketext">Jake</div>
-<div class="aboutme">
-    • SkadeGaming Media Team Lead
-<br>• Minecraft Texture Pack Dev
-<br>• Content Creator
-<br>• Knowledge in JavaScript, Java HTML and CSS</div>
+    if (currentTheme) {
+      rootElement.setAttribute("data-theme", currentTheme);
+    } else {
+      rootElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    }
+  
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = rootElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      rootElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    });
+</script>
 
+<script src="/portfolio/script.js"></script> <!-- Link to the JS file -->
 
-<!-- LEFT BAR -->
-<img src="images/skadegaminglogo.png" alt="SkadeGaming's Logo" class="SkadeGamingLogo">
-<div class="SkadeGamingTitle">SkadeGaming</div>
-<div class="SkadeGamingText">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem laudantium, incidunt soluta cumque aliquam nulla nihil eos optio natus? Aliquid ipsa distinctio hic voluptate quidem sapiente assumenda numquam animi illo?</div>
-<div class="Line2image"></div>
-<div class="Line2Text"Lo
 </body>
 </html>
+

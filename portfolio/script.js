@@ -8,7 +8,7 @@ const imageData = {
     "https://media.discordapp.net/attachments/541356613039292456/1079853814150090902/image.png?width=1276&height=671",
     "https://media.discordapp.net/attachments/541356613039292456/966107041083060264/2022-04-19_23.43.48.png?width=377&height=671",
     "https://media.discordapp.net/attachments/541356613039292456/1088681782032998461/image.png?width=1440&height=633",
-
+    "https://media.discordapp.net/attachments/1131916322054357143/1132268846217170994/image3.png?width=1276&height=671",
   ],
 };
 

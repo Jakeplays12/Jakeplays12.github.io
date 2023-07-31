@@ -13,9 +13,228 @@
     <meta content="#794aa2" data-react-helmet="true" name="theme-color" />
     <!-- Discord Embed Code -->
 </head>
-  
-<style>
 
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+:root {
+    --text: #fafafa;
+    --background: #050505;
+    --primary: #964bd8;
+    --secondary: #1a092a;
+    --accent: #b681e4;
+}
+
+html {
+    background-color: var(--background);
+    color: var(--text);
+    scroll-behavior: smooth;
+
+}
+
+body, html {
+    margin: 0px;
+    padding: 0px;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.Title img {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    object-fit: cover;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.Title h1 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    font-size: 10vw;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    min-height: 500px;
+    max-width: 100%;
+    max-height: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    column-count: 4;
+    column-gap: 10px;
+    padding: 10px;
+}
+
+button {
+    font-size: 20px;
+    margin: 5px;
+    padding: 5px 10px;
+    border-color: #00000000;
+    border-radius: 5px;
+    transition: background-color 0.3s, opacity 0.3s;
+    color: var(--text);
+    background-color: #00000000;
+}
+
+.buttons button.active {
+    background-color: var(--primary);
+    color: var(--text);
+}
+img{ pointer-events: none;}
+
+button:hover {
+    background-color: var(--secondary);
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.image {
+    padding: 7px;
+    max-width: 100%;
+    max-height: 300px;
+    margin: 5px;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+figure img {
+    max-width: 100%;
+    max-height: 90vh;
+    display: block;
+    position: relative;
+}
+
+figure {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-bottom: 10px;
+    break-inside: avoid;
+    position: relative;
+}
+
+figure a {
+    color: white;
+    text-decoration: none;
+}
+
+figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+figure:hover figcaption {
+    opacity: 1;
+}
+
+
+.Skade figure:not(.selected),
+.Personal figure:not(.selected),
+.All figure:not(.selected) {
+    display: none;
+}
+button{
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+
+}
+.buttons {
+    
+  font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+}
+
+.rectangle-4-Image svg,
+.rectangle-4-Image img {
+width: 130px;
+height: 130px;
+object-fit: cover;
+border-radius: 00%;
+margin-top: 20px;
+}
+.rectangle-4-Image img{
+border-radius: 50%;
+}
+.S2AboutMeTitle{
+font-family: 'Ubuntu', sans-serif;
+color: #FAFAFA;
+text-align: center;
+text-shadow: 10px 10px 12px 0px rgba(182, 129, 228, 0.25);
+font-size: 128px;
+font-weight: bold;
+margin-top: 30px;
+margin-bottom: 30px;
+}
+
+
+.Section2Data {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.rectangle-4 {
+display: flex;
+flex-direction: column;
+align-items: center;
+font-family: 'Ubuntu', sans-serif;
+font-weight: bold;
+width: 558px;
+height: 750px; 
+border-radius: 39px;
+background: #D9D9D9;
+margin: 10px;
+overflow: hidden; /* Ensure that content exceeding the container's size is hidden */
+}
+
+.rectangle-4-title{
+color: #000;
+text-align: center;
+font-size: 48px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 2px;
+}
+.rectangle-4-Text{
+width: 558px;
+height: 429px;
+flex-shrink: 0;
+color: #000;
+text-align: center;
+font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
 </style>
 <link rel="stylesheet" href="/portfolio/styles.css"> <!-- Link to the CSS file -->
 
@@ -30,38 +249,116 @@
 <h1 class="fade-item">Portfolio</h1>
 </div>
 
+<div class="buttons">
+  <button class="Skade" onclick="toggleFilter('Skade')">Skade Gaming</button>
+  <button class="All" onclick="toggleFilter('All')">All</button>
+  <button class="Personal" onclick="toggleFilter('Personal')">Personal</button>
+</div>
+  
     <div class="container">
-      <button onclick="showCategory('all')"class="fade-item">All</button>
-      <button onclick="showCategory('skade')"class="fade-item">Skade Gaming</button>
-      <button onclick="showCategory('personal')"class="fade-item">Personal</button>
-      <div class="image-gallery" id="imageGallery"></div>
-    </div>
-  
-<button id="theme-toggle-btn">🌚</button>
-<script>
-    const themeToggleBtn = document.getElementById("theme-toggle-btn");
-    const rootElement = document.documentElement;
-    const currentTheme = localStorage.getItem("theme");
-  
-    if (currentTheme) {
-      rootElement.setAttribute("data-theme", currentTheme);
-    } else {
-      rootElement.setAttribute("data-theme", "light");
-      localStorage.setItem("theme", "light");
+        <figure class="Personal">
+            <img src="https://media.discordapp.net/attachments/541356613039292456/966107041083060264/2022-04-19_23.43.48.png" />
+            <figcaption><a href="https://mcparks.us/">MCParks</a></figcaption>
+        </figure>
+      <figure class="Skade">
+          <img src="https://media.discordapp.net/attachments/853390828310495272/1130153128512192584/image.png" alt="Lovejoy Concert on Skade Gaming"/>
+          <figcaption><a href="https://linktr.ee/skadegaming">Lovejoy Concert on Skade Gaming</a></figcaption>
+      </figure>
+      <figure class="Personal">
+          <img src="https://media.discordapp.net/attachments/541356613039292456/1088681782032998461/image.png" />
+          <figcaption><a href="https://mcparks.us/">MCParks</a></figcaption>
+      </figure>
+      <figure class="Personal">
+          <img src="https://media.discordapp.net/attachments/541356613039292456/1079853814150090902/image.png" />
+          <figcaption><a href="https://mcparks.us/">MCParks</a></figcaption>
+      </figure>   
+      <figure class="Personal">
+        <img src="https://cdn.discordapp.com/attachments/1131916322054357143/1132268846217170994/image3.png" alt="Epcot Forever Fireworkshow on MCParks"/>
+          <figcaption><a href="https://mcparks.us/">Epcot Forever Fireworkshow on MCParks</a></figcaption>
+    </figure>  
+    
+      <!-- Add more image figures here -->
+  </div>
+
+
+
+
+<section>
+<h1 class="S2AboutMeTitle" id="AboutMe">About  Me</h1>
+
+<div class="Section2Data">
+
+<div class="rectangle-4">
+<div class="rectangle-4-Image">
+  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#000000}</style><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg></div>
+<h3 class="rectangle-4-title">Leadership</h3>
+<p class="rectangle-4-Text">
+As the Media Team Lead,<br>
+I create content for Skade Gaming's social platforms. <br>
+<br>
+We ensure that all the skaders are safe online. Our primary focus lies in producing Minecraft videos, particularly for Skade Gaming's socials. I showcase events, provide updates, and share exciting content through TikTok and YouTube Shorts.
+</p>
+</div>
+
+<div class="rectangle-4">
+<div class="rectangle-4-Image">
+  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#000000}</style><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+</div>
+<h3 class="rectangle-4-title">Jakeplays12</h3>
+<p class="rectangle-4-Text">
+PLACEHOLDERTEXT<br>
+PLACEHOLDERTEXT<br>
+PLACEHOLDERTEXT<br>
+PLACEHOLDERTEXT<br>
+PLACEHOLDERTEXT<br>
+PLACEHOLDERTEXT<br>
+</p>
+</div>
+
+<div class="rectangle-4">
+  <div class="rectangle-4-Image">
+    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#000000}</style><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>  </div>
+  <h3 class="rectangle-4-title">Development</h3>
+  <p class="rectangle-4-Text">
+    
+    Along side working with minecraft,<br>
+    I collaborate with the Skade Gaming Bot Team<br>
+    where I actively contribute to the development of their Discord.js Bot.<br><br>
+    This experience has allowed me to learn the fundamentals of JS and programming and a whole.
+  </p>
+  </div>
+
+</div>
+</section>
+<div id="footer-container"></div>
+
+  <script>
+    function toggleFilter(category) {
+        const buttons = document.querySelectorAll('.buttons button');
+        buttons.forEach((button) => {
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+            }
+        });
+
+        const figures = document.querySelectorAll('.container figure');
+        figures.forEach((figure) => {
+            if (category === 'All' || figure.classList.contains(category)) {
+                figure.style.display = 'block';
+            } else {
+                figure.style.display = 'none';
+            }
+        });
+
+        const activeButton = document.querySelector(`.${category}`);
+        activeButton.classList.add('active');
     }
-  
-    themeToggleBtn.addEventListener("click", () => {
-      const currentTheme = rootElement.getAttribute("data-theme");
-      const newTheme = currentTheme === "light" ? "dark" : "light";
-      rootElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme);
-    });
+
+    // Call the toggleFilter function with 'All' to set the initial state on page load
+    toggleFilter('All');
 </script>
 
-<script src="/portfolio/script.js"></script> <!-- Link to the JS file -->
-
 </body>
-<p style="text-align: center;" class="FooterTextMessage">Jakeplays12 | all rights reserved</p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-</html>
 
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heartstopper Countdown</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
+    html {
+      zoom: 300%;
+      background-color: #9AC1AC;
+    }
+
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px auto;
+    }
+
+    #timer {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+	
+	button{
+	background-color: transparent;
+	border-color: transparent;
+	transform: scale(1);
+	transition: all 0.3s;
+	color: #333;
+	margin-top: 0px;
+	}
+	
+	button:hover{
+	
+	transform: scale(1.5);
+	}
+  </style>
+</head>
+<body>
+  <p>Time Till HeartStopper Season 2</p>
+  <div id="timer"></div>
+  <br><br><br><br><br><br><br>
+  <button id="copyButton">Copy Time</button>
+
+  <script>
+    // Function to calculate time until 8 AM UK time
+    function calculateTimeUntil8AM() {
+      const now = new Date();
+      const target = new Date();
+      target.setHours(8, 0, 0, 0); // Set the target time to 8 AM
+
+      // Check if the target time is earlier than the current time, if so, set it to tomorrow
+      if (target < now) {
+        target.setDate(target.getDate() + 1);
+      }
+
+      // Calculate the time difference in milliseconds
+      const timeDifference = target - now;
+
+      // Convert milliseconds to hours, minutes, and seconds
+      const hours = Math.floor(timeDifference / 3600000);
+      const minutes = Math.floor((timeDifference % 3600000) / 60000);
+      const seconds = Math.floor((timeDifference % 60000) / 1000);
+
+      return `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+    }
+
+    // Function to update the timer element with the calculated time
+    function updateTimer() {
+      const timerElement = document.getElementById('timer');
+      timerElement.textContent = `${calculateTimeUntil8AM()}`;
+    }
+
+    // Function to copy the time left to the clipboard
+    function copyTimeToClipboard() {
+      const timerText = calculateTimeUntil8AM();
+      const tempInput = document.createElement('input');
+      tempInput.value = timerText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      alert(`Time left copied to clipboard: ${timerText}`);
+    }
+
+    // Call updateTimer function every second
+    setInterval(updateTimer, 1000);
+
+    // Initial call to update the timer
+    updateTimer();
+
+    // Attach the copyTimeToClipboard function to the copy button
+    const copyButton = document.getElementById('copyButton');
+    copyButton.addEventListener('click', copyTimeToClipboard);
+  </script>
+</body>
+</html>

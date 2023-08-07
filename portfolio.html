@@ -151,7 +151,7 @@ figure:hover figcaption {
     opacity: 1;
 }
 
-
+.mcparks figure:not(.selected),
 .Skade figure:not(.selected),
 .Personal figure:not(.selected),
 .All figure:not(.selected) {
@@ -186,7 +186,7 @@ font-family: 'Ubuntu', sans-serif;
 color: #FAFAFA;
 text-align: center;
 text-shadow: 10px 10px 12px 0px rgba(182, 129, 228, 0.25);
-font-size: 128px;
+font-size: 120px;
 font-weight: bold;
 margin-top: 30px;
 margin-bottom: 30px;
@@ -250,13 +250,16 @@ line-height: normal;
 </div>
 
 <div class="buttons">
+    <button class="All" onclick="toggleFilter('All')">All</button>
+<button class="mcparks" onclick="toggleFilter('mcparks')">MCParks</button>
   <button class="Skade" onclick="toggleFilter('Skade')">Skade Gaming</button>
-  <button class="All" onclick="toggleFilter('All')">All</button>
   <button class="Personal" onclick="toggleFilter('Personal')">Personal</button>
 </div>
-  
-    <div class="container">
-        <figure class="Personal">
+<div class="disclaimer" style="text-align: center;">
+    <!-- The disclaimer content will be added dynamically here -->
+</div>
+<div class="container">
+        <figure class="mcparks">
             <img src="https://media.discordapp.net/attachments/541356613039292456/966107041083060264/2022-04-19_23.43.48.png" />
             <figcaption><a href="https://mcparks.us/">MCParks</a></figcaption>
         </figure>
@@ -264,24 +267,23 @@ line-height: normal;
           <img src="https://media.discordapp.net/attachments/853390828310495272/1130153128512192584/image.png" alt="Lovejoy Concert on Skade Gaming"/>
           <figcaption><a href="https://linktr.ee/skadegaming">Lovejoy Concert on Skade Gaming</a></figcaption>
       </figure>
-      <figure class="Personal">
+      <figure class="mcparks">
           <img src="https://media.discordapp.net/attachments/541356613039292456/1088681782032998461/image.png" />
           <figcaption><a href="https://mcparks.us/">MCParks</a></figcaption>
       </figure>
-      <figure class="Personal">
+      <figure class="mcparks">
           <img src="https://media.discordapp.net/attachments/541356613039292456/1079853814150090902/image.png" />
           <figcaption><a href="https://mcparks.us/">MCParks</a></figcaption>
       </figure>   
-      <figure class="Personal">
+      <figure class="mcparks">
         <img src="https://cdn.discordapp.com/attachments/1131916322054357143/1132268846217170994/image3.png" alt="Epcot Forever Fireworkshow on MCParks"/>
           <figcaption><a href="https://mcparks.us/">Epcot Forever Fireworkshow on MCParks</a></figcaption>
     </figure>  
-    
-      <!-- Add more image figures here -->
-  </div>
-
-
-
+    <figure class="mcparks">
+        <img src="https://media.discordapp.net/attachments/1131916322054357143/1138208291567181945/2023-08-07_21.10.53.png" alt="Epcot Forever Fireworkshow on MCParks"/>
+          <figcaption><a href="https://mcparks.us/">Epcot Forever Fireworkshow on MCParks</a></figcaption>
+    </figure>  
+</div>
 
 <section>
 <h1 class="S2AboutMeTitle" id="AboutMe">About  Me</h1>
@@ -332,7 +334,7 @@ PLACEHOLDERTEXT<br>
 </section>
 <div id="footer-container"></div>
 
-  <script>
+<script>
     function toggleFilter(category) {
         const buttons = document.querySelectorAll('.buttons button');
         buttons.forEach((button) => {
@@ -352,11 +354,29 @@ PLACEHOLDERTEXT<br>
 
         const activeButton = document.querySelector(`.${category}`);
         activeButton.classList.add('active');
+
+        updateDisclaimer(category);
+    }
+
+    function updateDisclaimer(category) {
+        const disclaimer = document.querySelector('.disclaimer');
+        let disclaimerText = '';
+
+        if (category === 'All') {
+            disclaimerText = 'Showing all projects.';
+        } else if (category === 'mcparks') {
+            disclaimerText = `While I have the Influencer rank, I am not affiliated with MCParks.`;
+        } else {
+            disclaimerText = `Showing projects related to ${category}.`;
+        }
+
+        disclaimer.textContent = disclaimerText;
     }
 
     // Call the toggleFilter function with 'All' to set the initial state on page load
     toggleFilter('All');
 </script>
+
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>

@@ -67,7 +67,6 @@ body, html {
 .container {
     min-height: 500px;
     max-width: 100%;
-    max-height: 1000px;
     margin: 0 auto;
     text-align: center;
     column-count: 4;
@@ -208,7 +207,7 @@ align-items: center;
 font-family: 'Ubuntu', sans-serif;
 font-weight: bold;
 width: 558px;
-height: 750px; 
+height: 720px; 
 border-radius: 39px;
 background: #D9D9D9;
 margin: 10px;
@@ -255,7 +254,7 @@ line-height: normal;
   <button class="Skade" onclick="toggleFilter('Skade')">Skade Gaming</button>
   <button class="Personal" onclick="toggleFilter('Personal')">Personal</button>
 </div>
-<div class="disclaimer" style="text-align: center;">
+<div class="disclaimer" style="text-align: center; ">
     <!-- The disclaimer content will be added dynamically here -->
 </div>
 <div class="container">
@@ -282,7 +281,7 @@ line-height: normal;
     <figure class="mcparks">
         <img src="https://media.discordapp.net/attachments/1131916322054357143/1138208291567181945/2023-08-07_21.10.53.png" alt="Epcot Forever Fireworkshow on MCParks"/>
           <figcaption><a href="https://mcparks.us/">Epcot Forever Fireworkshow on MCParks</a></figcaption>
-    </figure>  
+    </figure> 
 </div>
 
 <section>
@@ -308,12 +307,11 @@ We ensure that all the skaders are safe online. Our primary focus lies in produc
 </div>
 <h3 class="rectangle-4-title">Jakeplays12</h3>
 <p class="rectangle-4-Text">
-PLACEHOLDERTEXT<br>
-PLACEHOLDERTEXT<br>
-PLACEHOLDERTEXT<br>
-PLACEHOLDERTEXT<br>
-PLACEHOLDERTEXT<br>
-PLACEHOLDERTEXT<br>
+    Hey! I'm Jake<br><br>
+    I'm a content creator from the UK, <br>
+    Media Team Lead for Skade Gaming!<br>
+    and Influencer on MCParks!<br><br>
+    In my spare time I code
 </p>
 </div>
 
@@ -365,7 +363,7 @@ PLACEHOLDERTEXT<br>
         if (category === 'All') {
             disclaimerText = 'Showing all projects.';
         } else if (category === 'mcparks') {
-            disclaimerText = `While I have the Influencer rank, I am not affiliated with MCParks.`;
+            disclaimerText = `Disclaimer: I am not affiliated with MCParks.`;
         } else {
             disclaimerText = `Showing projects related to ${category}.`;
         }

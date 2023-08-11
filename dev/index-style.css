@@ -1,4 +1,20 @@
 
+:root {
+    --Text:#051014;
+    --Background:#F3F9FC;
+    --Primary:#3596C0;
+    --Secondary:#0E668B;
+    --Accent:#254654;
+}
+/* Custom Norse Font */
+@font-face {
+    font-family: 'Norse'; 
+    src: url('./Norse-Bold.otf') format('truetype');
+  }
+  /* Roboto Mono */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 body{
     padding: 0px;
     margin: 0px;

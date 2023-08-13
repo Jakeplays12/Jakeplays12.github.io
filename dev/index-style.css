@@ -1,20 +1,4 @@
 
-:root {
-    --Text:#051014;
-    --Background:#F3F9FC;
-    --Primary:#3596C0;
-    --Secondary:#0E668B;
-    --Accent:#254654;
-}
-/* Custom Norse Font */
-@font-face {
-    font-family: 'Norse'; 
-    src: url('./Norse-Bold.otf') format('truetype');
-  }
-  /* Roboto Mono */
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
 body{
     padding: 0px;
     margin: 0px;
@@ -45,12 +29,33 @@ font-weight: 400;
 margin-top: 10px;
 margin-bottom: 10px;
 }
-
+.Header a,
+.Header li{
+    text-decoration: none;
+    color: var(--Text);
+}
 .Header li {
   margin: 0 20px;
   color: var(--Text);
   position: relative;
   cursor: pointer;
+}
+
+.Header-Images {
+    position: relative;
+    width: 100%;
+    height: 594px; /* Adjust the height as needed */
+    overflow: hidden;
+}
+
+/* Slideshow Images */
+.Header-Image {
+    width: 100%;
+    height: 594px; /* Adjust the height as needed */
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
 }
 
 .Header li::after {
@@ -68,15 +73,6 @@ margin-bottom: 10px;
 .Header li:hover::after {
   width: 100%;
   transform: translateX(-50%) scaleX(1);
-}
-
-
-.Header-Image{
-position: relative;
-width: 100%;
-height: 594px;
-object-fit: cover;
-margin-top: 15px;
 }
 
 .Section2{

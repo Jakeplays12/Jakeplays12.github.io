@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,6 +46,8 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+
+
     </style>
 </head>
 
@@ -60,8 +63,14 @@
     <li>Contact Us</li>
 </nav>
 </div>
-<img class="Header-Image" src="https://media.discordapp.net/attachments/1131916322054357143/1139496458127691926/image.png">
-<p style="color:red;">NOTE: This is a temp image<br>this could be a slideshow</p>
+<div class="Header-Images">
+    <img class="Header-Image" src="https://media.discordapp.net/attachments/1131916322054357143/1139496458127691926/image.png">
+    <img class="Header-Image" src="https://media.discordapp.net/attachments/1131916322054357143/1140079304949121024/image.png">
+    <img class="Header-Image" src="https://media.discordapp.net/attachments/1131916322054357143/1140079388256387082/image.png">
+    <img class="Header-Image" src="https://media.discordapp.net/attachments/1131916322054357143/1140079692779630592/image.png">
+
+
+    </div>
 </section>
 
 <section class="Section2">
@@ -115,7 +124,26 @@
 </div>
         </div>
     </div>
-</footer>
-</footer>
+
+
+<script>
+    const headerImages = document.querySelectorAll('.Header-Image');
+    let currentImageIndex = 0;
+
+    function fadeInNextImage() {
+        const nextImageIndex = (currentImageIndex + 1) % headerImages.length;
+
+        headerImages[currentImageIndex].style.opacity = 0;
+        headerImages[nextImageIndex].style.opacity = 1;
+
+        currentImageIndex = nextImageIndex;
+
+        setTimeout(fadeInNextImage, 10000);
+        // 10000 = 10 sec
+        // 5000 = 5 sec
+    }
+
+    fadeInNextImage();
+</script>
 </body>
 </html>

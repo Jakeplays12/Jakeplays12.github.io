@@ -4,6 +4,7 @@
     --Primary:#28b7eb;
     --Secondary:#bfebf8;
     --Accent:#4B7A8B;
+    --Link: #4B7A8B;
     
 }
 
@@ -12,8 +13,9 @@
   --Text:#F3F9FC;
   --Background:#051014;
   --Primary:#28b7eb;
-  --Secondary: 03161c;
+  --Secondary: #03161c;
   --Accent:#a2c2cd;
+  --Link: #4fb3d7;
 }
 
 /* Norse */
@@ -34,3 +36,15 @@
     justify-content: center;
     text-align: center;
     }
+
+    ::selection{
+      color: white;
+      background-color: #4B7A8B;
+    }
+
+a{
+  color: var(--Link);
+  font-weight: bold;
+}
+
+.ImgS3{max-width:300px;height: auto;}

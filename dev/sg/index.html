@@ -30,6 +30,7 @@
 <!-- Mobile Support Style (WIP)-->
 
 <!--<link rel="stylesheet" href="indexstyle.css" />-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -44,10 +45,6 @@
     <li><a href="https://www.patreon.com/skadegaming">Patreon</a></li>
     <li><a href="./SocialMedia.html">Social media</a></li>
     <li><a href="#">Contact Us</a></li>
-    <li id="theme-toggle" style="cursor: pointer;">
-      <i class="fa-regular fa-sun Theme-moon"></i>
-      <i class="fa-regular fa-moon Theme-sun"></i>
-    </li>
   </nav>
 </div>
 
@@ -74,46 +71,38 @@
 
 </section>
 
-<footer>
-    <div class="Footer-Container">
-
-        <!-- Contact Us -->
-        <div class="Footer-ContactUs">
-            <h3>Contact Us</h3>
-            <p>Admin@skadegaming.com</p>
+<footer class="Footer">
+    <div class="FooterContainer">
+        <div class="Footer-Section SpaceLeft">
+<h4>Skade Gaming</h4>
+<li>&copy; Skade Gaming 2023</li>
+<li>#MoreThenAGame</li>
+<li class="theme-toggle" id="theme-toggle" style="cursor: pointer;">
+	<i class="fa-regular fa-sun Theme-moon"></i>
+	<i class="fa-regular fa-moon Theme-sun"></i>
+</li>
         </div>
+		<hr>
 
-        <!-- Copyright -->
-        <div class="Footer-Copyright">
-            <p>©Skade Gaming 2023<br>
-                #COPYRIGHT STATUS HERE#</p>
+        <div class="Footer-Section">
+			<h4>Pages</h4>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Rules</a></li>
+			<li><a href="#">Apply</a></li>
+			<li><a href="#">Links</a></li>
         </div>
-        <!-- Links -->
-        <div class="Footer-Links">
-<h3>Links</h3>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<div class="Footer-Links-Icons">
+<hr>
 
-<a href="https://www.patreon.com/skadegaming">
-<i class="fa-brands fa-patreon fa-2x"></i>
-</a>
-
-<a href="https://www.threads.net/@skadegaming">
-<i class="fa-brands fa-square-threads fa-2x"></i>
-</a>
-
-<a href="https://www.youtube.com/@skadegaming">
-<i class="fa-brands fa-youtube fa-2x"></i>
-</a>
-
-<a href="https://www.instagram.com/skadegaming/">
-<i class="fa-brands fa-instagram fa-2x"></i>
-</a>
-
+<div class="Footer-Section">
+	<h4>Links</h4>
+	<li><a href="#">Patreon</a></li>
+	<li><a href="#">Rules</a></li>
+	<li><a href="#">Apply</a></li>
+	<li><a href="#">Links</a></li>
 </div>
-        </div>
+    
     </div>
-
+</footer>
 
 <script>
     const headerImages = document.querySelectorAll('.Header-Image');

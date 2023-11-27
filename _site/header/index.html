@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/global.css">
+<style>
+    html,body{padding: 0;margin: 0;}
+    .Header {
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+    width: 100%;
+    background-color: var(--Colour-Green-Dark);
+    position: fixed;
+}
+
+    .NavItem{
+        height: 40px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        color: var(--Text);
+        }
+
+        .NavSection{
+            display: flex;
+            flex-direction: row;
+            padding-right: 5vw;
+            
+        }
+        .NavItem span{
+            font-family: var(--Font);
+            text-shadow: -2px 2px 1px var(--Colour-Green-Darker);
+        }
+
+.NavItem{transition: background-color ease 0.3s;}
+.NavItem:hover{
+    background-color: var(--Colour-Green-Darker);
+}
+*{outline: 1px solid red;}
+</style>
+    <title>Document</title>
+</head>
+<body>
+
+
+<div class="Header">
+<div class="NavSection">
+<a  class="NavItem" href="#"><span>Home</span></a>
+<a  class="NavItem" href="#"><span>About Me</span></a>
+<a  class="NavItem" href="#"><span>Portfolio</span></a>
+<a  class="NavItem" href="#"><span>Tools</span></a>
+<a  class="NavItem" href="#"><span>Links</span></a>
+</div>
+</div>
+
+</body>
+</html>

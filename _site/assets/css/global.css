@@ -43,6 +43,7 @@ html,body{padding: 0;margin: 0;}
     width: 100%;
     background-color: var(--Colour-Purple-Dark);
     position: fixed;
+    z-index: 1000;
 }
     .NavItemNoFade,
     .NavItem{
@@ -75,3 +76,20 @@ html,body{padding: 0;margin: 0;}
 .Content{
     margin-top: 40px;
 }
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--Colour-Purple-Darker);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--Colour-Purple-Dark);
+    border-radius: 16px;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  body::-webkit-scrollbar {
+    border-top: 40px solid var(--Colour-Purple-Dark);
+  }

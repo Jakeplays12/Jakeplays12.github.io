@@ -32,3 +32,22 @@ body{
             }
 
             
+.Section2{
+        display: flex;
+        background-color: var(--Colour-Green-Dark);
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+}
+
+.S2Container{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        margin: auto;
+        width: 80%;
+        text-wrap: balance;
+        font-size: 20px;
+        color: var(--Text);
+        padding: 10px;
+}

@@ -1,0 +1,125 @@
+.fancy {
+font-family: 'Times New Roman', cursive;
+  }
+  
+.fancy-bold {
+font-family: 'Arial Black', Gadget, sans-serif;
+  }
+  
+.double {
+font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  }
+  
+.smallcaps {
+font-family: 'Arial', sans-serif;
+font-variant: small-caps;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+
+  html{
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    }
+
+.title{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 50px;
+  text-shadow: 5px 5px 10px rgba(203, 197, 197, 0.4);
+
+
+}
+
+.ContainerForContainers {
+  display: flex;
+
+}
+
+.Left-container {
+  font-family: 'Ubuntu', sans-serif;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Right-container {
+  font-family: 'Ubuntu', sans-serif;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.Label1{
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 0px;
+}
+
+.InputTextClass,
+.OutputTextClass {
+  border-radius: 10px;
+  width: 70vh;
+  height: 60vh;
+  overflow: auto;
+  resize: none;
+  word-wrap: break-word;
+  background-color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 30px;
+  text-align: left;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.OutputTextClass {
+  border-radius: 10px;
+  width: 70vh;
+  overflow: auto;
+  resize: none;
+  word-wrap: anywhere;
+  background-color: white;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: left;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.StyleButtonsContainer {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.StyleButton {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 5px;
+  border: none;
+  background-color: #F5F5F5;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  color: black;
+  transition: background-color 0.3s, color 0.3s
+
+}
+.StyleButton:hover{background-color: #195d2c; color: white;}
+.ActiveStyleButton {
+  background-color: #2EA44F;
+  color: #fff;
+}

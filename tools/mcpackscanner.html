@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/jake-pfp.png">
+  <title>Jakeplays12 &bull; MC CIT Scanner</title>
+  <meta name="title" content="Jakeplays12 • MC CIT Scanner">
+  <meta name="description" content="Scans Minecraft packs for CIT items!">
+
+  <!-- Discord Embed Code -->
+  <meta content="Jakeplays12 &bull; MC Pack Scanner" property="og:title" />
+  <meta content="Jakeplays12" property="og:description" />
+  <meta content="#794aa2" data-react-helmet="true" name="theme-color" />
+  <!-- Discord Embed Code -->
+
+  <title>Folder Scanner</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script src="/toolscripts/mcpackscanner/mcpackscanner.js"></script>
+  <link rel="stylesheet" href="/toolscripts/mcpackscanner/mcpackscanners.css" />
+  <style>
+
+</style>
+
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <div id="navbar-container"></div>
+    <script src="/navbar/NavBarScript.js"></script> 
+    <!-- NAV BAR -->
+
+  <div class="title">
+
+  <h1>Minecraft CIT Pack Scanner</h1>
+<div class="file-upload">
+  <input type="file" id="folderInput" accept=".zip"></div>
+  <button class="scan-folder-btn" onclick="processFolder()">Scan Folder</button>
+  <div id="counter" class="ItemCounter"></div>
+</div>
+
+  <div id="error" class="Error"></div>
+  <div id="output"></div>
+</body>
+</html>

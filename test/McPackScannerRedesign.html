@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+  html{
+    margin-left: 0px;
+    background-color: #1B2024;
+    }
+    *{outline: red solid 0px;
+      font-family: 'Ubuntu', sans-serif;
+}
+    .Sidebar{
+    width: 15vw;
+    height: 100%;
+    background-color: #0F1114;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    }
+    
+    .SidebarHeader{
+     height: 10%;
+     font-size: 20px;
+     color: white;
+     align-items: center;
+    justify-content: center;
+    display: flex;
+    }
+    .SidebarButton{
+      background-color: transparent;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      margin-left: 0px;
+      color: #FFFFFF;
+      font-size: 20px;
+    }
+    .Butt{
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+    }
+    input[type=file]::file-selector-button {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    flex-flow: column wrap;
+    align-items: center;
+    }
+
+    </style>
+</head>
+<body>
+  <div class="Sidebar">
+    <div class="SidebarHeader">
+      <h1>CIT Scanner</h1>
+    </div>
+    <div class="SidebarButton">
+    <input  type="file" id="folderInput" accept=".zip">
+
+    </div>
+    <div class="SidebarButton">
+      <button class="Butt" onclick="processFolder()" >Scan Folder</button>
+    </div>
+    <div class="SidebarButton">
+      <button class="Butt" id="exportButton" onclick="exportData()">Export Data</button>
+    </div>
+    <div class="SidebarButton">
+      <div id="counter" class="ItemCounter"></div>
+    </div>
+  </div>
+  <div id="error" class="Error"></div>
+  <div id="output"></div>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<script src="/toolscripts/mcpackscanner/mcpackscanner.js"></script>
+<!--
+-->

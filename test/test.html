@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/jake-pfp.png">
+    <title>Jakeplays12 &bull; Portfolio</title>
+
+    <!-- Discord Embed Code -->
+    <meta content="Jakeplays12 &bull; Home" property="og:title" />
+    <meta content="Jakeplays12" property="og:description" />
+    <meta content="#794aa2" data-react-helmet="true" name="theme-color" />
+    <!-- Discord Embed Code -->
+</head>
+  
+<style>
+
+</style>
+<link rel="stylesheet" href="/portfolio/styles.css"> <!-- Link to the CSS file -->
+
+
+<body>
+<!-- NAV BAR -->
+  <div id="navbar-container"></div>
+  <script src="/NavAndFooter/script.js"></script> 
+<!-- NAV BAR -->
+<div class="Title">
+  <div id="slideshow"></div>
+  <h1 class="fade-item">Portfolio</h1>
+</div>
+
+    <div class="container">
+      <button onclick="showCategory('all')"class="fade-item">All</button>
+      <button onclick="showCategory('skade')"class="fade-item">Skade Gaming</button>
+      <button onclick="showCategory('personal')"class="fade-item">Personal</button>
+      <div class="image-gallery" id="imageGallery"></div>
+    </div>
+  
+<button id="theme-toggle-btn">🌚</button>
+<script>
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const rootElement = document.documentElement;
+    const currentTheme = localStorage.getItem("theme");
+  
+    if (currentTheme) {
+      rootElement.setAttribute("data-theme", currentTheme);
+    } else {
+      rootElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    }
+  
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = rootElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      rootElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    });
+</script>
+
+<script src="/portfolio/script.js"></script> <!-- Link to the JS file -->
+<script src="/portfolio/slideshow.js"></script> <!-- Link to the JS file -->
+
+</body>
+<p style="text-align: center;" class="FooterTextMessage">Jakeplays12 | all rights reserved</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</html>
+

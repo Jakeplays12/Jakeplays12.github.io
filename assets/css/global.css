@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+body{background-color: var(--Background);}
 
 :root{
 --Text: #f2e3e3;
@@ -74,7 +75,7 @@ html,body{padding: 0;margin: 0;}
 }
 
 .Content{
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

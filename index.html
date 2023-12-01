@@ -6,26 +6,106 @@ title: "Home"
     <link rel="stylesheet" href="/assets/css/index.css">
     <script src="/assets/animations/fade.js" defer></script>
     <link rel="stylesheet" href="/assets/animations/fade.css" />
-    
+    <script src="https://kit.fontawesome.com/3dadb7c9ae.js" crossorigin="anonymous"></script>
+
 <body>
 
     <div class="Intro" style="width: 80%; margin: auto; margin-top: 150px;    " >
         <h1 class="Title" style="margin: 0;">Hi there 👋</h1>
-        <h2 class="Title GradiantText" style="margin: 20px 0 50px 0">Im Jake (They/He)</h2>
+        <h2 class="Title GradiantText" style="margin: 20px 0 50px 0">Im Jake</h2>
+        <p>Pronouns: They/He</p>
         <p>
             I am a skilled student with a strong passion for pursuing a career in the I.T field.
         </p><p>
 In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator.
         </p>
     </div>
-<div class="Section2" id="about-me">
-<div class="S2Container">
-<p>Hey! I'm Jake, I am a skilled student with a strong passion for pursuing a career in the I.T field.</p>
+    <div class="SpecialIcons">
+        <hr>
+        <h2>Experienced In</h2>
+        <i class="fa-brands fa-html5" style="color: #ffffff;"></i>
+        <i class="fa-brands fa-square-js" style="color: #ffffff;"></i>
+        <i class="fa-brands fa-css3-alt" style="color: #ffffff;"></i>
+        <i class="fa-brands fa-python" style="color: #ffffff;"></i>
 
-<p>I have knowledge in the programming language JavaScript (JS) and I'm learning while working alongside Skade Gaming's Bot Team to create a Discord.js Bot for their server.</p>
+    </div>
+<style>
+    .SpecialIcons hr{
+        width: 40%;
+    }
 
-<p>As the Media Team Lead, I create content for Skade Gaming's social platforms, and I ensure that all the skaders are safe online. My primary focus lies in producing Minecraft videos, particularly for Skade Gaming's socials. I showcase events, provide updates, and share exciting content through TikTok and YouTube Shorts.</p>
+    .SpecialIcons{
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        color: var(--Text);
+        margin-top: 20px;
+    }
+.Sec2{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.CardContainer{
+    padding: 10px;
+}
+.Card{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 60%;
+    min-height: 15rem;
+    width: 16rem;
+    gap: 1.3rem;
+    text-decoration: none;
+    color: var(--Text);
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+    transform: scale(1);
+    cursor:pointer
+}
 
-<p>Image Made By @Dani_Drawz</p>
-</div></div>
+.Card:hover{
+    transform: scale(1.1);
+}
+.Card .Icon{
+    width: 60%;
+    aspect-ratio: 1/1;
+}
+.Card img{
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+.Card p{
+    text-wrap: balance;
+    text-align: center;
+}
+    </style>
+
+
+        <div class="Sec2">
+            <div class="CardContainer" id="about-me">
+
+<a class="Card" href="https://skadegaming.com/">
+    <div class="Icon"><img src="/assets/svg/gamepad.svg"></div>
+   <h2>Skade Gaming</h2>
+   <p>As the Media Team Lead, I create content for Skade Gaming's social platforms, and we ensure that all the skaders are safe online.</p>
+</a>
+
+<a class="Card">
+    <div class="Icon"><img src="/assets/svg/Code-Icon.svg"></div>
+    <h2>Programming</h2>
+    <p>I'm learning JavaScript, while working alongside Skade Gaming's Bot Team to create a Discord.js Bot for their community</p>
+ </a>
+
+ <a class="Card" href="https://linktr.ee/Dani_drawz">
+    <div class="Icon"><img src="/assets/svg/person.svg  "></div>
+    <h2>A Subheading</h2>
+    <p>My profile picture was created by the wonderful Dani_Drawz, go check them out!</p>
+ </a>
+</div>
+        </div>
 </body>

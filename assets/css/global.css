@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-
+body{background-color: var(--Background);overflow: hidden;}
+html{scroll-behavior: smooth;}
 :root{
 --Text: #f2e3e3;
 --Background: #171717;
@@ -43,6 +44,7 @@ html,body{padding: 0;margin: 0;}
     width: 100%;
     background-color: var(--Colour-Purple-Dark);
     position: fixed;
+    z-index: 1000;
 }
     .NavItemNoFade,
     .NavItem{
@@ -73,5 +75,33 @@ html,body{padding: 0;margin: 0;}
 }
 
 .Content{
-    margin-top: 40px;
+    margin-top: 80px;
+    min-height: 80vh;
 }
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--Colour-Purple-Darker);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--Colour-Purple-Dark);
+    border-radius: 16px;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  body::-webkit-scrollbar {
+    border-top: 40px solid var(--Colour-Purple-Dark);
+  }
+
+  .Footer{
+    height: 40px;
+    width: 100%;
+    background-color: var(--Colour-Purple-Dark);
+  }
+
+  .Footer span{
+    text-shadow: -2px 2px 1px var(--Colour-Purple-Darker);  
+  }

@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="title" content="Jakeplays12 &bull; Tools / Discord Color Tester">
+<title>Jakeplays12 &bull; Tools / Discord Color Tester</title>
+<meta name="keywords" content="Autistic, Web Developer, LGBTQ, Pride, Non Binary, They/He">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="description" content="I am a skilled student with a strong passion for pursuing a career in the I.T field. In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator." />
+<link rel="icon" href="/assets/img/pfpb.png">
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Tools / Discord Color Tester" />
+<meta property="og:description" content="I am a skilled student with a strong passion for pursuing a career in the I.T field. In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator" />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Tools / Discord Color Tester" />
+<meta property="twitter:description" content="I am a skilled student with a strong passion for pursuing a career in the I.T field. In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator" />
+<meta name="theme-color" content="#B46DDE">
+
+<meta property="og:site_name" content="Jakeplays12"><meta property="og:url" content="">
+
+<link rel="stylesheet" href="/assets/css/global.css" />
+
+</head>
+
+<div class="Header">
+    <div class="NavSection" style="margin: 0 auto 0 10px;">
+        <img src="/assets/img/pfp.png">
+        <span class="NavItemNoFade">Jakeplays12</span>
+    </div>
+
+    
+    <div class="NavSection" style="margin-right: 1vw;">
+
+    <a id="Nav_Home" class="NavItem" href="/"><span>Home</span></a>
+    <a id="Nav_About-Me" class="NavItem" href="#"><span>About Me</span></a>
+    <a id="Nac_Portfolio" class="NavItem" href="#"><span>Portfolio</span></a>
+    <a id="Nav_Tools" class="NavItem" href="/tools/"><span>Tools</span></a>
+    <a id="Nav_Links" class="NavItem" href="/links/"><span>Links</span></a>
+    </div>
+    </div>
+
+
+    <div class="Content">
+
+<style>
+  
+  body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  .Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .color-box {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+  }
+
+  .color-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .color-info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .color-name {
+    font-weight: bold;
+  }
+
+  .color-input {
+    display: flex;
+    margin: 10px;
+  }
+
+  .box {
+    width: 500px;
+    margin: 10px;
+    border-radius: 4px;
+  }
+
+  .Container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .Ex-In_Port {
+    margin-left: 30px;
+  }
+
+  .ColorHighlight {
+    margin-left: 10px;
+  }
+</style>
+</head>
+<body>
+  <section class="Content">
+    <div class="color-input">
+      <input type="text" id="colorHex" placeholder="Color Hex">
+      <input type="text" id="colorName" placeholder="Color Name">
+      <button onclick="addColor()">Add</button>
+      <button id="clearButton" onclick="clearFields()">Clear</button>
+
+      <div class="Ex-In_Port">
+        <button id="exportButton" onclick="exportColors()">Export JSON</button>
+        <button id="exportToClipboardButton" onclick="exportToClipboard()">Export JSON to Clipboard</button>
+        <button id="importClipboardButton" onclick="importFromClipboard()">Import from Clipboard</button>
+        <input type="file" id="importInput" accept=".json" onchange="importColors(event)">
+      </div>
+    </div>
+
+    <div class="Container">
+      <div>
+        <div class="box" style="background-color:#363940" id="color-list1"></div>
+      </div>
+      <div>
+        <div class="box" style="background-color:#FFFFFF" id="color-list2"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const colors = [];
+
+    function clearFields() {
+      document.getElementById("colorHex").value = "";
+      document.getElementById("colorName").value = "";
+
+      const colorList1 = document.getElementById("color-list1");
+      const colorList2 = document.getElementById("color-list2");
+
+      while (colorList1.firstChild) {
+        colorList1.removeChild(colorList1.firstChild);
+      }
+
+      while (colorList2.firstChild) {
+        colorList2.removeChild(colorList2.firstChild);
+      }
+    }
+
+    function addColor() {
+      const colorHex = document.getElementById("colorHex").value;
+      const colorName = document.getElementById("colorName").value;
+
+      if (colorHex && colorName) {
+        const colorList1 = document.getElementById("color-list1");
+        const colorList2 = document.getElementById("color-list2");
+
+        const colorBox = document.createElement("div");
+        colorBox.className = "color-box";
+
+        const colorCircle = document.createElement("div");
+        colorCircle.className = "color-circle";
+        colorCircle.style.backgroundColor = colorHex;
+
+        const colorInfo = document.createElement("div");
+        colorInfo.className = "color-info";
+        const colorInfoName = document.createElement("p");
+        colorInfoName.textContent = colorName;
+
+        // Create a <span> element for colorHex
+        const colorHexSpan = document.createElement("p");
+        colorHexSpan.textContent = "(" + colorHex + ")";
+        colorHexSpan.className = "ColorHighlight";
+
+        colorInfo.appendChild(colorInfoName);
+        colorInfo.appendChild(colorHexSpan); // Append colorHex span to colorInfo
+        colorInfo.style.color = colorHex;
+        colorBox.appendChild(colorCircle);
+        colorBox.appendChild(colorInfo);
+
+        // Append the color box to both color-list divs
+        colorList1.appendChild(colorBox.cloneNode(true));
+        colorList2.appendChild(colorBox.cloneNode(true));
+
+        // Add the color to the colors array
+        colors.push({ hex: colorHex, name: colorName });
+
+        // Clear the input fields
+        document.getElementById("colorHex").value = "";
+        document.getElementById("colorName").value = "";
+      }
+    }
+
+    function exportColors() {
+      const jsonContent = JSON.stringify(colors);
+      const blob = new Blob([jsonContent], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "colors.json";
+      a.click();
+    }
+
+    function exportToClipboard() {
+    const jsonContent = JSON.stringify(colors);
+    navigator.clipboard.writeText(jsonContent).then(function() {
+      alert("JSON data has been copied to the clipboard");
+    }).catch(function() {
+      alert("Failed to copy JSON data to the clipboard");
+    });
+  }
+
+    function importColors(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function () {
+        const importedColors = JSON.parse(reader.result);
+        clearFields();
+
+        importedColors.forEach((color) => {
+          document.getElementById("colorHex").value = color.hex;
+          document.getElementById("colorName").value = color.name;
+          addColor();
+        });
+
+        document.getElementById("importInput").value = "";
+      };
+
+      reader.readAsText(file);
+    }
+
+    function importFromClipboard() {
+      navigator.clipboard.readText().then((clipboardText) => {
+        try {
+          const clipboardColors = JSON.parse(clipboardText);
+
+          if (Array.isArray(clipboardColors)) {
+            // Clear the existing color list
+            clearFields();
+
+            clipboardColors.forEach((color) => {
+              if (color.hex && color.name) {
+                document.getElementById("colorHex").value = color.hex;
+                document.getElementById("colorName").value = color.name;
+                addColor();
+              }
+            });
+          } else {
+            alert("Invalid clipboard data. Please make sure the data is in JSON format.");
+          }
+        } catch (error) {
+          alert("Error parsing clipboard data. Please make sure the data is in JSON format.");
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+
+    </div>
+</body>
+
+</html>

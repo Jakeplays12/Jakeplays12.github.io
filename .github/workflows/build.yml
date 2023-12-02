@@ -1,5 +1,4 @@
-name: Eleventy Build
-
+name: Eleventy Build & push to pages
 
 on:
   push:

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-body{background-color: var(--Background);overflow: hidden;}
+body{background-color: var(--Background)}
 html{scroll-behavior: smooth;}
 :root{
 --Text: #f2e3e3;

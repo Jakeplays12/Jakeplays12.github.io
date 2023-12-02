@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-body{background-color: var(--Background);}
+body{background-color: var(--Background);overflow: hidden;}
 html{scroll-behavior: smooth;}
 :root{
 --Text: #f2e3e3;
@@ -76,6 +76,7 @@ html,body{padding: 0;margin: 0;}
 
 .Content{
     margin-top: 80px;
+    min-height: 80vh;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -104,3 +105,6 @@ html,body{padding: 0;margin: 0;}
   .Footer span{
     text-shadow: -2px 2px 1px var(--Colour-Purple-Darker);  
   }
+
+
+  footer{bottom: 0;}

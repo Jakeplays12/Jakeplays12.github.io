@@ -3,7 +3,7 @@ name: Eleventy Build & push to pages
 on:
   push:
     branches:
-      - release
+      - main
       
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v1
           with:
-            node-version: '10.x'
+            node-version: '14.x'
 
 
         - run: npm ci

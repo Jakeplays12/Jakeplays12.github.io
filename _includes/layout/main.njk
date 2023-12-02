@@ -1,0 +1,29 @@
+---
+templateClass: tmpl-home
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+{% include "components/seo.njk" %}
+
+<link rel="stylesheet" href="/assets/css/global.css" />
+<script src="/assets/js/mouse.js" defer></script>
+
+</head>
+
+{% include "components/header.njk" %}
+
+    <div class="Content">
+
+{{ content | safe }}
+
+    </div>
+
+    <footer>
+    {% include "components/footer.njk" %}
+    </footer>
+</body>
+
+</html>

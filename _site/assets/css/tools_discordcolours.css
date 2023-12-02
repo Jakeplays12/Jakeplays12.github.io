@@ -1,0 +1,67 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  .Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .color-box {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+  }
+
+  .color-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .color-info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .color-name {
+    font-weight: bold;
+  }
+
+  .color-input {
+    display: flex;
+    margin: 10px;
+  }
+
+  .box {
+    width: 500px;
+    margin: 10px;
+    border-radius: 4px;
+  }
+
+  .Container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .Ex-In_Port {
+    margin-left: 30px;
+  }
+
+  .ColorHighlight {
+    margin-left: 10px;
+  }

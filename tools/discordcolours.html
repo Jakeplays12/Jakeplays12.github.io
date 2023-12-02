@@ -1,0 +1,232 @@
+---
+layout: layout/main.njk
+title: "Tools / Discord Colour Tester"
+---
+<style>
+  .Sidebar{
+    height: 100%; 
+    min-width: 200px;
+    width: 20%;
+    background-color: var(--Colour-Purple-Darker);
+    position: fixed;
+    top: 39px;
+    color: var(--Text);
+  }
+  .Sidebar h2,
+  .Sidebar h1{
+    width: 100%;
+    font-size: 20px;
+    color: var(--Text);
+    text-shadow: -2px 2px 1px var(--Colour-Purple-Dark);
+    text-align: center;
+  }
+  
+.SBRow{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+}
+.Sidebar input{
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  height: auto;
+  padding: 2px;}
+
+.Sidebar button{
+  width: 100%;
+  border: 0;
+  padding: 2px;
+}
+#clearButton,#AddButton{transition: background-color 0.3s ease;}
+#clearButton{background-color: var(--Colour-Red-Dark);}
+#AddButton{background-color: var(--Colour-Green-Dark)}
+
+#clearButton:hover{background-color: var(--Colour-Red);}
+#AddButton:hover{background-color: var(--Colour-Green)}
+
+.centered{
+  width: 90%;
+  height: 90%;
+  padding: 10px;
+  display: flex;
+}
+
+.Sidebar input[type='file'] {
+  color: rgba(0, 0, 0, 0)
+}
+</style>
+</head>
+<body>
+  <div class="Sidebar">
+    <h1>Discord Role Color Tester</h1>
+    <div class="centered">
+
+    <div class="color-input">
+      <input type="text" id="colorHex" placeholder="Color Hex">
+      <input type="text" id="colorName" placeholder="Color Name">
+      <div class="SBRow">
+      <button id="AddButton" onclick="addColor()">Add</button>
+      <button id="clearButton" onclick="clearFields()">Clear</button>
+      </div>
+
+      <hr>
+      <h2>Export</h2>
+      <div class="Ex-In_Port">
+
+        <div class="SBRow">
+        <button id="exportButton" onclick="exportColors()">Export</button>
+        <button id="exportToClipboardButton" onclick="exportToClipboard()">Clipboard</button>
+        </div>
+        <hr>
+        <h2>Import</h2>
+        <div class="SBRow">
+
+        <input type="file" id="importInput" accept=".json" onchange="importColors(event)">
+        
+        <button id="importClipboardButton" onclick="importFromClipboard()">Clipboard</button>
+      </div></div>
+    </div>
+  </div>
+  </div>
+
+    <div class="Container">
+      <div>
+        <div class="box" style="background-color:#363940" id="color-list1"></div>
+      </div>
+      <div>
+        <div class="box" style="background-color:#FFFFFF" id="color-list2"></div>
+      </div>
+    </div>
+
+  <script>
+    const colors = [];
+
+    function clearFields() {
+      document.getElementById("colorHex").value = "";
+      document.getElementById("colorName").value = "";
+
+      const colorList1 = document.getElementById("color-list1");
+      const colorList2 = document.getElementById("color-list2");
+
+      while (colorList1.firstChild) {
+        colorList1.removeChild(colorList1.firstChild);
+      }
+
+      while (colorList2.firstChild) {
+        colorList2.removeChild(colorList2.firstChild);
+      }
+    }
+
+    function addColor() {
+      const colorHex = document.getElementById("colorHex").value;
+      const colorName = document.getElementById("colorName").value;
+
+      if (colorHex && colorName) {
+        const colorList1 = document.getElementById("color-list1");
+        const colorList2 = document.getElementById("color-list2");
+
+        const colorBox = document.createElement("div");
+        colorBox.className = "color-box";
+
+        const colorCircle = document.createElement("div");
+        colorCircle.className = "color-circle";
+        colorCircle.style.backgroundColor = colorHex;
+
+        const colorInfo = document.createElement("div");
+        colorInfo.className = "color-info";
+        const colorInfoName = document.createElement("p");
+        colorInfoName.textContent = colorName;
+
+        // Create a <span> element for colorHex
+        const colorHexSpan = document.createElement("p");
+        colorHexSpan.textContent = "(" + colorHex + ")";
+        colorHexSpan.className = "ColorHighlight";
+
+        colorInfo.appendChild(colorInfoName);
+        colorInfo.appendChild(colorHexSpan); // Append colorHex span to colorInfo
+        colorInfo.style.color = colorHex;
+        colorBox.appendChild(colorCircle);
+        colorBox.appendChild(colorInfo);
+
+        // Append the color box to both color-list divs
+        colorList1.appendChild(colorBox.cloneNode(true));
+        colorList2.appendChild(colorBox.cloneNode(true));
+
+        // Add the color to the colors array
+        colors.push({ hex: colorHex, name: colorName });
+
+        // Clear the input fields
+        document.getElementById("colorHex").value = "";
+        document.getElementById("colorName").value = "";
+      }
+    }
+
+    function exportColors() {
+      const jsonContent = JSON.stringify(colors);
+      const blob = new Blob([jsonContent], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "colors.json";
+      a.click();
+    }
+
+    function exportToClipboard() {
+    const jsonContent = JSON.stringify(colors);
+    navigator.clipboard.writeText(jsonContent).then(function() {
+      alert("JSON data has been copied to the clipboard");
+    }).catch(function() {
+      alert("Failed to copy JSON data to the clipboard");
+    });
+  }
+
+    function importColors(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function () {
+        const importedColors = JSON.parse(reader.result);
+        clearFields();
+
+        importedColors.forEach((color) => {
+          document.getElementById("colorHex").value = color.hex;
+          document.getElementById("colorName").value = color.name;
+          addColor();
+        });
+
+        document.getElementById("importInput").value = "";
+      };
+
+      reader.readAsText(file);
+    }
+
+    function importFromClipboard() {
+      navigator.clipboard.readText().then((clipboardText) => {
+        try {
+          const clipboardColors = JSON.parse(clipboardText);
+
+          if (Array.isArray(clipboardColors)) {
+            // Clear the existing color list
+            clearFields();
+
+            clipboardColors.forEach((color) => {
+              if (color.hex && color.name) {
+                document.getElementById("colorHex").value = color.hex;
+                document.getElementById("colorName").value = color.name;
+                addColor();
+              }
+            });
+          } else {
+            alert("Invalid clipboard data. Please make sure the data is in JSON format.");
+          }
+        } catch (error) {
+          alert("Error parsing clipboard data. Please make sure the data is in JSON format.");
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

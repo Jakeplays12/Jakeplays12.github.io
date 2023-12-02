@@ -1,0 +1,53 @@
+#Nav_Home{    background-color: var(--Colour-Purple);}
+
+body{
+    background-color: #171717;
+            }
+    
+            .Title{
+    color: var(--Text);
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+            }
+    
+            .GradiantText{
+    background: linear-gradient(270deg, var(--Colour-Green) 22.07%, var(--Colour-Blue) 76.11%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+            }
+            .Intro p{
+    color: var(--Text);
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-wrap: balance;
+            }
+
+            
+.Section2{
+        display: flex;
+        background-color: var(--Colour-Green-Dark);
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+}
+
+.S2Container{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        margin: auto;
+        width: 80%;
+        text-wrap: balance;
+        font-size: 20px;
+        color: var(--Text);
+        padding: 10px;
+}

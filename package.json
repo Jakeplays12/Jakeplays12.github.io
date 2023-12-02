@@ -1,11 +1,12 @@
 {
-  "name": "jakeplays12_website_2.0",
+  "name": "Jakeplays12Website",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx @11ty/eleventy --serve"
+    "build": "npx @11ty/eleventy",
+    "builddev": "npx @11ty/eleventy --serve"
 
   },
   "repository": {

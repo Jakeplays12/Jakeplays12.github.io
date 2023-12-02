@@ -3,7 +3,7 @@ name: Eleventy Build & push to pages
 on:
   push:
     branches:
-      - pages
+      - release
       
 jobs:
   deploy:

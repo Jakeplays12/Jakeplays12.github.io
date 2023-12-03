@@ -1,4 +1,5 @@
-name: Eleventy Build & push to pages
+name: Eleventy Build
+
 
 on:
   push:
@@ -15,7 +16,7 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v1
           with:
-            node-version: '14.x'
+            node-version: '16.x'
 
 
         - run: npm ci
@@ -27,5 +28,5 @@ jobs:
         - name: Deploy
           uses: peaceiris/actions-gh-pages@v3
           with:
-            deploy_key: ${{ secrets.TOKEN }}
-            publish_dir: ./site
+            github_token: ${{ secrets.token }}
+            publish_dir: ./_site

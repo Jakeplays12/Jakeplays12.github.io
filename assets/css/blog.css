@@ -1,0 +1,67 @@
+
+.Sidebar{
+    width: 260px;
+}
+
+.UnqueieContent{
+display: flex;
+min-width: 0;
+flex: 1 1 100%;
+flex-direction: column;
+color: var(--Text);
+line-height: 120%;
+padding: 30px;
+padding-right: 0;
+padding-bottom: 50px;
+}
+.Data {
+display: flex;
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.SideBarContents{
+padding: 20px;
+}
+
+.SideBarContents a{
+font-size: 16px;
+text-decoration: none;
+color: var(--Colour-Green);
+list-style: none;
+line-height:  1.9rem;
+}
+.SideBarDivIGuess{
+padding-left: 10px;
+border-left: 4px solid transparent;
+}
+.SideBarDivIGuess h3{
+color: var(--Text);
+}
+.UnqueieContent p{font-size: 19px;}
+.UnqueieContent h1{font-size: 48px;}
+.UnqueieContent h2{font-size: 36px;}
+.UnqueieContent p{font-size: 19px;}
+.UnqueieContent p{font-size: 19px;}
+
+.UnqueieContent a{color: var(--Colour-Green); font-weight: 650; text-decoration: none;}
+
+aside{
+background-color: var(--Colour-Red-Darker);
+border-radius: 0.7rem;
+padding: 7px;
+text-transform:capitalize
+}
+
+.NoBulletPoint li{
+list-style: none;
+}
+
+#Nav_Blog{    background-color: var(--Colour-Purple);}
+
+@media screen and (max-width: 800px) {
+
+    .Data{
+        flex-direction: column;
+    }
+}

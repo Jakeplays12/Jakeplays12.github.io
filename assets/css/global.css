@@ -47,6 +47,14 @@ html,body{padding: 0;margin: 0;}
     position: fixed;
     z-index: 1000;
 }
+
+.FAWeight i{
+    font-weight: 400 !important;
+}
+
+.Footer a{
+    text-decoration: none;
+}
     .NavItemNoFade,
     .NavItem{
         height: 40px;
@@ -98,6 +106,8 @@ html,body{padding: 0;margin: 0;}
   }
 
   .Footer{
+    display: flex;
+    flex-direction: row;
     height: 40px;
     width: 100%;
     background-color: var(--Colour-Purple-Dark);

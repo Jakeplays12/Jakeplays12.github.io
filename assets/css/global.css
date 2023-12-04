@@ -84,8 +84,8 @@ html,body{padding: 0;margin: 0;}
 }
 
 .Content{
-    margin-top: 80px;
-    min-height: 80vh;
+    margin-top: 40px;
+    min-height: calc(100vh - 80px);
 }
 
 ::-webkit-scrollbar-thumb:hover {

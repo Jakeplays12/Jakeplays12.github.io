@@ -1,15 +1,12 @@
+.Sidebar{width: 260px;}
 
-.Sidebar{
-    width: 260px;
-}
-
-.UnqueieContent{
+.BlogContent{
 display: flex;
 min-width: 0;
 flex: 1 1 100%;
 flex-direction: column;
 color: var(--Text);
-line-height: 120%;
+line-height: var(--Font-LH);
 padding: 30px;
 padding-right: 0;
 padding-bottom: 50px;
@@ -25,7 +22,7 @@ padding: 20px;
 }
 
 .SideBarContents a{
-font-size: 16px;
+font-size: var(--Font-Small);
 text-decoration: none;
 color: var(--Colour-Green);
 list-style: none;
@@ -38,13 +35,11 @@ border-left: 4px solid transparent;
 .SideBarDivIGuess h3{
 color: var(--Text);
 }
-.UnqueieContent p{font-size: 19px;}
-.UnqueieContent h1{font-size: 48px;}
-.UnqueieContent h2{font-size: 36px;}
-.UnqueieContent p{font-size: 19px;}
-.UnqueieContent p{font-size: 19px;}
+.BlogContent p{font-size: var(--Font-P);}
+.BlogContent h1{font-size: var(--Font-H1);}
+.BlogContent h2{font-size: var(--Font-H2);}
 
-.UnqueieContent a{color: var(--Colour-Green); font-weight: 650; text-decoration: none;}
+.BlogContent a{color: var(--Colour-Green); font-weight: 650; text-decoration: none;}
 
 aside{
 background-color: var(--Colour-Red-Darker);

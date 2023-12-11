@@ -50,95 +50,138 @@
     <div class="Content">
 
 <style>
-  .Sidebar{
-    height: 100%; 
-    min-width: 200px;
-    width: 20%;
-    position: fixed;
-    top: 39px;
-    color: var(--Text);
+  .ISM {
+    margin-top: 10px;
   }
-  .Sidebar h2,
-  .Sidebar h1{
-    width: 100%;
-    font-size: 20px;
+
+.ISM span{
+  text-align: center;
+  font-size: var(--Font-H3);
+}
+
+  .InputSection {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 378px;
+    border-radius: 8px;
+    background: var(--Colour-Blue-Darker);
+    box-shadow: 0px 0px 4px 0px #5F768F;
     color: var(--Text);
-    text-shadow: -2px 2px 1px var(--Colour-Purple-Dark);
-    text-align: center;
+    font-family: var(--Font);
+    font-size: var(--Font-P);
+    font-weight: 500;
+    line-height: normal;
   }
-  
-.SBRow{
-  width: 100%;
+
+  .InputSection input {
+    width: 354px;
+    height: 30px;
+    border: 0;
+    border-radius: 3px;
+    margin-bottom: 8px;
+  }
+
+
+  .InputSection label span,
+  .InputSection button {
+    border: 0;
+    border-radius: 3px;
+    font-family: var(--Font);
+    color: var(--Text);
+    font-size: var(--Font-P);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 12px 10%;
+    background: var(--Colour-Purple);
+    transition: all 0.3s ease;
+  }
+
+  .InputSection label span:hover,
+  .InputSection button:hover {
+    background: var(--Colour-Purple-Dark);
+  }
+  .ContentContainer{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .ColourContainers{
+  flex: 2;
   display: flex;
+  flex-direction: column;
+  }
+  .box{
+    margin-inline: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+  }
+.color-circle{width: 25px; height: 25px; border-radius: 100px; margin-right: 10px;}
+
+.color-box{
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: center;
+}
+
+.color-info{
+  display: flex ;
   flex-direction: row;
-
-}
-.Sidebar input{
-  width: 100%;
-  box-sizing: border-box;
-  border: 0;
-  height: auto;
-  padding: 2px;}
-
-.Sidebar button{
-  width: 100%;
-  border: 0;
-  padding: 2px;
-}
-#clearButton,#AddButton{transition: background-color 0.3s ease;}
-#clearButton{background-color: var(--Colour-Red-Dark);}
-#AddButton{background-color: var(--Colour-Green-Dark)}
-
-#clearButton:hover{background-color: var(--Colour-Red);}
-#AddButton:hover{background-color: var(--Colour-Green)}
-
-.centered{
-  width: 90%;
-  height: 90%;
-  padding: 10px;
-  display: flex;
 }
 
-.Sidebar input[type='file'] {
-  color: rgba(0, 0, 0, 0)
+
+.color-info p{
+  margin-inline: 10px;
 }
 </style>
+
 </head>
 <body>
-  <div class="Sidebar">
     <h1>Discord Role Color Tester</h1>
     <p>This tool currently only half works!</p>
-    <div class="centered">
+    <div class="ContentContainer">
 
-    <div class="color-input">
-      <input type="text" id="colorHex" placeholder="Color Hex">
-      <input type="text" id="colorName" placeholder="Color Name">
+<section style="flex-direction: column;">
+    <div class="InputSection">
+      <span>Hex Colour</span>
+      <input type="text" id="colorHex" placeholder="Hex">
+      <span>Colour Name</span>
+      <input type="text" id="colorName" placeholder="Colour Name">
       <div class="SBRow">
       <button id="AddButton" onclick="addColor()">Add</button>
       <button id="clearButton" onclick="clearFields()">Clear</button>
       </div>
+    </div>
 
-      <hr>
-      <h2>Export</h2>
-      <div class="Ex-In_Port">
+    <div class="InputSection ISM">
+      <span>Import</span>
+        <div class="SBRow">
+          <label for="importInput" class="ISB">
+            <span>Choose a file</span>
+            <input style="display: none;" type="file" id="importInput" accept=".json" onchange="importColors(event)">
+          </label>
 
+          <button id="importClipboardButton" onclick="importFromClipboard()">Clipboard</button>
+        </div>
+    </div>
+    
+    <div class="InputSection ISM">
+      <span>Export</span>
         <div class="SBRow">
         <button id="exportButton" onclick="exportColors()">Export</button>
         <button id="exportToClipboardButton" onclick="exportToClipboard()">Clipboard</button>
         </div>
-        <hr>
-        <h2>Import</h2>
-        <div class="SBRow">
-
-        <input type="file" id="importInput" accept=".json" onchange="importColors(event)">
-        
-        <button id="importClipboardButton" onclick="importFromClipboard()">Clipboard</button>
-      </div></div>
     </div>
-  </div>
-  </div>
+</section>
 
-    <div class="Container">
+
+    <div class="ColourContainers">
       <div>
         <div class="box" style="background-color:#363940" id="color-list1"></div>
       </div>
@@ -146,6 +189,9 @@
         <div class="box" style="background-color:#FFFFFF" id="color-list2"></div>
       </div>
     </div>
+
+    </div>
+
 
   <script>
     const colors = [];

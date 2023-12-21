@@ -52,6 +52,14 @@ text-transform:capitalize
 list-style: none;
 }
 
+hr{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--Colour-Blue);
+    margin-bottom: 20px;
+
+
+}
 #Nav_Blog{    background-color: var(--Colour-Purple);}
 
 @media screen and (max-width: 800px) {
@@ -60,3 +68,21 @@ list-style: none;
         flex-direction: column;
     }
 }
+
+WrappedGreen,WrappedRed,WrappedBlue,
+code,
+pre,
+.Wrapped{
+    width: 90%;
+    padding-left: 10px;
+    background-color: #1d1d1d;
+    margin: 8px 0;
+    border-radius: 0 0.7rem 0.7rem 0;
+}
+
+WrappedGreen,
+.Wrapped{border-left: solid var(--Colour-Green) 4px;}
+WrappedBlue,
+code{border-left: solid var(--Colour-Blue) 4px;}
+WrappedRed,
+pre{border-left: solid var(--Colour-Red) 4px;}

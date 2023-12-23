@@ -11,4 +11,5 @@ module.exports = function(eleventyConfig) {
   // Keeps the same directory structure.
   eleventyConfig.addPassthroughCopy("**/*.jpg");
 
+    eleventyConfig.addPassthroughCopy("robots.txt");
 }

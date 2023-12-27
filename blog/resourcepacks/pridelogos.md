@@ -9,6 +9,10 @@ img: https://cdn.modrinth.com/data/ekBJBgsJ/e34ac7e046b6d7b1a7efa4d6f5ee4017611b
 
 ## Pride Logos Resource Packs
 
+<aside>
+<p>🚨 This is a Work In Progress Page, Here Be Dragons!</p>
+</aside>
+
 The Pride Logos Resource Pack series aims to replace the Minecraft main menu Logo with a variety of Pride Flags 
 
 | Pack          | Versions                     | Links |

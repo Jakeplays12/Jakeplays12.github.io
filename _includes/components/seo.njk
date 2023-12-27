@@ -8,12 +8,14 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{title}}" />
-<meta property="og:description" content="I am a skilled student with a strong passion for pursuing a career in the I.T field. In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator" />
+<meta property="og:description" content="{{ description | default("I am a skilled student with a strong passion for pursuing a career in the I.T field. In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator") }}" />
+<meta property="og:image" content="{{img}}" />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="{{title}}" />
-<meta property="twitter:description" content="I am a skilled student with a strong passion for pursuing a career in the I.T field. In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator" />
+<meta property="twitter:description" content="" />
 <meta name="theme-color" content="#B46DDE">
 
 <meta property="og:site_name" content="Jakeplays12"><meta property="og:url" content="{{url}}">
 <script src="https://kit.fontawesome.com/3dadb7c9ae.js" crossorigin="anonymous"></script>
+

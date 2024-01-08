@@ -2,21 +2,21 @@
 layout: layout/main.njk
 title: "Home"
 ---
-    <meta name="google-site-verification" content="KJQriX8I4peV3HKH179BiICq3WebAZWnmmOvJsiw17w" />
+
     <link rel="stylesheet" href="/assets/css/index.css">
     <script src="/assets/animations/fade.js" defer></script>
     <link rel="stylesheet" href="/assets/animations/fade.css" />
-
 <div class="Body">
 
-    <div class="Intro" style="width: 80%; margin: auto; " >
+    <div class="Intro" style="width: fit-content; margin: auto; height: fit-content;height: calc(100vh - 80px); align-items: center; display: flex; justify-content: center; flex-direction: column;" >
         <h1 class="Title" style="margin: 0;">Hi there 👋</h1>
         <h2 class="Title GradiantText" style="margin: 20px 0 50px 0">Im Jake (They/He)</h2>
         <p>
-            I am a skilled student with a strong passion for pursuing a career in the I.T field.
-        </p><p>
+I am a skilled student with a strong passion for pursuing a career in the I.T field.<br>
 In my free time, I am a Web Developer, Skade Gaming lead, and a small content creator.
         </p>
     </div>
+
+    {% include "components/index/mywork.njk" %}
 
 </div>

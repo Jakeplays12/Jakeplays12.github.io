@@ -1,8 +1,6 @@
 #Nav_Home{    background-color: var(--Colour-Purple);}
 
-body{
-    background-color: #171717;
-            }
+body{background-color: var(--Background);}
     
             .Title{
     color: var(--Text);
@@ -10,7 +8,7 @@ body{
     font-family: 'Ubuntu', sans-serif;
     font-size: 6rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: normal;
             }
     
@@ -26,7 +24,7 @@ body{
     font-family: 'Ubuntu', sans-serif;
     font-size: 2rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
     text-wrap: balance;
             }

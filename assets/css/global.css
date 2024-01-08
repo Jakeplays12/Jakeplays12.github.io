@@ -3,8 +3,12 @@ body{background-color: var(--Background)}
 html{scroll-behavior: smooth;}
 
 :root{
---Text: #f2e3e3;
---Background: #171717;
+--Text: #fbfbfb;
+--Text-Light: #d9d6dc;
+--Text-Lighter: #a79fac;
+--Background: #1a181b;
+--Foreground: #272329;
+--Border: #413b45;
 
 --Colour-Green-Lighter: #baffff;
 --Colour-Green-Light: #a0efda;

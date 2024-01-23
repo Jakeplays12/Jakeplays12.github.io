@@ -1,0 +1,205 @@
+<head>
+    <style>
+        body {
+            color: black;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #inputContainer {
+            margin: 20px auto;
+        }
+.inputRow input,
+.inputRow button{
+    box-sizing: border-box;
+    border: 0px;
+    padding: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 5px 5px darkblue;
+    min-width: 90px;
+}
+
+#clearButton,
+#convertButton,
+#copyToClipboardButton,
+#dateInput,
+#nameInput
+{transition: box-shadow 0.3s ease-in-out;}
+
+
+#clearButton{box-shadow: 5px 5px red;}
+#convertButton{box-shadow: 5px 5px green;}
+#copyToClipboardButton{box-shadow: 5px 5px purple;}
+
+#clearButton:hover{box-shadow: -5px -5px red;}
+#convertButton:hover{box-shadow: -5px -5px green;}
+#copyToClipboardButton:hover{box-shadow: -5px -5px purple;}
+
+#dateInput:not(:placeholder-shown) , #nameInput:not(:placeholder-shown) {
+    box-shadow: -5px -5px green;
+}
+
+        .inputRow {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 10px;
+        }
+
+        button {
+            padding: 5px;
+            
+        }
+
+        #outputContainer {
+            width: 60%;
+            margin: 20px auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            min-height: 38vh;
+        }
+
+        .outputItem {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        #output {
+            margin-top: 10px;
+        }
+
+        .deleteButton {
+            background-color: #ffffff00;
+            color: #ff5555;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="centered">
+        <h1>Happening Today Generator</h1>
+        <div id="inputContainer">
+            <div class="inputRow">
+                <input type="text" id="dateInput" placeholder="Enter Time (Local) AM/PM">
+                <input type="text" id="nameInput" placeholder="Enter Name">
+                <button id="convertButton">Add</button>
+                <button id="clearButton">Clear All</button>
+                <button id="copyToClipboardButton">Copy to Clipboard</button>
+            </div>
+        </div>
+        <div id="outputContainer">
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <p style="padding: 20px;">Known Bug: Uses Local Time Instead Of EST</p>
+    <script>
+        const dateInput = document.getElementById('dateInput');
+        const nameInput = document.getElementById('nameInput');
+        const output = document.getElementById('output');
+        const convertButton = document.getElementById('convertButton');
+        const clearButton = document.getElementById('clearButton');
+        const copyToClipboardButton = document.getElementById('copyToClipboardButton');
+        const entries = [];
+    
+        convertButton.addEventListener('click', formatAndDisplayData);
+        clearButton.addEventListener('click', clearAllEntries);
+    
+        function formatAndDisplayData() {
+            const timeValue = dateInput.value;
+            const nameValue = nameInput.value;
+    
+            if (timeValue && nameValue) {
+                const today = new Date();
+                let hours = 0;
+                let minutes = 0;
+    
+                if (/^12am$/i.test(timeValue)) {
+                    hours = 0;
+                } else if (/^12pm$/i.test(timeValue)) {
+                    hours = 12;
+                } else if (!isNaN(timeValue)) {
+                    hours = parseInt(timeValue);
+                } else if (/^\d{1,2}:\d{2}[ap]m$/i.test(timeValue)) {
+                    const timeParts = timeValue.match(/(\d{1,2}):(\d{2})([ap]m)/i);
+                    hours = parseInt(timeParts[1]);
+                    minutes = parseInt(timeParts[2]);
+                    if (timeParts[3].toLowerCase() === 'pm' && hours !== 12) {
+                        hours += 12;
+                    }
+                } else if (/^\d+am$/i.test(timeValue)) {
+                    hours = parseInt(timeValue);
+                } else if (/^\d+pm$/i.test(timeValue)) {
+                    hours = parseInt(timeValue) + 12;
+                }
+    
+                today.setHours(hours, minutes, 0, 0);
+                const unixTimestamp = Math.floor(today.getTime() / 1000);
+                const formattedTimestamp = `<t:${unixTimestamp}:T>`;
+                const outputText = `${formattedTimestamp} - ${nameValue}`;
+    
+                entries.push({ timestamp: unixTimestamp, text: outputText });
+    
+                entries.sort((a, b) => a.timestamp - b.timestamp);
+    
+                output.innerHTML = '';
+    
+                entries.forEach(entry => {
+                    const outputItem = document.createElement('div');
+                    outputItem.className = 'outputItem';
+                    // Use textContent to display the HTML-encoded text
+                    outputItem.textContent = entry.text;
+    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'deleteButton';
+                    deleteButton.textContent = 'X';
+                    deleteButton.addEventListener('click', function() {
+                        const index = entries.indexOf(entry);
+                        if (index !== -1) {
+                            entries.splice(index, 1);
+                            output.removeChild(outputItem);
+                        }
+                    });
+    
+                    outputItem.appendChild(deleteButton);
+                    output.appendChild(outputItem);
+                });
+    
+                dateInput.value = '';  // Clear the date input
+                nameInput.value = '';  // Clear the name input
+            }
+        }
+    
+        function clearAllEntries() {
+            entries.length = 0;
+            output.innerHTML = '';
+        }
+    
+        function copyOutputToClipboard() {
+            if (entries.length > 0) {
+                const formattedOutput = entries.map(entry => entry.text).join('\n');
+                const dummyTextArea = document.createElement('textarea');
+                dummyTextArea.value = formattedOutput;
+                document.body.appendChild(dummyTextArea);
+                dummyTextArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummyTextArea);
+                alert('Copied To Clipboard!');
+            } else {
+                alert('Error: No Output Found.\nPlease Ensure at Least One Line is Included.');
+            }
+        }
+    
+        copyToClipboardButton.addEventListener('click', copyOutputToClipboard);
+    </script>
+    
+    
+</body>
+</html>

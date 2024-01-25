@@ -1,13 +1,19 @@
+
 <head>
+    <title>Unix List Generator</title>
+    <link rel="stylesheet" href="/assets/css/global.css" />
+
     <style>
-        body {
-            color: black;
-            font-family: 'Montserrat', sans-serif;
-        }
+
+        *{font-family: var(--Font);}
+        body{margin: 10px;}
+
+        h1{width: fit-content; margin-inline: auto; color: var(--Text);}
 
         #inputContainer {
             margin: 20px auto;
         }
+
 .inputRow input,
 .inputRow button{
     box-sizing: border-box;
@@ -15,7 +21,7 @@
     padding: 15px;
     margin-left: 10px;
     margin-right: 10px;
-    box-shadow: 5px 5px darkblue;
+    box-shadow: 5px 5px var(--Colour-Green);
     min-width: 90px;
 }
 
@@ -54,7 +60,8 @@
         #outputContainer {
             width: 60%;
             margin: 20px auto;
-            background-color: #333;
+            background-color: var(--Foreground);
+            border: 2px solid var(--Border);
             padding: 20px;
             border-radius: 5px;
             min-height: 38vh;
@@ -69,6 +76,7 @@
 
         #output {
             margin-top: 10px;
+            color: var(--Text);
         }
 
         .deleteButton {
@@ -78,13 +86,14 @@
             padding: 5px 10px;
             cursor: pointer;
         }
+        .note{width: fit-content; margin-inline: auto; color: var(--Text);}
         
     </style>
 </head>
 
 <body>
     <div class="centered">
-        <h1>Happening Today Generator</h1>
+        <h1>Unix List Generator</h1>
         <div id="inputContainer">
             <div class="inputRow">
                 <input type="text" id="dateInput" placeholder="Enter Time (Local) AM/PM">
@@ -99,7 +108,10 @@
         </div>
     </div>
 
-    <p style="padding: 20px;">Known Bug: Uses Local Time Instead Of EST</p>
+    <p class="note" style="padding: 20px;">This uses your local time.</p>
+
+    <p class="note">Last Updated: 25th Jan</p>
+    <p class="note">Updated Styles and changed format of Unix</p>
     <script>
         const dateInput = document.getElementById('dateInput');
         const nameInput = document.getElementById('nameInput');
@@ -142,7 +154,7 @@
     
                 today.setHours(hours, minutes, 0, 0);
                 const unixTimestamp = Math.floor(today.getTime() / 1000);
-                const formattedTimestamp = `<t:${unixTimestamp}:T>`;
+                const formattedTimestamp = `<t:${unixTimestamp}:t>`;
                 const outputText = `${formattedTimestamp} - ${nameValue}`;
     
                 entries.push({ timestamp: unixTimestamp, text: outputText });

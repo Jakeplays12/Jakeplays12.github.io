@@ -1,5 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <title>Unix List Generator</title>
     <link rel="stylesheet" href="/assets/css/global.css" />
 
@@ -80,11 +85,13 @@
         }
 
         .deleteButton {
-            background-color: #ffffff00;
             color: #ff5555;
             border: none;
             padding: 5px 10px;
             cursor: pointer;
+            border: 1px solid var(--Border);
+            border-radius: 16px;
+            background-color: var(--Foreground);
         }
         .note{width: fit-content; margin-inline: auto; color: var(--Text);}
         
@@ -96,7 +103,7 @@
         <h1>Unix List Generator</h1>
         <div id="inputContainer">
             <div class="inputRow">
-                <input type="text" id="dateInput" placeholder="Enter Time (Local) AM/PM">
+                <input type="datetime-local" id="updatedDateInput" name="Date"/>
                 <input type="text" id="nameInput" placeholder="Enter Name">
                 <button id="convertButton">Add</button>
                 <button id="clearButton">Clear All</button>
@@ -110,10 +117,10 @@
 
     <p class="note" style="padding: 20px;">This uses your local time.</p>
 
-    <p class="note">Last Updated: 25th Jan</p>
-    <p class="note">Updated Styles and changed format of Unix</p>
+    <p class="note">Last Updated: 29th Jan</p>
+    <p class="note">Updated to use an input date selector instead of a text box.</p>
     <script>
-        const dateInput = document.getElementById('dateInput');
+        const dateInput = document.getElementById('updatedDateInput'); // Updated to match the new input ID
         const nameInput = document.getElementById('nameInput');
         const output = document.getElementById('output');
         const convertButton = document.getElementById('convertButton');
@@ -125,35 +132,12 @@
         clearButton.addEventListener('click', clearAllEntries);
     
         function formatAndDisplayData() {
-            const timeValue = dateInput.value;
+            const datetimeValue = dateInput.value; // Updated variable name to reflect datetime input
             const nameValue = nameInput.value;
     
-            if (timeValue && nameValue) {
-                const today = new Date();
-                let hours = 0;
-                let minutes = 0;
-    
-                if (/^12am$/i.test(timeValue)) {
-                    hours = 0;
-                } else if (/^12pm$/i.test(timeValue)) {
-                    hours = 12;
-                } else if (!isNaN(timeValue)) {
-                    hours = parseInt(timeValue);
-                } else if (/^\d{1,2}:\d{2}[ap]m$/i.test(timeValue)) {
-                    const timeParts = timeValue.match(/(\d{1,2}):(\d{2})([ap]m)/i);
-                    hours = parseInt(timeParts[1]);
-                    minutes = parseInt(timeParts[2]);
-                    if (timeParts[3].toLowerCase() === 'pm' && hours !== 12) {
-                        hours += 12;
-                    }
-                } else if (/^\d+am$/i.test(timeValue)) {
-                    hours = parseInt(timeValue);
-                } else if (/^\d+pm$/i.test(timeValue)) {
-                    hours = parseInt(timeValue) + 12;
-                }
-    
-                today.setHours(hours, minutes, 0, 0);
-                const unixTimestamp = Math.floor(today.getTime() / 1000);
+            if (datetimeValue && nameValue) {
+                const datetime = new Date(datetimeValue);
+                const unixTimestamp = Math.floor(datetime.getTime() / 1000);
                 const formattedTimestamp = `<t:${unixTimestamp}:t>`;
                 const outputText = `${formattedTimestamp} - ${nameValue}`;
     
@@ -166,7 +150,6 @@
                 entries.forEach(entry => {
                     const outputItem = document.createElement('div');
                     outputItem.className = 'outputItem';
-                    // Use textContent to display the HTML-encoded text
                     outputItem.textContent = entry.text;
     
                     const deleteButton = document.createElement('button');
@@ -184,7 +167,7 @@
                     output.appendChild(outputItem);
                 });
     
-                dateInput.value = '';  // Clear the date input
+                dateInput.value = '';  // Clear the datetime input
                 nameInput.value = '';  // Clear the name input
             }
         }
@@ -211,6 +194,7 @@
     
         copyToClipboardButton.addEventListener('click', copyOutputToClipboard);
     </script>
+    
     
     
 </body>

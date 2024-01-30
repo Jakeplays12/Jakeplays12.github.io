@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/global.css" />
+    <title>Loki Poll Generator</title>
+    
+    <style>
+        .container {
+            margin-top: 30px;
+            width: 300px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--Foreground);
+            border: 3px solid var(--Border);
+            border-radius: 0.3rem;
+            margin-inline: auto;
+        }
+        .CopyButton,
+        #optionsContainer {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            margin-inline: auto;
+        }
+
+        #title,
+        #optionsContainer input {
+            border: none;
+            padding: 3px;
+            background-color: var(--Background);
+            color: var(--Text);
+            border: 1px solid var(--Border);
+            border-radius: 0.3rem;
+            margin: 3px;
+        }
+
+        .container h2 {
+            width: fit-content;
+            margin-inline: auto;
+            color: var(--Text);
+        }
+
+        .VotesContainer {
+            width: fit-content;
+            margin-inline: auto;
+            padding: 6px;
+        }
+
+        .VotesContainer p {
+            color: var(--Text);
+            margin: 0;
+            padding: 0;
+            width: fit-content;
+            margin-inline: auto;
+        }
+
+        .VotesContainer input {
+            border: none;
+            padding: 3px;
+            background-color: var(--Background);
+            color: var(--Text);
+            border: 1px solid var(--Border);
+            border-radius: 0.2rem;
+        }
+
+input{color: var(--Text-Light);}
+
+        * {
+            box-sizing: border-box;
+        }
+
+        hr{
+            width: 95%;
+            border: 1px solid var(--Border);
+        }
+
+        .copy-btn{
+            background-color: var(--Colour-Purple-Dark);
+            border: 0;
+            border: none;
+            padding: 3px;
+            border: 1px solid var(--Border);
+            color: var(--Text-Light);
+            border-radius: 0.2rem;
+            width: 80%;
+            margin-inline: auto;
+        }
+
+        #output{
+            margin: 3px;
+            color: var(--Text-Lighter);
+            font-size:1em;
+            text-wrap: balance;
+            overflow-wrap: break-word;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Loki Poll Generator</h2>
+        <div id="optionsContainer">
+            <input type="text" id="title" oninput="updatePollString() " placeholder="Poll Title">
+            <input type="text" class="optionInput" placeholder="Option 1" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="Option 2" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="Option 3" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="Option 4" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="Option 5" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="Option 6" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="Option 7" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="Option 8" oninput="updatePollString()">
+        </div>
+
+        <hr>
+
+        <div class="VotesContainer">
+            <p>Votes</p>
+            <input type="number" id="votes_given" min="1" max="10" oninput="updatePollString()">
+        </div>
+
+        <hr>
+
+            <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+        
+            <hr>
+
+        <div id="output"></div>
+
+    </div>
+    
+<!--
+    <div class="Preview">
+        <h2>Poll Preview</h2>
+        <div id="previewTitle">Title: </div>
+        <div id="previewOptions">Options:</div>
+        <div id="previewVotesGiven">Votes Given:</div>
+    </div>
+-->
+
+    <script>
+        function updatePollString() {
+            const title = document.getElementById('title').value.trim();
+            const optionInputs = document.getElementsByClassName('optionInput');
+            let options = [];
+            for (let input of optionInputs) {
+                const value = input.value.trim();
+                if (value !== '') {
+                    options.push(value);
+                }
+            }
+            const votesGiven = document.getElementById('votes_given').value.trim();
+
+            let pollString = `/poll title:${title} options:${options.join(',')}`;
+            if (votesGiven !== '') {
+                pollString += ` votes_given:${votesGiven}`;
+            }
+
+            document.getElementById('output').innerText = pollString;
+
+            // Update Preview
+            document.getElementById('previewTitle').innerText = `Title: ${title}`;
+            document.getElementById('previewOptions').innerText = `Options: ${options.join(', ')}`;
+            document.getElementById('previewVotesGiven').innerText = `Votes Given: ${votesGiven}`;
+        }
+
+        function copyToClipboard() {
+            const pollString = document.getElementById('output').innerText;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(pollString)
+                    .then(() => {
+                        alert('Poll string copied to clipboard!');
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy: ', err);
+                        alert('Failed to copy poll string!');
+                    });
+            } else {
+                // Fallback for browsers that do not support Clipboard API
+                const textarea = document.createElement('textarea');
+                textarea.value = pollString;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Poll string copied to clipboard (fallback method)!');
+            }
+        }
+
+    </script>
+</body>
+
+</html>

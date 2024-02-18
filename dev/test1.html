@@ -1,0 +1,99 @@
+---
+layout: layout/main.njk
+title: "Test"
+---
+
+<script>
+// Function to check time and send notification if needed
+function checkTime() {
+    var now = new Date();
+    var minutes = now.getMinutes();
+    var hours = now.getHours();
+
+    // Check if it's 3 minutes before the hour
+    if (minutes >= 57 && minutes <= 59) {
+        // Send notification
+        sendNotification("Event is about to start!");
+    }
+}
+
+// Function to send notification
+function sendNotification(message) {
+    // Check if the browser supports notifications
+    if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+    } else if (Notification.permission === "granted") {
+        // If notification permission is already granted, show the notification
+        new Notification(message);
+    } else if (Notification.permission !== "denied") {
+        // Otherwise, request permission from the user
+        Notification.requestPermission().then(function (permission) {
+            if (permission === "granted") {
+                new Notification(message);
+            }
+        });
+    }
+}
+
+// Check time every minute
+setInterval(checkTime, 60000);
+</script>
+</head>
+<body>
+<h1>Event Notification</h1>
+<p>This page will send a notification every 3 minutes before the hour, every hour while open, notifying you that the event is about to start.</p>
+<button onclick="sendTestNotification()">Test Notification</button>
+<script>
+// Function to send a test notification
+function sendTestNotification() {
+    sendNotification("This is a test notification!");
+}
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Notification</title>
+<script>
+// Function to check time and send notification if needed
+function checkTime() {
+    var now = new Date();
+    var minutes = now.getMinutes();
+    var hours = now.getHours();
+
+    // Check if it's 3 minutes before the hour
+    if (minutes >= 57 && minutes <= 59) {
+        // Send notification
+        sendNotification("Event is about to start!");
+    }
+}
+
+// Function to send notification
+function sendNotification(message) {
+    // Check if the browser supports notifications
+    if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+    } else if (Notification.permission === "granted") {
+        // If notification permission is already granted, show the notification
+        new Notification(message);
+    } else if (Notification.permission !== "denied") {
+        // Otherwise, request permission from the user
+        Notification.requestPermission().then(function (permission) {
+            if (permission === "granted") {
+                new Notification(message);
+            }
+        });
+    }
+}
+
+// Check time every minute
+setInterval(checkTime, 60000);
+</script>
+</head>
+<body>
+<h1>Event Notification</h1>
+<p>This page will send a notification every 3 minutes before the hour, every hour while open, notifying you that the event is about to start.</p>
+</body>
+</html>

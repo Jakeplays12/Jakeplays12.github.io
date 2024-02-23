@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="/assets/css/global.css" />
+    <title>Loki Poll Generator!</title>
+
+    <style>
+        .container {
+            margin-top: 30px;
+            width: 300px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--Foreground);
+            border: 3px solid var(--Border);
+            border-radius: 0.3rem;
+            margin-inline: auto;
+        }
+
+        .CopyButton,
+        #optionsContainer {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            margin-inline: auto;
+        }
+
+        #title,
+        #optionsContainer input {
+            border: none;
+            padding: 3px;
+            background-color: var(--Background);
+            color: var(--Text);
+            border: 1px solid var(--Border);
+            border-radius: 0.3rem;
+            margin: 3px;
+        }
+
+        .container h2 {
+            width: fit-content;
+            margin-inline: auto;
+            color: var(--Text);
+        }
+
+        input {
+            color: var(--Text-Light);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        hr {
+            width: 95%;
+            border: 1px solid var(--Border);
+        }
+
+        .copy-btn {
+            background-color: var(--copybuttoncolor);
+            border: 0;
+            border: none;
+            padding: 3px;
+            border: 1px solid var(--Border);
+            color: var(--Text-Light);
+            border-radius: 0.2rem;
+            width: 80%;
+            margin-inline: auto;
+        }
+
+        #output {
+            margin: 3px;
+            color: var(--Text-Lighter);
+            font-size: 1em;
+            text-wrap: balance;
+            overflow-wrap: break-word;
+            text-align: center;
+            white-space: pre-line; /* This ensures line breaks are respected */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Poll Generator</h2>
+        <div id="optionsContainer">
+            <input type="text" id="title" oninput="updatePollString()" placeholder="Poll Title">
+            <input type="text" class="optionInput" placeholder="❤️" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="🩷" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="🧡" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="💛" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="💚" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="💙" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="🩵" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="💜" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="🤎" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="🩶" oninput="updatePollString()">
+            <input type="text" class="optionInput" placeholder="🤍" oninput="updatePollString()">
+
+        </div>
+
+        <hr>
+
+
+        <button style="--copybuttoncolor: var(--Colour-Purple-Dark)" class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button style="--copybuttoncolor: var(--Colour-Red-Dark); margin-top:5px" class="copy-btn" onclick="reset()">Reset</button>
+
+        <hr>
+
+        <div id="output"></div>
+
+    </div>
+
+    <script>
+        function updatePollString() {
+            const title = document.getElementById('title').value;
+            const options = document.querySelectorAll('.optionInput');
+            let pollString = '';
+
+            if (title.trim() !== '') {
+                pollString += `## ${title}\n\n`;
+            }
+
+            options.forEach(option => {
+                const emoji = option.placeholder.trim();
+                const userInput = option.value.trim();
+                if (userInput !== '') {
+                    pollString += `\`${emoji}\` - ${userInput}\n`;
+                }
+            });
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.textContent = pollString;
+        }
+
+        function copyToClipboard() {
+    const pollString = document.getElementById('output').innerText;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(pollString)
+            .then(() => {
+                alert('Poll string copied to clipboard!');
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy poll string!');
+            });
+    } else {
+        // Fallback for browsers that do not support Clipboard API
+        const textarea = document.createElement('textarea');
+        textarea.value = pollString;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('Poll string copied to clipboard (fallback method)!');
+    }
+
+}
+
+function reset() {
+    // Reset poll title
+    document.getElementById('title').value = '';
+
+    // Reset option inputs
+    const optionInputs = document.querySelectorAll('.optionInput');
+    optionInputs.forEach(input => {
+        input.value = '';
+    });
+
+    // Clear output
+    document.getElementById('output').textContent = '';
+}
+
+
+    </script>
+</body>
+
+</html>

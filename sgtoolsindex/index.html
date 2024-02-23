@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="/assets/css/global.css" />
+    <title>Index</title>
+
+    <style>
+        .container {
+            margin-top: 30px;
+            width: 50%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--Foreground);
+            border: 3px solid var(--Border);
+            border-radius: 0.3rem;
+            margin-inline: auto;
+        }
+        .container h2 {
+            width: fit-content;
+            margin-inline: auto;
+            color: var(--Text);
+            font-size: var(--Font-H1);
+        }
+
+
+
+        * {
+            box-sizing: border-box;
+        }
+        .container a{
+            width: 80%;
+            padding: 6px;
+            color: var(--Text-Light);
+            text-decoration: none;
+            background-color: var(--LinkBackground);
+            text-align: center;
+            margin-inline:auto;
+            border-radius: 0.3rem;
+            margin-bottom: 5px;
+            font-size: var(--Font-H3);
+            transition: all 0.3s;
+        }
+        .container a:hover{
+            color: var(--Text);
+            background-color: var(--LinkHighlightBackground);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>SG Tools Index</h2>
+
+        <a style="--LinkBackground: var(--Colour-Blue-Darker); --LinkHighlightBackground: var(--Colour-Blue)" href="#">Loki Poll Generator</a>
+        <a style="--LinkBackground: var(--Colour-Red-Darker); --LinkHighlightBackground: var(--Colour-Red)"href="#">Manual Poll Generator</a>
+        <a style="--LinkBackground: var(--Colour-Purple-Darker); --LinkHighlightBackground: var(--Colour-Purple)"href="#">Happening Today Generator</a>
+
+    </div>
+
+
+</body>
+
+</html>

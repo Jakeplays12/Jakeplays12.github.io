@@ -127,7 +127,7 @@
                 const emoji = option.placeholder.trim();
                 const userInput = option.value.trim();
                 if (userInput !== '') {
-                    pollString += `\`${emoji}\` - ${userInput}\n`;
+                pollString += emoji + ' - ' + userInput + '\n';
                 }
             });
 

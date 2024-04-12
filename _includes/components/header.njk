@@ -5,7 +5,7 @@
     </div>
 
     
-    <div class="NavSection" style="margin-right: 1vw;">
+    <div class="NavSection">
 
     <a id="Nav_Home" class="NavItem" href="/"><span>Home</span></a>
 <!--    <a id="Nav_About-Me" class="NavItem" href="/#about-me"><span>About Me</span></a>
@@ -13,5 +13,55 @@
    <a id="Nav_Blog" class="NavItem" href="/blog/"><span>Blog</span></a>
     <a id="Nav_Tools" class="NavItem" href="/tools/"><span>Tools</span></a>
     <a id="Nav_Links" class="NavItem" href="/links/"><span>Links</span></a>
+    <div onclick="SidebarToggle()" id="BurgerIconID" class="NavItem"> <span  class="fa-solid fa-bars burgericon"></span></div>
     </div>
     </div>
+
+    
+
+    <div id="SideBar" class="SideBar">
+
+        <span class="SideBarItemNH" style="justify-content: center;">Jakeplays12</span> <!-- Wow just centered an item-->
+
+        <a href="/" class="SideBarItem"><span>Home</span></a>
+        <a href="/blog/" class="SideBarItem"><span>Blog</span></a>
+        <a href="/links/" class="SideBarItem"><span>Links</span></a>
+
+        <hr>
+        <a href="/tools/" class="SideBarItem"><span>Tools</span></a>
+        <a href="/tools/textstyles/" class="SideBarItem"><span>Text Formatting</span></a>
+        <a href="/tools/cit/" class="SideBarItem"><span>CIT Scanner</span></a>
+        <a href="/tools/discordcolours/" class="SideBarItem"><span>Discord Roles</span></a>
+
+        <div class="SideBarSpacer"></div>
+
+        <hr>
+
+        <div style="flex-direction: row; margin-inline: auto;">
+
+            <a target=”_blank” href="https://github.com/Jakeplays12"><i class="SideBarIcon fa-brands fa-github"></i></a>
+            <a target=”_blank” href="https://www.instagram.com/jplays_12/"><i class="SideBarIcon fa-brands fa-instagram"></i></a>
+            <a target=”_blank” href="https://www.threads.net/@jplays_12"><i class="SideBarIcon fa-brands fa-threads"></i></a>
+
+    </div>
+
+    <div style="flex-direction: row; margin-inline: auto;">
+        <a target=”_blank” href="https://www.tiktok.com/@jakeplays_12"><i class="SideBarIcon fa-brands fa-tiktok"></i></a>
+        <a target=”_blank” href="https://www.youtube.com/channel/UC2dh_DhAFeVl-3iNrnmZpew"><i class="SideBarIcon fa-brands fa-youtube"></i></a>
+        <a target=”_blank” href="mailto:jakeplays12business@gmail.com"><i class="SideBarIcon fa-solid fa-envelope"></i></a>
+        <a target=”_blank” href="/links/"><i class="SideBarIcon fa-solid fa-link"></i></a>
+    </div>
+    
+    </div>
+
+    <script>
+        function SidebarToggle() {
+
+  var element = document.getElementById("SideBar");
+  element.classList.toggle("SideBarActive");
+
+  var element = document.getElementById("BurgerIconID");
+  element.classList.toggle("burgericonActive");
+
+    }
+    </script>

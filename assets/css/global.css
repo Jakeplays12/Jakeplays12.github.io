@@ -10,17 +10,19 @@ html{scroll-behavior: smooth;}
 --Foreground: #272329;
 --Border: #413b45;
 
+--Text-Shadow: rgba(0, 0, 0, 0.333);
+
 --Colour-Green-Lighter: #baffff;
 --Colour-Green-Light: #a0efda;
 --Colour-Green: #85c7b6;
---Colour-Green-Dark: #6a9f92;
---Colour-Green-Darker: #50776d;
+--Colour-Green-Dark: #43645b;
+--Colour-Green-Darker: #1b2824;
 
 --Colour-Blue-Lighter: #ddffff;
 --Colour-Blue-Light: #beebff;
 --Colour-Blue: #9EC4EE;
---Colour-Blue-Dark: #7e9dbe;
---Colour-Blue-Darker: #5f768f;
+--Colour-Blue-Dark: #4f6277;
+--Colour-Blue-Darker: #202730;
 
 --Colour-Purple-Lighter: #fc99ff;
 --Colour-Purple-Light: #d883ff;
@@ -49,7 +51,69 @@ html{scroll-behavior: smooth;}
 html,body{padding: 0;margin: 0;}
 *{font-family: var(--Font);}
 
+/* SideBar */
+
+.SideBar{
+    transform: translate(30vw, 0);
+    right:0;
+    bottom: 0;
+    position: fixed;
+    z-index: 50;
+    top:40px;
+    background-color: var(--Colour-Blue-Darker);
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    color: var(--Text);
+    transition: all 0.3s ease;
+    border-left: 2px solid var(--Border);
+    visibility: hidden;
+}
+
+.SideBarActive{
+    visibility: visible;
+    transform: translate(0, 0);
+}
+
+.SideBar hr{
+    width: 90%;
+    border: 1px solid var(--Text-Lighter);;
+}
+
+.SideBarItem{cursor: pointer;}
+
+.SideBarItem,.SideBarItemNH{
+    padding: 0 5px;
+    font-size: 18px;
+    min-height: 40px;
+    align-items: center;
+    display: flex;   
+    transition: background-color 0.3s ease;
+}
+.SideBarItem:hover{
+    background-color: var(--Colour-Green-Dark);
+}
+
+.SideBar span{
+    padding: 0 10px;
+    text-align: right;
+    text-shadow: -2px 2px 1px var(--Text-Shadow);
+}
+
+.SideBarIcon{
+    font-size: 20px;
+    color: var(--Text);
+    margin-inline: 1px;
+    padding: 3px;
+    transition: all 0.3s ease;
+}
+.SideBarIcon:hover{color: var(--Colour-Green); transform: scale(1.4);}
+
+.SideBarSpacer{flex: 1;
+}
 /* Nav */
+.burgericon{font-size: 30px; transition: color 0.3s ease;}
+.burgericonActive{color: var(--Colour-Green); background-color: var(--Colour-Blue-Darker);}
 
 .Header {
     top: 0;
@@ -69,6 +133,7 @@ html,body{padding: 0;margin: 0;}
 .Footer a{
     text-decoration: none;
 }
+.SideBarItem,.SideBarItemNH,
     .NavItemNoFade,
     .NavItem{
         height: 40px;
@@ -88,8 +153,9 @@ html,body{padding: 0;margin: 0;}
         
         .NavItemNoFade,
         .NavItem span{
-            text-shadow: -2px 2px 1px var(--Colour-Purple-Darker);
+            text-shadow: -2px 2px 1px var(--Text-Shadow);
         }
+        
         .Header img{height: 90%;padding: 0;margin: auto;}
 
 .NavItem{transition: background-color ease 0.3s;}
@@ -128,5 +194,5 @@ html,body{padding: 0;margin: 0;}
   }
 
   .Footer span{
-    text-shadow: -2px 2px 1px var(--Colour-Purple-Darker);  
+    text-shadow: -2px 2px 1px var(--Text-Shadow);
   }

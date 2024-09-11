@@ -1,5 +1,5 @@
 ---
-layout: layout/main.njk
+layout: layout/blog.njk
 title: "Discord Bot Privacy & TOS"
 ---
 

@@ -51,7 +51,7 @@ Open Prism Launcher and select `Add Instance`.
 ### Step 2: Import Modpack
 In the "New Instance" menu, select `Import` and then `Browse`. Choose the modpack zip file from the file manager that Prism opened, then click OK at the bottom of the Instance menu.
 
-![Import Modpack](/assets/img/blog/spoth/Prism3.png)
+![Import Modpack](/assets/img/blog/spoth/Prism2.png)
 
 Wait for the modpack to download, then click **Play**! Enjoy your game!
 

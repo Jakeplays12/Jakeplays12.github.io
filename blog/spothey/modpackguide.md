@@ -25,12 +25,12 @@ To start, download the modpack zip file from [Spothey's Hangout Discord Server](
 If you don't already have the CurseForge app, download it from [CurseForge's official site](https://www.curseforge.com/download/app).
 
 ### Step 2: Log In and Create a Profile
-Once installed, log in if needed. Select **Minecraft** and click `Create Custom Profile`.
+Once installed, log in if needed. Select **Minecraft** and click **Create Custom Profile**.
 
 ![Create Profile](/assets/img/blog/spoth/curseforgehome.png)
 
 ### Step 3: Import Modpack
-Click `Import` to use a previously created profile and select the modpack zip file you downloaded.
+Click **Import** to use a previously created profile and select the modpack zip file you downloaded.
 
 ![Import Modpack](/assets/img/blog/spoth/importprofile.png)
 
@@ -44,12 +44,12 @@ Wait for the modpack to download, then click **Play**! Enjoy your game!
 This guide focuses on downloading the modpack for Prism Launcher, not the installation of Prism Launcher itself.
 
 ### Step 1: Add Instance
-Open Prism Launcher and select `Add Instance`.
+Open Prism Launcher and select **Add Instance**.
 
 ![Add Instance](/assets/img/blog/spoth/Prism1.png)
 
 ### Step 2: Import Modpack
-In the "New Instance" menu, select `Import` and then `Browse`. Choose the modpack zip file from the file manager that Prism opened, then click OK at the bottom of the Instance menu.
+In the "New Instance" menu, select **Import** and then **Browse**. Choose the modpack zip file from the file manager that Prism opened, then click OK at the bottom of the Instance menu.
 
 ![Import Modpack](/assets/img/blog/spoth/Prism2.png)
 

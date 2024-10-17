@@ -59,4 +59,8 @@ Wait for the modpack to download, then click **Play**! Enjoy your game!
   .Data .Sidebar{
     display:none;
   }
+
+  .Content img {
+    max-width: 50%;
+}
 </style>

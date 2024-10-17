@@ -105,49 +105,42 @@
     <div class="Content">
 
 
-    <link rel="stylesheet" href="/assets/css/tools_textstyles.css">
+<link rel="stylesheet" href="/assets/css/tools_textstyles.css">
 
 <div class="title"> <h1>Text Style Converter</h1> </div>
 
-  <div class="StyleButtonsContainer">
-    <label class="Label2" style="font-weight: bold; font-family: 'Ubuntu', sans-serif;">Select a style:</label>
-    <div>
-      <button class="StyleButton ActiveStyleButton" id="style-fancy" onclick="selectStyle('fancy')">Fancy</button>
-      <button class="StyleButton" id="style-fancy-bold" onclick="selectStyle('fancy-bold')">Fancy Bold</button>
-      <button class="StyleButton" id="style-double" onclick="selectStyle('double')">Double</button>
-      <button class="StyleButton" id="style-smallcaps" onclick="selectStyle('smallcaps')">Smallcaps</button>
-        <button class="StyleButton" id="fraktur" onclick="selectStyle('fraktur')">Fraktur</button>
-    </div>
+<div class="StyleButtonsContainer">
+  <label class="Label2" style="font-weight: bold; font-family: 'Ubuntu', sans-serif;">Select a style:</label>
+  <div>
+    <button class="StyleButton ActiveStyleButton" id="style-fancy" onclick="selectStyle('fancy')">Fancy</button>
+    <button class="StyleButton" id="style-fancy-bold" onclick="selectStyle('fancy-bold')">Fancy Bold</button>
+    <button class="StyleButton" id="style-double" onclick="selectStyle('double')">Double</button>
+    <button class="StyleButton" id="style-smallcaps" onclick="selectStyle('smallcaps')">Smallcaps</button>
+    <button class="StyleButton" id="fraktur" onclick="selectStyle('fraktur')">Fraktur</button>
+    <button class="StyleButton" id="double-struck" onclick="selectStyle('double-struck')">Double Struck</button>
   </div>
-  
-  <div class="ContainerForContainers">
+</div>
 
+<div class="ContainerForContainers">
   <div class="Left-container">
-  
     <label class="Label1" for="input-text">Enter your text</label>
     <textarea class="InputTextClass" id="input-text" oninput="convertText()"></textarea>
-
   </div>
   <div class="Right-container">
     <div class="OutputTextClass" contenteditable="true" data-placeholder="Converted text will appear here" id="converted-text"></div>
   </div>
-  
-
-  </div>
 </div>
-</body>
-
-
 
 <script>
     const styles = {
-    fancy: ['𝒜', '𝐵', '𝒞', '𝒟', '𝐸', '𝐹', '𝒢', '𝐻', '𝐼', '𝒥', '𝒦', '𝐿', '𝑀', '𝒩', '𝒪', '𝒫', '𝒬', '𝑅', '𝒮', '𝒯', '𝒰', '𝒱', '𝒲', '𝒳', '𝒴', '𝒵'],
-    'fancy-bold': ['𝓐', '𝓑', '𝓒', '𝓓', '𝓔', '𝓕', '𝓖', '𝓗', '𝓘', '𝓙', '𝓚', '𝓛', '𝓜', '𝓝', '𝓞', '𝓟', '𝓠', '𝓡', '𝓢', '𝓣', '𝓤', '𝓥', '𝓦', '𝓧', '𝓨', '𝓩'],
-    double: ['𝔸', '𝔹', 'ℂ', '𝔻', '𝔼', '𝔽', '𝔾', 'ℍ', '𝕀', '𝕁', '𝕂', '𝕃', '𝕄', 'ℕ', '𝕆', 'ℙ', 'ℚ', 'ℝ', '𝕊', '𝕋', '𝕌', '𝕍', '𝕎', '𝕏', '𝕐', 'ℤ'],
-    smallcaps: ['ᴀ', 'ʙ', 'ᴄ', 'ᴅ', 'ᴇ', 'ꜰ', 'ɢ', 'ʜ', 'ɪ', 'ᴊ', 'ᴋ', 'ʟ', 'ᴍ', 'ɴ', 'ᴏ', 'ᴘ', 'ǫ', 'ʀ', 'ꜱ', 'ᴛ', 'ᴜ', 'ᴠ', 'ᴡ', 'x', 'ʏ', 'ᴢ'],
-    fraktur: ['𝔞', '𝔟', '𝔠', '𝔡', '𝔢', '𝔣', '𝔤', '𝔥', '𝔦', '𝔧', '𝔨', '𝔩', '𝔪', '𝔫', '𝔬', '𝔭', '𝔮', '𝔯', '𝔰', '𝔱', '𝔲', '𝔳', '𝔴', '𝔵', '𝔶', '𝔷']
+    fancy: ['𝒜', '𝐵', '𝒞', '𝒟', '𝐸', '𝐹', '𝒢', '𝐻', '𝐼', '𝒥', '𝒦', '𝐿', '𝑀', '𝒩', '𝒪', '𝒫', '𝒬', '𝑅', '𝒮', '𝒯', '𝒰', '𝒱', '𝒲', '𝒳', '𝒴', '𝒵', '𝒶', '𝒷', '𝒸', '𝒹', '𝑒', '𝒻', '𝑔', '𝒽', '𝒾', '𝒿', '𝓀', '𝓁', '𝓂', '𝓃', '𝑜', '𝓅', '𝓆', '𝓇', '𝓈', '𝓉', '𝓊', '𝓋', '𝓌', '𝓍', '𝓎', '𝓏'],
+    'fancy-bold': ['𝓐', '𝓑', '𝓒', '𝓓', '𝓔', '𝓕', '𝓖', '𝓗', '𝓘', '𝓙', '𝓚', '𝓛', '𝓜', '𝓝', '𝓞', '𝓟', '𝓠', '𝓡', '𝓢', '𝓣', '𝓤', '𝓥', '𝓦', '𝓧', '𝓨', '𝓩', '𝓪', '𝓫', '𝓬', '𝓭', '𝓮', '𝓯', '𝓰', '𝓱', '𝓲', '𝓳', '𝓴', '𝓵', '𝓶', '𝓷', '𝓸', '𝓹', '𝓺', '𝓻', '𝓼', '𝓽', '𝓾', '𝓿', '𝔀', '𝔁', '𝔂', '𝔃'],
+    double: ['𝔸', '𝔹', 'ℂ', '𝔻', '𝔼', '𝔽', '𝔾', 'ℍ', '𝕀', '𝕁', '𝕂', '𝕃', '𝕄', 'ℕ', '𝕆', 'ℙ', 'ℚ', 'ℝ', '𝕊', '𝕋', '𝕌', '𝕍', '𝕎', '𝕏', '𝕐', 'ℤ', '𝕒', '𝕓', '𝕔', '𝕕', '𝕖', '𝕗', '𝕘', '𝕙', '𝕚', '𝕛', '𝕜', '𝕝', '𝕞', '𝕟', '𝕠', '𝕡', '𝕢', '𝕣', '𝕤', '𝕥', '𝕦', '𝕧', '𝕨', '𝕩', '𝕪', '𝕫'],
+    smallcaps: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'ᴀ', 'ʙ', 'ᴄ', 'ᴅ', 'ᴇ', 'ꜰ', 'ɢ', 'ʜ', 'ɪ', 'ᴊ', 'ᴋ', 'ʟ', 'ᴍ', 'ɴ', 'ᴏ', 'ᴘ', 'ǫ', 'ʀ', 'ꜱ', 'ᴛ', 'ᴜ', 'ᴠ', 'ᴡ', 'x', 'ʏ', 'ᴢ'],
+    fraktur: ['𝔄', '𝔅', 'ℭ', '𝔇', '𝔈', '𝔉', '𝔊', 'ℌ', 'ℑ', '𝔍', '𝔎', '𝔏', '𝔐', '𝔑', '𝔒', '𝔓', '𝔔', 'ℜ', '𝔖', '𝔗', '𝔘', '𝔙', '𝔚', '𝔛', '𝔜', 'ℨ', '𝔞', '𝔟', '𝔠', '𝔡', '𝔢', '𝔣', '𝔤', '𝔥', '𝔦', '𝔧', '𝔨', '𝔩', '𝔪', '𝔫', '𝔬', '𝔭', '𝔮', '𝔯', '𝔰', '𝔱', '𝔲', '𝔳', '𝔴', '𝔵', '𝔶', '𝔷'],
+    'double-struck': ['𝔸', '𝔹', 'ℂ', '𝔻', '𝔼', '𝔽', '𝔾', 'ℍ', '𝕀', '𝕁', '𝕂', '𝕃', '𝕄', 'ℕ', '𝕆', 'ℙ', 'ℚ', 'ℝ', '𝕊', '𝕋', '𝕌', '𝕍', '𝕎', '𝕏', '𝕐', 'ℤ', '𝕒', '𝕓', '𝕔', '𝕕', '𝕖', '𝕗', '𝕘', '𝕙', '𝕚', '𝕛', '𝕜', '𝕝', '𝕞', '𝕟', '𝕠', '𝕡', '𝕢', '𝕣', '𝕤', '𝕥', '𝕦', '𝕧', '𝕨', '𝕩', '𝕪', '𝕫']
   };
-  
+
   const specialCharacters = [
     { char: '\t', replacement: '&nbsp;&nbsp;' },
     { char: '\n', replacement: '<br>' },
@@ -157,15 +150,15 @@
     { char: '"', replacement: '&quot;' },
     { char: "'", replacement: '&#39;' }
   ];
-  
+
   var selectedStyle = 'fancy';
-  
+
   function selectStyle(style) {
     selectedStyle = style;
     updateStyleButtons();
     convertText();
   }
-  
+
   function updateStyleButtons() {
     var buttons = document.getElementsByClassName('StyleButton');
   
@@ -178,7 +171,7 @@
       }
     }
   }
-  
+
   function convertText() {
     var inputText = document.getElementById('input-text').value;
     var convertedText = '';
@@ -197,10 +190,10 @@
   
       if (char >= 'a' && char <= 'z') {
         var index = char.charCodeAt(0) - 97;
-        convertedChar = styles[selectedStyle][index] || char;
+        convertedChar = styles[selectedStyle][index + 26] || char; // +26 to get the lowercase
       } else if (char >= 'A' && char <= 'Z') {
         var index = char.charCodeAt(0) - 65;
-        convertedChar = styles[selectedStyle][index] || char;
+        convertedChar = styles[selectedStyle][index] || char; // Uppercase letters
       }
   
       convertedText += convertedChar;
@@ -208,13 +201,11 @@
   
     document.getElementById('converted-text').innerHTML = convertedText;
   }
-  
+
   // Set the default style to "fancy"
   updateStyleButtons();
-  convertText();
-  
-
 </script>
+
 
 
     </div>

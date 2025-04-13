@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday To-Do List</title>
+    <style>
+        :root {
+            --primary: #bb86fc;
+            --primary-variant: #3700b3;
+            --secondary: #03dac6;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --surface-2: #2d2d2d;
+            --surface-3: #3d3d3d;
+            --error: #cf6679;
+            --text-primary: #e1e1e1;
+            --text-secondary: #b0b0b0;
+            --text-disabled: #777777;
+            --border: #424242;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: var(--surface);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+  background: linear-gradient(to right, #bb86fc, #cf6679, #cf6679);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 10px;
+}
+        
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        .header-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .header-item input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background-color: var(--surface-2);
+            color: var(--text-primary);
+        }
+        
+        .todo-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            background-color: var(--surface-2);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .form-group {
+            flex: 1 1 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background-color: var(--surface-3);
+            color: var(--text-primary);
+        }
+        
+        .form-group select option {
+            background-color: var(--surface-3);
+            color: var(--text-primary);
+        }
+        
+        .form-group .input-with-dropdown {
+            position: relative;
+        }
+        
+        .form-group .input-with-dropdown input {
+            width: 100%;
+            padding-right: 40px;
+        }
+        
+        .form-group .dropdown-toggle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            background-color: var(--surface-3);
+            border: 1px solid var(--border);
+            border-left: none;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+        
+        .form-group .dropdown-toggle:hover {
+            background-color: var(--surface-2);
+        }
+        
+        .form-group .dropdown-toggle::after {
+            content: "▼";
+            font-size: 12px;
+        }
+        
+        .form-group .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--surface-3);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-group .dropdown-menu.show {
+            display: block;
+        }
+        
+        .form-group .dropdown-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+        
+        .form-group .dropdown-item:hover {
+            background-color: var(--surface-2);
+        }
+        
+        .emoji-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .emoji-item .emoji {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--primary-variant);
+            color: white;
+        }
+        
+        .add-btn {
+            flex: 1 1 100%;
+        }
+        
+        .todo-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+        
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .todo-item:hover {
+            background-color: var(--surface-2);
+        }
+        
+        .todo-emoji {
+            font-size: 20px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .todo-title {
+            flex: 1;
+            font-weight: bold;
+        }
+        
+        .todo-assignee {
+            background-color: var(--primary-variant);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .todo-status {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .status-red {
+            background-color: #f44336;
+        }
+        
+        .status-orange {
+            background-color: #ff9800;
+        }
+        
+        .status-yellow {
+            background-color: #ffeb3b;
+        }
+        
+        .status-green {
+            background-color: #4caf50;
+        }
+        
+        .delete-btn {
+            background-color: transparent;
+            color: var(--error);
+            font-size: 18px;
+            padding: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .export-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .export-btn:hover {
+            background-color: #218838;
+        }
+        
+        .clear-btn {
+            background-color: var(--error);
+            color: white;
+        }
+        
+        .clear-btn:hover {
+            background-color: #b82c40;
+        }
+        
+        .copy-btn {
+            background-color: var(--secondary);
+            color: #000;
+        }
+        
+        .copy-btn:hover {
+            background-color: #03b0a0;
+        }
+        
+        #export-output {
+            background-color: var(--surface-2);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        @media (max-width: 600px) {
+            .todo-item {
+                flex-wrap: wrap;
+            }
+            
+            .todo-assignee {
+                margin-left: 40px;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Birthday To-Do List</h1>
+        
+        <div class="header-info">
+            <div class="header-item">
+                <span>📋 BO:</span>
+                <input type="text" id="coordinator" placeholder="Add organizer name">
+            </div>
+            <div class="header-item">
+                <span>🕙 Time to Complete:</span>
+                <input type="text" id="deadline" placeholder="Add deadline">
+            </div>
+        </div>
+        
+        <div class="todo-form">
+            <div class="form-group">
+                <label for="emoji">Emoji</label>
+                <div class="input-with-dropdown">
+                    <input type="text" id="emoji" placeholder="🧁">
+                    <button type="button" class="dropdown-toggle" onclick="toggleDropdown('emojiDropdown')"></button>
+                    <div class="dropdown-menu" id="emojiDropdown">
+                        <!-- Emoji presets will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <div class="input-with-dropdown">
+                    <input type="text" id="title" placeholder="Cake">
+                    <button type="button" class="dropdown-toggle" onclick="toggleDropdown('titleDropdown')"></button>
+                    <div class="dropdown-menu" id="titleDropdown">
+                        <!-- Title presets will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="assignee">Assignee</label>
+                <div class="input-with-dropdown">
+                    <input type="text" id="assignee" placeholder="Lil' Skade">
+                    <button type="button" class="dropdown-toggle" onclick="toggleDropdown('assigneeDropdown')"></button>
+                    <div class="dropdown-menu" id="assigneeDropdown">
+                        <!-- Assignee presets will be populated here -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="red">🟥 Red</option>
+                    <option value="orange">🟧 Orange</option>
+                    <option value="green">✅ Green</option>
+                </select>
+            </div>
+            <button class="add-btn" onclick="addTodoItem()">Add Task</button>
+        </div>
+        
+        <ul class="todo-list" id="todoList">
+            <!-- Todo items will be added here -->
+        </ul>
+        
+        <div class="controls">
+            <button class="export-btn" onclick="exportList()">Export as Text</button>
+            <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button class="clear-btn" onclick="clearList()">Clear All</button>
+        </div>
+    </div>
+    
+    <script>
+        // Preset data
+        const emojiPresets = [
+            { emoji: '🧁', name: 'Cake' },
+            { emoji: '🚶', name: 'Paths' },
+            { emoji: '🌲', name: 'Trees' },
+            { emoji: '🏔️', name: 'Terraforming' },
+            { emoji: '🧍‍♂️', name: 'Statue' },
+            { emoji: '🎵', name: 'Song' },
+            { emoji: '🅰️', name: 'Sign' },
+            { emoji: '🎨', name: 'Pixel Art' }
+        ];
+        
+        const titlePresets = [
+            'Cake', 
+            'Paths', 
+            'Trees', 
+            'Terraforming', 
+            'Statue', 
+            'Song', 
+            'Birthday Sign', 
+        ];
+        
+const assigneePresets = [
+    'Benx',
+    'Blue',
+    'DriverTech',
+    'Evan',
+    'Galaxy',
+    'LambAndHam',
+    'Lord',
+    'Magic',
+    'Phoenix',
+    'RinElf',
+    'Rosie',
+    'Rylee',
+    'Spunjy',
+    'Super Trash Nash',
+    'Tarren',
+];
+        
+        // Populate dropdowns on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            populateEmojiDropdown();
+            populateTitleDropdown();
+            populateAssigneeDropdown();
+            loadFromLocalStorage();
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    if (!event.target.closest('.input-with-dropdown')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            });
+        });
+        
+        function populateEmojiDropdown() {
+            const dropdown = document.getElementById('emojiDropdown');
+            
+            emojiPresets.forEach(item => {
+                const element = document.createElement('div');
+                element.className = 'dropdown-item emoji-item';
+                element.innerHTML = `
+                    <span class="emoji">${item.emoji}</span>
+                    <span>${item.name}</span>
+                `;
+                element.onclick = function() {
+                    document.getElementById('emoji').value = item.emoji;
+                    dropdown.classList.remove('show');
+                };
+                dropdown.appendChild(element);
+            });
+        }
+        
+        function populateTitleDropdown() {
+            const dropdown = document.getElementById('titleDropdown');
+            
+            titlePresets.forEach(title => {
+                const element = document.createElement('div');
+                element.className = 'dropdown-item';
+                element.textContent = title;
+                element.onclick = function() {
+                    document.getElementById('title').value = title;
+                    dropdown.classList.remove('show');
+                };
+                dropdown.appendChild(element);
+            });
+        }
+        
+        function populateAssigneeDropdown() {
+            const dropdown = document.getElementById('assigneeDropdown');
+            
+            assigneePresets.forEach(assignee => {
+                const element = document.createElement('div');
+                element.className = 'dropdown-item';
+                element.textContent = assignee;
+                element.onclick = function() {
+                    document.getElementById('assignee').value = assignee;
+                    dropdown.classList.remove('show');
+                };
+                dropdown.appendChild(element);
+            });
+        }
+        
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            
+            // Close all other dropdowns first
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu.id !== id) {
+                    menu.classList.remove('show');
+                }
+            });
+            
+            dropdown.classList.toggle('show');
+            event.stopPropagation();
+        }
+        
+        function addTodoItem() {
+            const emoji = document.getElementById('emoji').value.trim() || '🧁';
+            const title = document.getElementById('title').value.trim();
+            const assignee = document.getElementById('assignee').value.trim();
+            const statusSelect = document.getElementById('status');
+            const status = statusSelect.value;
+            const statusText = statusSelect.options[statusSelect.selectedIndex].text.split(' ')[0];
+            
+            if (!title) {
+                alert('Please enter a task title');
+                return;
+            }
+            
+            const todoList = document.getElementById('todoList');
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+            
+            // Create the elements for the task
+            const emojiSpan = document.createElement('span');
+            emojiSpan.className = 'todo-emoji';
+            emojiSpan.textContent = emoji;
+            
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'todo-title';
+            titleSpan.textContent = title;
+            
+            const assigneeSpan = document.createElement('span');
+            assigneeSpan.className = 'todo-assignee';
+            assigneeSpan.textContent = assignee;
+            
+            const statusSpan = document.createElement('span');
+            statusSpan.className = `todo-status status-${status}`;
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '&times;';
+            deleteBtn.onclick = function() {
+                todoList.removeChild(li);
+                saveToLocalStorage();
+            };
+            
+            li.appendChild(emojiSpan);
+            li.appendChild(titleSpan);
+            li.appendChild(assigneeSpan);
+            li.appendChild(statusSpan);
+            li.appendChild(deleteBtn);
+            
+            // Store data attributes for export
+            li.dataset.emoji = emoji;
+            li.dataset.title = title;
+            li.dataset.assignee = assignee;
+            li.dataset.status = status;
+            li.dataset.statusText = statusText;
+            
+            // Add the new task to the list
+            todoList.appendChild(li);
+            
+            // Reset form fields
+            document.getElementById('emoji').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('assignee').value = '';
+            document.getElementById('status').value = 'red';
+            
+            // Save to localStorage
+            saveToLocalStorage();
+            
+            // Add to presets if new
+            if (!emojiPresets.some(e => e.emoji === emoji)) {
+                const newEmoji = { emoji: emoji, name: title || 'Custom' };
+                emojiPresets.push(newEmoji);
+                
+                // Add to dropdown
+                const dropdown = document.getElementById('emojiDropdown');
+                const element = document.createElement('div');
+                element.className = 'dropdown-item emoji-item';
+                element.innerHTML = `
+                    <span class="emoji">${newEmoji.emoji}</span>
+                    <span>${newEmoji.name}</span>
+                `;
+                element.onclick = function() {
+                    document.getElementById('emoji').value = newEmoji.emoji;
+                    dropdown.classList.remove('show');
+                };
+                dropdown.appendChild(element);
+            }
+            
+            if (!titlePresets.includes(title) && title) {
+                titlePresets.push(title);
+                
+                // Add to dropdown
+                const dropdown = document.getElementById('titleDropdown');
+                const element = document.createElement('div');
+                element.className = 'dropdown-item';
+                element.textContent = title;
+                element.onclick = function() {
+                    document.getElementById('title').value = title;
+                    dropdown.classList.remove('show');
+                };
+                dropdown.appendChild(element);
+            }
+            
+            if (!assigneePresets.includes(assignee) && assignee) {
+                assigneePresets.push(assignee);
+                
+                // Add to dropdown
+                const dropdown = document.getElementById('assigneeDropdown');
+                const element = document.createElement('div');
+                element.className = 'dropdown-item';
+                element.textContent = assignee;
+                element.onclick = function() {
+                    document.getElementById('assignee').value = assignee;
+                    dropdown.classList.remove('show');
+                };
+                dropdown.appendChild(element);
+            }
+        }
+        
+        function saveToLocalStorage() {
+            const todoItems = [];
+            document.querySelectorAll('.todo-item').forEach(item => {
+                todoItems.push({
+                    emoji: item.dataset.emoji,
+                    title: item.dataset.title,
+                    assignee: item.dataset.assignee,
+                    status: item.dataset.status,
+                    statusText: item.dataset.statusText
+                });
+            });
+            
+            // Save header info
+            const headerInfo = {
+                coordinator: document.getElementById('coordinator').value,
+                deadline: document.getElementById('deadline').value
+            };
+            
+            localStorage.setItem('birthdayTodoList', JSON.stringify(todoItems));
+            localStorage.setItem('birthdayTodoHeader', JSON.stringify(headerInfo));
+                    }
+        
+        function loadFromLocalStorage() {
+            // Load custom presets
+            
+            // Load header info
+            const headerInfo = JSON.parse(localStorage.getItem('birthdayTodoHeader')) || {};
+            document.getElementById('coordinator').value = headerInfo.coordinator || '';
+            document.getElementById('deadline').value = headerInfo.deadline || '';
+            
+            // Load todo items
+            const todoItems = JSON.parse(localStorage.getItem('birthdayTodoList')) || [];
+            const todoList = document.getElementById('todoList');
+            
+            todoItems.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'todo-item';
+                
+                const emojiSpan = document.createElement('span');
+                emojiSpan.className = 'todo-emoji';
+                emojiSpan.textContent = item.emoji;
+                
+                const titleSpan = document.createElement('span');
+                titleSpan.className = 'todo-title';
+                titleSpan.textContent = item.title;
+                
+                const assigneeSpan = document.createElement('span');
+                assigneeSpan.className = 'todo-assignee';
+                assigneeSpan.textContent = item.assignee;
+                
+                const statusSpan = document.createElement('span');
+                statusSpan.className = `todo-status status-${item.status}`;
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.innerHTML = '&times;';
+                deleteBtn.onclick = function() {
+                    todoList.removeChild(li);
+                    saveToLocalStorage();
+                };
+                
+                li.appendChild(emojiSpan);
+                li.appendChild(titleSpan);
+                li.appendChild(assigneeSpan);
+                li.appendChild(statusSpan);
+                li.appendChild(deleteBtn);
+                
+                // Store data attributes for export
+                li.dataset.emoji = item.emoji;
+                li.dataset.title = item.title;
+                li.dataset.assignee = item.assignee;
+                li.dataset.status = item.status;
+                li.dataset.statusText = item.statusText;
+                
+                todoList.appendChild(li);
+            });
+        }
+        
+        function exportList() {
+            const coordinator = document.getElementById('coordinator').value;
+            const deadline = document.getElementById('deadline').value;
+            
+            let output = "## Birthday To Do:\n";
+            
+            if (coordinator) {
+                output += `📋 **BO:** ${coordinator}\n`;
+            }
+            
+            if (deadline) {
+                output += `🕙 **Time to Complete:** **${deadline}**\n`;
+            }
+            
+            document.querySelectorAll('.todo-item').forEach(item => {
+                const emoji = item.dataset.emoji;
+                const title = item.dataset.title;
+                const assignee = item.dataset.assignee;
+                const statusText = item.dataset.statusText;
+                
+                output += `> ${emoji} **${title}**: ${assignee} ${statusText} \n`;
+            });
+            
+            // Create a textarea to show the exported text
+            const textarea = document.createElement('textarea');
+            textarea.value = output;
+            textarea.style.width = '100%';
+            textarea.style.height = '200px';
+            textarea.style.marginTop = '20px';
+            textarea.style.padding = '10px';
+            textarea.style.borderRadius = '5px';
+            textarea.style.border = '1px solid var(--border)';
+            textarea.style.backgroundColor = 'var(--surface-2)';
+            textarea.style.color = 'var(--text-primary)';
+            
+            // Add textarea to the page
+            const container = document.querySelector('.container');
+            
+            // Remove existing textarea if any
+            const existingTextarea = document.querySelector('#export-output');
+            if (existingTextarea) {
+                container.removeChild(existingTextarea);
+            }
+            
+            textarea.id = 'export-output';
+            container.appendChild(textarea);
+            
+            // Select the text for easy copying
+            textarea.select();
+        }
+        
+        function copyToClipboard() {
+            // First run the export to generate the text
+            exportList();
+            
+            const textarea = document.querySelector('#export-output');
+            if (textarea) {
+                textarea.select();
+                document.execCommand('copy');
+                
+                // Show feedback
+                alert('Copied to clipboard!');
+            }
+        }
+        
+        function clearList() {
+            if (confirm('Are you sure you want to clear all tasks?')) {
+                document.getElementById('todoList').innerHTML = '';
+                document.getElementById('coordinator').value = '';
+                document.getElementById('deadline').value = '';
+                localStorage.removeItem('birthdayTodoList');
+                localStorage.removeItem('birthdayTodoHeader');
+                
+                // Remove export textarea if exists
+                const existingTextarea = document.querySelector('#export-output');
+                if (existingTextarea) {
+                    existingTextarea.parentNode.removeChild(existingTextarea);
+                }
+                
+                // Keep the presets
+            }
+        }
+    </script>
+</body>
+</html>

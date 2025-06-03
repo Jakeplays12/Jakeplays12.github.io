@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +42,27 @@
 
         }
 
+        .url-info {
+            background-color: #2a2a2a;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .url-info h4 {
+            color: #bb86fc;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .url-info code {
+            background-color: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #03dac6;
+        }
 
         /* Form Styles */
         .form-group {
@@ -141,6 +161,16 @@
             margin-top: 20px;
         }
 
+        .share-btn {
+            margin-left: 10px;
+            background-color: #03dac6;
+            color: #121212;
+        }
+
+        .share-btn:hover {
+            background-color: #00b8a3;
+        }
+
         /* Error Message Styles */
         .error {
             color: #f44336; /* Red error color */
@@ -154,7 +184,7 @@
     <div class="container">
         <h1>Resource Pack Message Builder</h1>
         <span class="subtext">This page updates every second!</span>
-        
+               
         <div class="form-group">
             <label for="title">Pack Title (required):</label>
             <input type="text" id="title" placeholder="Enter pack title. EG: Lil'Skade's Birthday Pack">
@@ -189,18 +219,90 @@
             <h3>Generated Message:</h3>
             <div id="generatedMessage"></div>
             <button onclick="copyToClipboard()" class="copy-btn">Copy to Clipboard</button>
+            <button onclick="shareCurrentForm()" class="copy-btn share-btn">Share Current Form</button>
         </div>
     </div>
 
     <script>
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                title: params.get('title') || '',
+                link: params.get('link') || '',
+                items: params.get('items') === 'true',
+                models: params.get('models') === 'true'
+            };
+        }
+
+        // Function to populate form from URL parameters
+        function populateFromUrl() {
+            const params = getUrlParams();
+            
+            if (params.title) {
+                document.getElementById('title').value = decodeURIComponent(params.title);
+            }
+            
+            if (params.link) {
+                document.getElementById('packLink').value = decodeURIComponent(params.link);
+            }
+            
+            document.getElementById('customItems').checked = params.items;
+            document.getElementById('customModels').checked = params.models;
+        }
+
+        // Function to generate shareable URL
+        function generateShareUrl() {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const params = new URLSearchParams();
+            
+            const title = document.getElementById('title').value.trim();
+            const packLink = document.getElementById('packLink').value.trim();
+            const customItems = document.getElementById('customItems').checked;
+            const customModels = document.getElementById('customModels').checked;
+            
+            if (title) params.set('title', title);
+            if (packLink) params.set('link', packLink);
+            if (customItems) params.set('items', 'true');
+            if (customModels) params.set('models', 'true');
+            
+            const queryString = params.toString();
+            return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+        }
+
+        // Function to share current form
+        function shareCurrentForm() {
+            const shareUrl = generateShareUrl();
+            navigator.clipboard.writeText(shareUrl)
+                .then(() => {
+                    alert('Shareable URL copied to clipboard!');
+                })
+                .catch(err => {
+                    // Fallback for browsers that don't support clipboard API
+                    const textArea = document.createElement('textarea');
+                    textArea.value = shareUrl;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Shareable URL copied to clipboard!');
+                });
+        }
+
+        // Initialize form from URL parameters on page load
+        window.addEventListener('load', function() {
+            populateFromUrl();
+            generateMessage(); // Generate initial message
+        });
+
         // make generateMessage run every second
         setInterval(generateMessage, 1000);
+        
         function generateMessage() {
             let title = document.getElementById('title').value.trim();
             const packLink = document.getElementById('packLink').value.trim();
             const customItems = document.getElementById('customItems').checked;
             const customModels = document.getElementById('customModels').checked;
-
 
             if(title){
                 title = '# ' + title;

@@ -3,56 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>md Social Links Generator</title>
+  <title>Markdown Social Links Generator</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: #f9f9f9;
-      color: #333;
+    :root {
+      /* Dark Mode Variables */
+      --primary-color: #0d6efd;
+      --primary-hover-color: #3d8bfd;
+      --danger-color: #e5484d;
+      --danger-hover-color: #f16c70;
+      --background-color: #121212;
+      --text-color: #e9ecef;
+      --secondary-text-color: #adb5bd;
+      --border-color: #495057;
+      --input-bg-color: #2c2c2c;
+      --card-bg-color: #1e1e1e;
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background: var(--card-bg-color);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+
     h1 {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
     }
+
     label {
       display: block;
-      margin-top: 1rem;
-      font-weight: bold;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--secondary-text-color);
     }
+
     .input-row {
       display: flex;
       align-items: center;
-      margin-top: 0.25rem;
+      gap: 0.75rem;
     }
+
     input[type="text"] {
       flex: 1;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
       font-size: 1rem;
       box-sizing: border-box;
+      background-color: var(--input-bg-color);
+      color: var(--text-color);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
+    }
+
     .toggle-container {
-      margin-left: 0.75rem;
       display: flex;
       align-items: center;
       user-select: none;
     }
-    /* Toggle switch styling */
+
     .switch {
       position: relative;
       display: inline-block;
       width: 40px;
       height: 20px;
     }
+
     .switch input {
       opacity: 0;
       width: 0;
       height: 0;
     }
+
     .slider {
       position: absolute;
       cursor: pointer;
@@ -60,10 +107,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #ccc;
+      background-color: #555;
       transition: 0.4s;
       border-radius: 20px;
     }
+
     .slider:before {
       position: absolute;
       content: "";
@@ -75,205 +123,263 @@
       transition: 0.4s;
       border-radius: 50%;
     }
+
     input:checked + .slider {
-      background-color: #007bff;
+      background-color: var(--primary-color);
     }
+
     input:checked + .slider:before {
       transform: translateX(20px);
     }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
     button {
-      margin-top: 1.5rem;
+      flex: 1;
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      background-color: #007bff;
+      font-weight: 600;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       color: white;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: 100%;
+      transition: background-color 0.3s ease, transform 0.1s ease;
     }
+
     button:hover {
-      background-color: #0056b3;
+      transform: translateY(-2px);
     }
+
+    #copyBtn {
+      background-color: var(--primary-color);
+    }
+
+    #copyBtn:hover {
+      background-color: var(--primary-hover-color);
+    }
+
+    #clearBtn {
+      background-color: var(--danger-color);
+    }
+
+    #clearBtn:hover {
+      background-color: var(--danger-hover-color);
+    }
+
     textarea {
       margin-top: 1.5rem;
       width: 100%;
       height: 200px;
-      font-family: monospace;
-      font-size: 1rem;
-      padding: 0.5rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      font-size: 0.95rem;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
       resize: vertical;
-      background: #fff;
+      background: var(--input-bg-color);
+      color: var(--text-color);
+      box-sizing: border-box;
     }
+
     .copied-msg {
-      margin-top: 0.5rem;
-      color: green;
+      margin-top: 1rem;
+      color: #28a745;
       font-weight: bold;
       text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
       display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Markdown Social Links Generator</h1>
-  <form id="socialForm" onsubmit="return false;">
-    <label for="title">Title</label>
-    <input type="text" id="title" placeholder="Enter title" />
+  <div class="container">
+    <h1>Markdown Social Links Generator</h1>
+    <form id="socialForm" onsubmit="return false;">
+      <label for="title">Title</label>
+      <input type="text" id="title" placeholder="Enter title for the section" />
 
-    <label for="youtube">YouTube</label>
-    <div class="input-row">
-      <input type="text" id="youtube" placeholder="YouTube URL or username" />
-      <div class="toggle-container" title="Toggle angle brackets">
-        <label class="switch">
-          <input type="checkbox" id="youtubeToggle" />
-          <span class="slider"></span>
-        </label>
+      <label for="youtube">YouTube</label>
+      <div class="input-row">
+        <input type="text" id="youtube" placeholder="YouTube URL or username" />
+        <div class="toggle-container" title="Toggle angle brackets for non-standard URLs">
+          <label class="switch">
+            <input type="checkbox" id="youtubeToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
-    </div>
 
-    <label for="instagram">Instagram</label>
-    <div class="input-row">
-      <input type="text" id="instagram" placeholder="Instagram URL or username" />
-      <div class="toggle-container" title="Toggle angle brackets">
-        <label class="switch">
-          <input type="checkbox" id="instagramToggle" />
-          <span class="slider"></span>
-        </label>
+      <label for="instagram">Instagram</label>
+      <div class="input-row">
+        <input type="text" id="instagram" placeholder="Instagram URL or username" />
+        <div class="toggle-container" title="Toggle angle brackets for non-standard URLs">
+          <label class="switch">
+            <input type="checkbox" id="instagramToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
-    </div>
 
-    <label for="tiktok">TikTok</label>
-    <div class="input-row">
-      <input type="text" id="tiktok" placeholder="TikTok URL or username" />
-      <div class="toggle-container" title="Toggle angle brackets">
-        <label class="switch">
-          <input type="checkbox" id="tiktokToggle" />
-          <span class="slider"></span>
-        </label>
+      <label for="tiktok">TikTok</label>
+      <div class="input-row">
+        <input type="text" id="tiktok" placeholder="TikTok URL or username" />
+        <div class="toggle-container" title="Toggle angle brackets for non-standard URLs">
+          <label class="switch">
+            <input type="checkbox" id="tiktokToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
-    </div>
 
-    <label for="threads">Threads</label>
-    <div class="input-row">
-      <input type="text" id="threads" placeholder="Threads URL or username" />
-      <div class="toggle-container" title="Toggle angle brackets">
-        <label class="switch">
-          <input type="checkbox" id="threadsToggle" />
-          <span class="slider"></span>
-        </label>
+      <label for="threads">Threads</label>
+      <div class="input-row">
+        <input type="text" id="threads" placeholder="Threads URL or username" />
+        <div class="toggle-container" title="Toggle angle brackets for non-standard URLs">
+          <label class="switch">
+            <input type="checkbox" id="threadsToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
-    </div>
 
-    <label for="bluesky">BlueSky</label>
-    <div class="input-row">
-      <input type="text" id="bluesky" placeholder="BlueSky URL or username" />
-      <div class="toggle-container" title="Toggle angle brackets">
-        <label class="switch">
-          <input type="checkbox" id="blueskyToggle" />
-          <span class="slider"></span>
-        </label>
+      <label for="bluesky">BlueSky</label>
+      <div class="input-row">
+        <input type="text" id="bluesky" placeholder="BlueSky URL or username" />
+        <div class="toggle-container" title="Toggle angle brackets for non-standard URLs">
+          <label class="switch">
+            <input type="checkbox" id="blueskyToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
-    </div>
 
-    <button id="copyBtn" type="button">Copy Markdown to Clipboard</button>
-  </form>
+      <div class="button-group">
+        <button id="copyBtn" type="button">Copy Markdown</button>
+        <button id="clearBtn" type="button">Clear Form</button>
+      </div>
+    </form>
 
-  <textarea id="output" readonly placeholder="Generated markdown will appear here..."></textarea>
-  <div class="copied-msg" id="copiedMsg">Copied to clipboard!</div>
+    <textarea id="output" readonly placeholder="Generated markdown will appear here..."></textarea>
+    <div class="copied-msg" id="copiedMsg">Copied to clipboard!</div>
+  </div>
 
   <script>
-    const form = document.getElementById("socialForm");
-    const output = document.getElementById("output");
-    const copyBtn = document.getElementById("copyBtn");
-    const copiedMsg = document.getElementById("copiedMsg");
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("socialForm");
+      const output = document.getElementById("output");
+      const copyBtn = document.getElementById("copyBtn");
+      const clearBtn = document.getElementById("clearBtn");
+      const copiedMsg = document.getElementById("copiedMsg");
+      const titleInput = document.getElementById("title");
 
-    const socialPlatforms = [
-      {
-        id: "youtube",
-        label: "YouTube",
-        icon: ":skadesocial_youtube:",
-        toggleId: "youtubeToggle",
-      },
-      {
-        id: "instagram",
-        label: "Instagram",
-        icon: ":skadesocial_instagram:",
-        toggleId: "instagramToggle",
-      },
-      {
-        id: "tiktok",
-        label: "TikTok",
-        icon: ":skadesocial_tiktok:",
-        toggleId: "tiktokToggle",
-      },
-      {
-        id: "threads",
-        label: "Threads",
-        icon: ":skadesocial_threads:",
-        toggleId: "threadsToggle",
-      },
-      {
-        id: "bluesky",
-        label: "BlueSky",
-        icon: ":skadesocial_blusesky:",
-        toggleId: "blueskyToggle",
-      },
-    ];
+      const socialPlatforms = [
+        { id: "youtube", label: "YouTube", icon: ":skadesocial_youtube:", toggleId: "youtubeToggle" },
+        { id: "instagram", label: "Instagram", icon: ":skadesocial_instagram:", toggleId: "instagramToggle" },
+        { id: "tiktok", label: "TikTok", icon: ":skadesocial_tiktok:", toggleId: "tiktokToggle" },
+        { id: "threads", label: "Threads", icon: ":skadesocial_threads:", toggleId: "threadsToggle" },
+        { id: "bluesky", label: "BlueSky", icon: ":skadesocial_blusesky:", toggleId: "blueskyToggle" },
+      ];
+      
+      const FORM_DATA_KEY = 'socialLinksData';
 
-    function generateMarkdown() {
-      const title = document.getElementById("title").value.trim();
-      if (!title) {
-        return "";
-      }
+      // --- Core Functions ---
 
-      let md = `## ${title}\n`;
-
-      socialPlatforms.forEach(({ id, label, icon, toggleId }) => {
-        const val = document.getElementById(id).value.trim();
-        if (val) {
-          const useAngleBrackets = document.getElementById(toggleId).checked;
-          const link = useAngleBrackets ? `<${val}>` : val;
-          md += `${icon} [${label}](${link})\n`;
+      const generateMarkdown = () => {
+        const title = titleInput.value.trim();
+        if (!title) {
+          return "";
         }
+
+        let md = `## ${title}\n\n`;
+
+        socialPlatforms.forEach(({ id, label, icon, toggleId }) => {
+          const val = document.getElementById(id).value.trim();
+          if (val) {
+            const useAngleBrackets = document.getElementById(toggleId).checked;
+            const link = useAngleBrackets ? `<${val}>` : val;
+            md += `${icon} [${label}](${link})\n`;
+          }
+        });
+
+        return md.trim();
+      };
+
+      const updateOutput = () => {
+        output.value = generateMarkdown();
+      };
+
+      // --- LocalStorage Functions ---
+
+      const saveToLocalStorage = () => {
+        const data = {
+          title: titleInput.value,
+        };
+        socialPlatforms.forEach(({ id, toggleId }) => {
+          data[id] = document.getElementById(id).value;
+          data[toggleId] = document.getElementById(toggleId).checked;
+        });
+        localStorage.setItem(FORM_DATA_KEY, JSON.stringify(data));
+      };
+
+      const loadFromLocalStorage = () => {
+        const data = JSON.parse(localStorage.getItem(FORM_DATA_KEY));
+        if (data) {
+          titleInput.value = data.title || '';
+          socialPlatforms.forEach(({ id, toggleId }) => {
+            document.getElementById(id).value = data[id] || '';
+            document.getElementById(toggleId).checked = data[toggleId] || false;
+          });
+        }
+      };
+      
+      const clearFormAndStorage = () => {
+        if (confirm("Are you sure you want to clear the form and delete saved data?")) {
+            form.reset();
+            localStorage.removeItem(FORM_DATA_KEY);
+            updateOutput();
+        }
+      };
+
+      // --- Event Listeners ---
+
+      form.addEventListener("input", () => {
+        updateOutput();
+        saveToLocalStorage();
+      });
+      
+      clearBtn.addEventListener("click", clearFormAndStorage);
+
+      copyBtn.addEventListener("click", () => {
+        const markdown = generateMarkdown();
+        if (!markdown) {
+          alert("Please enter a title at minimum.");
+          return;
+        }
+        navigator.clipboard
+          .writeText(markdown)
+          .then(() => {
+            copiedMsg.style.display = "block";
+            copiedMsg.style.opacity = 1;
+            setTimeout(() => {
+              copiedMsg.style.opacity = 0;
+              setTimeout(() => (copiedMsg.style.display = "none"), 500);
+            }, 2000);
+          })
+          .catch(() => {
+            alert("Failed to copy to clipboard.");
+          });
       });
 
-      return md.trim();
-    }
-
-    function updateOutput() {
-      output.value = generateMarkdown();
-    }
-
-    // Update output on input or toggle change
-    form.addEventListener("input", updateOutput);
-    socialPlatforms.forEach(({ toggleId }) => {
-      document.getElementById(toggleId).addEventListener("change", updateOutput);
+      // --- Initialization ---
+      
+      loadFromLocalStorage();
+      updateOutput();
     });
-
-    copyBtn.addEventListener("click", () => {
-      const markdown = generateMarkdown();
-      if (!markdown) {
-        alert("Please enter a title at minimum.");
-        return;
-      }
-      navigator.clipboard
-        .writeText(markdown)
-        .then(() => {
-          copiedMsg.style.display = "block";
-          setTimeout(() => {
-            copiedMsg.style.display = "none";
-          }, 2000);
-        })
-        .catch(() => {
-          alert("Failed to copy to clipboard.");
-        });
-    });
-
-    // Initialize output on page load
-    updateOutput();
   </script>
 </body>
 </html>

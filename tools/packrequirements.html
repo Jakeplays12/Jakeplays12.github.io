@@ -1,367 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resource Pack Message Builder</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212; /* Dark background */
-            color: #e0e0e0; /* Light text for contrast */
-            line-height: 1.6;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Pack Message Builder</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text for contrast */
+            line-height: 1.6;
+        }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 30px;
-            background-color: #1e1e1e; /* Darker container background */
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
-        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #1e1e1e; /* Darker container background */
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
+        }
 
-        h1 {
-            color: #bb86fc; /* A vibrant accent color */
-            text-align: center;
-            margin-bottom:0;
-            font-weight: 600;
-        }
+        h1 {
+            color: #bb86fc; /* A vibrant accent color */
+            text-align: center;
+            margin-bottom:0;
+            font-weight: 600;
+        }
 
-        .subtext {
-            color: hwb(267 41% 23%); /* A vibrant accent color */
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 400;
-            font-size: 16px;
-            display: block;
-            width: 100%;
+        .subtext {
+            color: hwb(267 41% 23%); /* A vibrant accent color */
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 400;
+            font-size: 16px;
+            display: block;
+            width: 100%;
 
-        }
+        }
 
-        .url-info {
-            background-color: #2a2a2a;
-            border: 1px solid #404040;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
+        .url-info {
+            background-color: #2a2a2a;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
 
-        .url-info h4 {
-            color: #bb86fc;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
+        .url-info h4 {
+            color: #bb86fc;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
 
-        .url-info code {
-            background-color: #1a1a1a;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #03dac6;
-        }
+        .url-info code {
+            background-color: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #03dac6;
+        }
 
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 25px;
-        }
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #ffffff; /* Light label text */
-        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ffffff; /* Light label text */
+        }
 
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #303030; /* Darker border */
-            border-radius: 8px;
-            background-color: #212121; /* Dark input background */
-            color: #e0e0e0; /* Light text */
-            box-sizing: border-box;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #303030; /* Darker border */
+            border-radius: 8px;
+            background-color: #212121; /* Dark input background */
+            color: #e0e0e0; /* Light text */
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
 
-        input[type="text"]:focus,
-        textarea:focus {
-            border-color: #bb86fc; /* Accent color on focus */
-            outline: none;
-            box-shadow: 0 0 8px rgba(187, 134, 252, 0.3); /* Glowing effect on focus */
-        }
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #bb86fc; /* Accent color on focus */
+            outline: none;
+            box-shadow: 0 0 8px rgba(187, 134, 252, 0.3); /* Glowing effect on focus */
+        }
 
-        /* Checkbox Styles */
-        .checkbox-group {
-            margin-bottom: 15px;
-        }
+        /* Checkbox Styles */
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
 
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            color: #ffffff; /* Light checkbox label text */
-            font-weight: 500;
-            cursor: pointer;
-        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            color: #ffffff; /* Light checkbox label text */
+            font-weight: 500;
+            cursor: pointer;
+        }
 
-        input[type="checkbox"] {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
 
-        /* Output Styles */
-        .output-container {
-            margin-top: 30px;
-            padding: 25px;
-            background-color: #212121; /* Dark output background */
-            border-radius: 12px;
-            border: 2px solid #303030; /* Darker border */
-            color: #e0e0e0; /* Light text */
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
-        }
+        /* Output Styles */
+        .output-container {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #212121; /* Dark output background */
+            border-radius: 12px;
+            border: 2px solid #303030; /* Darker border */
+            color: #e0e0e0; /* Light text */
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+        }
 
-        #generatedMessage {
-            white-space: pre-wrap;
-            font-family: 'Consolas', monospace;
-            font-size: 15px;
-            line-height: 1.4;
-        }
+        #generatedMessage {
+            white-space: pre-wrap;
+            font-family: 'Consolas', monospace;
+            font-size: 15px;
+            line-height: 1.4;
+        }
 
-        /* Button Styles */
-        button {
-            background-color: #bb86fc; /* Accent color button */
-            color: #121212; /* Dark text on button */
-            padding: 14px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+        /* Button Styles */
+        button {
+            background-color: #bb86fc; /* Accent color button */
+            color: #121212; /* Dark text on button */
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-        button:hover {
-            background-color: #9c6ade; /* Slightly darker accent color on hover */
-            transform: translateY(-2px); /* Slight lift effect */
-        }
+        button:hover {
+            background-color: #9c6ade; /* Slightly darker accent color on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
 
-        button:active {
-            transform: translateY(0); /* No lift when active */
-            box-shadow: 0 1px 5px rgba(187, 134, 252, 0.4); /* Reduced shadow when active */
-        }
+        button:active {
+            transform: translateY(0); /* No lift when active */
+            box-shadow: 0 1px 5px rgba(187, 134, 252, 0.4); /* Reduced shadow when active */
+        }
 
-        .copy-btn {
-            margin-top: 20px;
-        }
+        .copy-btn {
+            margin-top: 20px;
+        }
 
-        .share-btn {
-            margin-left: 10px;
-            background-color: #03dac6;
-            color: #121212;
-        }
+        .share-btn {
+            margin-left: 10px;
+            background-color: #03dac6;
+            color: #121212;
+        }
 
-        .share-btn:hover {
-            background-color: #00b8a3;
-        }
+        .share-btn:hover {
+            background-color: #00b8a3;
+        }
 
-        /* Error Message Styles */
-        .error {
-            color: #f44336; /* Red error color */
-            font-size: 16px;
-            margin-top: 8px;
-            display: none;
-        }
-    </style>
+        /* Error Message Styles */
+        .error {
+            color: #f44336; /* Red error color */
+            font-size: 16px;
+            margin-top: 8px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Resource Pack Message Builder</h1>
-        <span class="subtext">This page updates every second!</span>
-               
-        <div class="form-group">
-            <label for="title">Pack Title (required):</label>
-            <input type="text" id="title" placeholder="Enter pack title. EG: Lil'Skade's Birthday Pack">
-            <div id="titleError" class="error">Pack title is required</div>
-        </div>
-        
-        <div class="form-group">
-            <label for="packLink">Pack Link (optional):</label>
-            <input type="text" id="packLink" placeholder="Enter pack link. EG: https://www.dropbox.com/scl/fi/...">
-            <span>If you were given a dropbox link. Use this instead of uploading the file to Discord.</span>
-        </div>
-        
-        <h3>Pack Features:</h3>
-        
-        <div class="checkbox-group">
-            <label class="checkbox-label">
-                <input type="checkbox" id="customItems"> 
-                Does this pack contain custom items?<br>
-                For example, a stick renamed to be a pride flag
-            </label>
-        </div>
-        
-        <div class="checkbox-group">
-            <label class="checkbox-label">
-                <input type="checkbox" id="customModels"> 
-                Does this pack contain custom models of entities?<br>
-                For example, a pig remodeled to be a fortlift
-            </label>
-        </div>
-                
-        <div class="output-container">
-            <h3>Generated Message:</h3>
-            <div id="generatedMessage"></div>
-            <button onclick="copyToClipboard()" class="copy-btn">Copy to Clipboard</button>
-            <button onclick="shareCurrentForm()" class="copy-btn share-btn">Share Current Form</button>
-        </div>
-    </div>
+    <div class="container">
+        <h1>Resource Pack Message Builder</h1>
+        <span class="subtext">This page updates every second!</span>
+               
+        <div class="form-group">
+            <label for="title">Pack Title (required):</label>
+            <input type="text" id="title" placeholder="Enter pack title. EG: Lil'Skade's Birthday Pack">
+            <div id="titleError" class="error">Pack title is required</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="packLink">Pack Link (optional):</label>
+            <input type="text" id="packLink" placeholder="Enter pack link. EG: https://www.dropbox.com/scl/fi/...">
+            <span>If you were given a dropbox link. Use this instead of uploading the file to Discord.</span>
+        </div>
+        
+        <h3>Pack Features:</h3>
+        
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="customItems"> 
+                Does this pack contain custom items?<br>
+                For example, a stick renamed to be a pride flag
+            </label>
+        </div>
+        
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="customModels"> 
+                Does this pack contain custom models of entities?<br>
+                For example, a pig remodeled to be a fortlift
+            </label>
+        </div>
 
-    <script>
-        // Function to get URL parameters
-        function getUrlParams() {
-            const params = new URLSearchParams(window.location.search);
-            return {
-                title: params.get('title') || '',
-                link: params.get('link') || '',
-                items: params.get('items') === 'true',
-                models: params.get('models') === 'true'
-            };
-        }
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="connectedTextures"> 
+                Does this pack contain connected textures?<br>
+                For example, glass that is connected together
+            </label>
+        </div>
+                
+        <div class="output-container">
+            <h3>Generated Message:</h3>
+            <div id="generatedMessage"></div>
+            <button onclick="copyToClipboard()" class="copy-btn">Copy to Clipboard</button>
+            <button onclick="shareCurrentForm()" class="copy-btn share-btn">Share Current Form</button>
+        </div>
+    </div>
 
-        // Function to populate form from URL parameters
-        function populateFromUrl() {
-            const params = getUrlParams();
-            
-            if (params.title) {
-                document.getElementById('title').value = decodeURIComponent(params.title);
-            }
-            
-            if (params.link) {
-                document.getElementById('packLink').value = decodeURIComponent(params.link);
-            }
-            
-            document.getElementById('customItems').checked = params.items;
-            document.getElementById('customModels').checked = params.models;
-        }
+    <script>
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                title: params.get('title') || '',
+                link: params.get('link') || '',
+                items: params.get('items') === 'true',
+                models: params.get('models') === 'true',
+                connected: params.get('connected') === 'true'
+            };
+        }
 
-        // Function to generate shareable URL
-        function generateShareUrl() {
-            const baseUrl = window.location.origin + window.location.pathname;
-            const params = new URLSearchParams();
-            
-            const title = document.getElementById('title').value.trim();
-            const packLink = document.getElementById('packLink').value.trim();
-            const customItems = document.getElementById('customItems').checked;
-            const customModels = document.getElementById('customModels').checked;
-            
-            if (title) params.set('title', title);
-            if (packLink) params.set('link', packLink);
-            if (customItems) params.set('items', 'true');
-            if (customModels) params.set('models', 'true');
-            
-            const queryString = params.toString();
-            return queryString ? `${baseUrl}?${queryString}` : baseUrl;
-        }
+        // Function to populate form from URL parameters
+        function populateFromUrl() {
+            const params = getUrlParams();
+            
+            if (params.title) {
+                document.getElementById('title').value = decodeURIComponent(params.title);
+            }
+            
+            if (params.link) {
+                document.getElementById('packLink').value = decodeURIComponent(params.link);
+            }
+            
+            document.getElementById('customItems').checked = params.items;
+            document.getElementById('customModels').checked = params.models;
+            document.getElementById('connectedTextures').checked = params.connected;
+        }
 
-        // Function to share current form
-        function shareCurrentForm() {
-            const shareUrl = generateShareUrl();
-            navigator.clipboard.writeText(shareUrl)
-                .then(() => {
-                    alert('Shareable URL copied to clipboard!');
-                })
-                .catch(err => {
-                    // Fallback for browsers that don't support clipboard API
-                    const textArea = document.createElement('textarea');
-                    textArea.value = shareUrl;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    alert('Shareable URL copied to clipboard!');
-                });
-        }
+        // Function to generate shareable URL
+        function generateShareUrl() {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const params = new URLSearchParams();
+            
+            const title = document.getElementById('title').value.trim();
+            const packLink = document.getElementById('packLink').value.trim();
+            const customItems = document.getElementById('customItems').checked;
+            const customModels = document.getElementById('customModels').checked;
+            const connectedTextures = document.getElementById('connectedTextures').checked;
+            
+            if (title) params.set('title', title);
+            if (packLink) params.set('link', packLink);
+            if (customItems) params.set('items', 'true');
+            if (customModels) params.set('models', 'true');
+            if (connectedTextures) params.set('connected', 'true');
+            
+            const queryString = params.toString();
+            return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+        }
 
-        // Initialize form from URL parameters on page load
-        window.addEventListener('load', function() {
-            populateFromUrl();
-            generateMessage(); // Generate initial message
-        });
+        // Function to share current form
+        function shareCurrentForm() {
+            const shareUrl = generateShareUrl();
+            navigator.clipboard.writeText(shareUrl)
+                .then(() => {
+                    alert('Shareable URL copied to clipboard!');
+                })
+                .catch(err => {
+                    // Fallback for browsers that don't support clipboard API
+                    const textArea = document.createElement('textarea');
+                    textArea.value = shareUrl;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Shareable URL copied to clipboard!');
+                });
+        }
 
-        // make generateMessage run every second
-        setInterval(generateMessage, 1000);
-        
-        function generateMessage() {
-            let title = document.getElementById('title').value.trim();
-            const packLink = document.getElementById('packLink').value.trim();
-            const customItems = document.getElementById('customItems').checked;
-            const customModels = document.getElementById('customModels').checked;
+        // Initialize form from URL parameters on page load
+        window.addEventListener('load', function() {
+            populateFromUrl();
+            generateMessage(); // Generate initial message
+        });
 
-            if(title){
-                title = '# ' + title;
-            }else{
-                title = ''
-            }
-            
-            let message = `${title}\n`;
+        // make generateMessage run every second
+        setInterval(generateMessage, 1000);
+        
+        function generateMessage() {
+            let title = document.getElementById('title').value.trim();
+            const packLink = document.getElementById('packLink').value.trim();
+            const customItems = document.getElementById('customItems').checked;
+            const customModels = document.getElementById('customModels').checked;
+            const connectedTextures = document.getElementById('connectedTextures').checked;
 
-            if(packLink) {
-                message += `-# [Download the pack here!](<${packLink}>)\n\n`;
-            }
-            
-            if(customModels && customItems) {
-                message += [
-                    `### Fabric Mods`,
-                    ` - [CIT Resewn](<https://modrinth.com/mod/cit-resewn/version/1.2.1+1.21>) \`The latest version is very buggy and may cause issues!\``,
-                    '- [Entity Texture Feature](<https://modrinth.com/mod/entitytexturefeatures>) \`You need the latest version.\`',
-                    '- [Entity Model Features](<https://modrinth.com/mod/entity-model-features>) \`You need the latest version.\`',
-                    '### Optifine settings',
-                    '- CIT (Custom Items): On',
-                    '- Custom Entity Models: On',
-                    '- Random Entities: On'
-                ].join('\n');
+            let message = '';
 
-            }else if(customItems && !customModels) {
-                message += [
-                    `### Fabric Mods`,
-                    ` - [CIT Resewn V1.1.5](<https://modrinth.com/mod/cit-resewn>) \`The latest version is very buggy and may cause issues!\``,
-                    '### Optifine settings',
-                    '- CIT (Custom Items): On',
-                ].join('\n');
-            }else if(customModels && !customItems) {
-                message += [
-                    `### Fabric Mods`,
-                    '- [Entity Texture Feature](<https://modrinth.com/mod/entitytexturefeatures>) \`You need the latest version.\`',
-                    '- [Entity Model Features](<https://modrinth.com/mod/entity-model-features>) \`You need the latest version.\`',
-                    '### Optifine settings',
-                    '- Custom Entity Models: On',
-                    '- Random Entities: On'
-                ].join('\n');
-            }
+            if(title) {
+                message += `# ${title}\n`;
+            }
+            
+            if(packLink) {
+                message += `-# [Download the pack here!](<${packLink}>)\n\n`;
+            }
 
-            message += `\nOr you can download Bifrost, which contains all the mods in an easy to use modpack!\n<https://modrinth.com/modpack/skadebifrost>`;
-            
-            // Display the message
-            document.getElementById('generatedMessage').textContent = message;
-        }
-        
-        function copyToClipboard() {
-            const messageText = document.getElementById('generatedMessage').textContent;
-            navigator.clipboard.writeText(messageText)
-                .then(() => {
-                    alert('Message copied to clipboard!');
-                })
-                .catch(err => {
-                    alert('Failed to copy message: ' + err);
-                });
-        }
-    </script>
+            const hasFeatures = customItems || customModels || connectedTextures;
+            if(hasFeatures) {
+                message += `### Fabric Mods\n`;
+                if (customItems) {
+                    message += `- [CIT Resewn](<https://modrinth.com/mod/cit-resewn>) \`The latest version is very buggy and may cause issues!\`\n`;
+                }
+                if (customModels) {
+                    message += `- [Entity Texture Feature](<https://modrinth.com/mod/entitytexturefeatures>) \`You need the latest version.\`\n- [Entity Model Features](<https://modrinth.com/mod/entity-model-features>) \`You need the latest version.\`\n`;
+                }
+                if (connectedTextures) {
+                    message += `- [Continuity](<https://modrinth.com/mod/continuity>) For connected textures.\n`;
+                }
+
+                message += `\n### Optifine settings\n`;
+                if (customItems) {
+                    message += `- CIT (Custom Items): On\n`;
+                }
+                if (customModels) {
+                    message += `- Custom Entity Models: On\n- Random Entities: On\n`;
+                }
+                if (connectedTextures) {
+                    message += `- Connected Textures: Fancy\n`;
+                }
+            }
+
+            message += `\nOr you can download Bifrost, which contains all the mods in an easy to use modpack!\n<https://modrinth.com/modpack/skadebifrost>`;
+            
+            // Display the message
+            document.getElementById('generatedMessage').textContent = message;
+        }
+        
+        function copyToClipboard() {
+            const messageText = document.getElementById('generatedMessage').textContent;
+            navigator.clipboard.writeText(messageText)
+                .then(() => {
+                    alert('Message copied to clipboard!');
+                })
+                .catch(err => {
+                    alert('Failed to copy message: ' + err);
+                });
+        }
+    </script>
 </body>
 </html>
